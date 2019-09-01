@@ -25,18 +25,30 @@ despedida([chao|S],S).
 
 % Palabras Clave para el BNF ---------------------------------------------
 
-% Determinantes
+% Determinantes masculinos
 determinante([el|S],S).
 determinante([lo|S],S).
-determinante([la|S],S).
-determinante([las|S],S).
 determinante([los|S],S).
 determinante([me|S],S).
 determinante([un|S],S).
+
+% Determinantes femeninos
+determinante([la|S],S).
+determinante([las|S],S).
 determinante([una|S],S).
+
+% Sustantivos masculinos
+sustantivo_m([computador|S], S).
+
+% Sustantivos femeninos
+sustantivo_f([computadora|S], S).
+sustantivo_f([impresora|S], S).
 
 % Nombres
 nombre([testNombre|S],S).
 
 % Verbos
-verbo([testVerbo|S],S).
+verbo([sirve|S], S).
+verbo([descompuso|S], S).
+verbo([rompio|S], S).
+

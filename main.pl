@@ -32,22 +32,3 @@ sintagma_saludo(A,B):- saludo(A,C),
 
 % BNF ------------------------------------------------------------------
 
-% verbos ---------------------------------------------------------------
-verbo([sirve|S], S).
-verbo([descompuso|S], S).
-verbo([rompio|S], S).
-
-% sustantivos masculinos -----------------------------------------------
-sustantivo_m([computador|S], S).
-
-% sustantivos femeninos ------------------------------------------------
-sustantivo_f([computadora|S], S).
-sustantivo_f([impresora|S], S).
-
-% determinantes masculinos ---------------------------------------------
-determinante_m([el|S], S).
-
-% determinantes femeninos ----------------------------------------------
-determinante_f([la|S], S).
-
-

@@ -11,11 +11,14 @@
 saludo([hola|S],S).
 saludo([saludos|S],S).
 saludo([disculpe|S],S).
-saludo([buenos|S],S).
-saludo([buenas|S],S).
-saludo([dias|S],S).
-saludo([tardes|S],S).
-saludo([noches|S],S).
+saludo([buenos,dias|S],S).
+saludo([buenas,tardes|S],S).
+saludo([buenas,noches|S],S).
+
+% Nombre del Programa
+nombre([callCenterLog|S],S).
+nombre([log|S],S).
+nombre([callCenter|S],S).
 
 % Fin de una Conversacion
 despedida([gracias|S],S).
@@ -66,13 +69,21 @@ sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
 sustantivo_f([luz|S],S).
 
-% Nombres
-nombre([testNombre|S],S).
-
 % Verbos
 verbo([sirve|S],S).
-verbo([descompuso|S],S).
-verbo([rompio|S],S).
+verbo([me,sirve|S],S).
+verbo([se,descompuso|S],S).
+verbo([se,rompio|S],S).
+verbo([enciende|S],S).
+verbo([se,enciende|S],S).
+verbo([me,enciende|S],S).
+verbo([se,conecta|S],S).
+verbo([suena|S],S).
+verbo([se,ve|S],S).
+verbo([ocupo|S],S).
+verbo([cambiar|S],S).
+verbo([editar|S],S).
+verbo([remover|S],S).
 
 
 

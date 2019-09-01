@@ -26,16 +26,16 @@ despedida([chao|S],S).
 % Palabras Clave para el BNF ---------------------------------------------
 
 % Determinantes masculinos
-determinante_m([el|S],S).
-determinante_m([lo|S],S).
-determinante_m([los|S],S).
-determinante_m([me|S],S).
-determinante_m([un|S],S).
+determinante([el|S],S).
+determinante([lo|S],S).
+determinante([los|S],S).
+determinante([me|S],S).
+determinante([un|S],S).
 
 % Determinantes femeninos
-determinante_f([la|S],S).
-determinante_f([las|S],S).
-determinante_f([una|S],S).
+determinante([la|S],S).
+determinante([las|S],S).
+determinante([una|S],S).
 
 % Sustantivos masculinos
 sustantivo_m([computador|S], S).

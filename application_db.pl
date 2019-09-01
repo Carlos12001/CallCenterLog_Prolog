@@ -25,7 +25,7 @@ despedida([chao|S],S).
 
 % Palabras Clave para el BNF ---------------------------------------------
 
-% determinantes
+% Determinantes
 determinante([el|S],S).
 determinante([lo|S],S).
 determinante([la|S],S).
@@ -34,3 +34,9 @@ determinante([los|S],S).
 determinante([me|S],S).
 determinante([un|S],S).
 determinante([una|S],S).
+
+% Nombres
+nombre([testNombre|S],S).
+
+% Verbos
+verbo([testVerbo|S],S).

@@ -85,6 +85,11 @@ verbo([cambiar|S],S).
 verbo([editar|S],S).
 verbo([remover|S],S).
 
+% Negaciones
+negacion([no|S],S).
+negacion([nunca|S],S).
+
+
 
 
 

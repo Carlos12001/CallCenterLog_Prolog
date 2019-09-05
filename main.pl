@@ -14,6 +14,10 @@
 oracion(A,B):-
 	sintagma_nominal(A,C),
 	sintagma_verbal(C,B).
+oracion(A,B):-
+	sintagma_nominal(A,C),
+	negacion(C,D),
+	sintagma_verbal(D,B).
 
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
@@ -46,7 +50,19 @@ inicio():-
         writeln('Hola usuario'),
 	writeln('¿Cuál es su nombre?'),
 	input_to_string(Nombre),
-	respuesta_saludo(Nombre).
+	respuesta_saludo(Nombre),
+	conversacion().
+
+conversacion():-
+	input_to_list(Oracion),
+	oracion(Oracion,[]),
+	respuesta(), !.
+conversacion():-
+	writeln('Oración gramaticalmente incorrecta'),
+	conversacion().
+
+respuesta():-
+	writeln('Oración gramaticalmente correcta').
 
 respuesta_saludo(Nombre):-
 	write('Hola '),

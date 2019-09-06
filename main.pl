@@ -1,15 +1,21 @@
-/**
- * @file main.pl
- * @version 0.1
- * @authors angelortizv, isolis2000, jesquivel48
- * @brief
- */
+% main.pl -- archivo principal para correr CallCenterLog, contiene reglas de Prolog.
+%
+% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicación que se comporte 
+% como un experto en la solución de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos, 
+% de ahora en adelante SE, son aplicaciones de cómputo que involucran experiencia no algorítmica, para resolver cierto 
+% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje español. El usuario que presenta 
+% el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
+% sus tareas normalmente y finalmente puede consultar.
+%
+% Version de Archivo 	: 0.1
+% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificación  	: 06/09/2019, 01:26, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
 :-dynamic(soluciones/1).
 
-% BNF ---------------------------------------------------------------------------------------------
+% BNF ----------------------------------------------------------------------------------------------------------------------------
 
 oracion(A,B):-
 	sintagma_nominal(A,C),
@@ -42,7 +48,7 @@ sintagma_saludo(A,B):-
 	saludo(A,C),
 	nombrePrograma(C,B).
 
-% BNF ---------------------------------------------------------------------------------------------
+% ValidaciÓn Gramatical, Saludo, Despedida ---------------------------------------------------------------------------------------
 
 validacion_gramatical():-
 	input_to_list(Oracion),
@@ -67,6 +73,8 @@ respuesta_despedida():-
 	write('¿Algo más en que pueda servirle?'),
 	fail.
 
+% Operaciones Básicas ------------------------------------------------------------------------------------------------------------
+
 input_to_list(L):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs),
@@ -85,6 +93,9 @@ obtener_elemento([Y|_], 1, Y).
 obtener_elemento([_|Xs], N, Y):-
           N2 is N - 1,
           obtener_elemento(Xs, N2, Y).
+
+
+% Causas y referencias -----------------------------------------------------------------------------------------------------------
 
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
@@ -110,6 +121,9 @@ referencias(A):-
 	referencia(B,A),
 	write(B),nl,
 	fail.
+
+
+% Consultas, Solución de Problemas, Conversación usuario-se ----------------------------------------------------------------------
 
 hoja_izquierda(B):-
     pregunta(E,B),
@@ -141,17 +155,19 @@ conversacion():-
 	solucion(B,A),
 	write(B),nl.
 
+% Ejecutor SE --------------------------------------------------------------------------------------------------------------------
+
 inicio():-
 	sleep(0.02),
-		write('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'),nl,
+		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
-		write('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'),nl,
+		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
-		write('|||||||||||||||||||||||| Call Center Log |||||||||||||||||||||||||'),nl,
+		write('       |||||||||||||||||||||||| Call Center Log |||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
-		write('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'),nl,
+		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
-		write('||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'),nl,
+		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 
 	input_to_list(L),
 	sintagma_saludo(L, []),
@@ -162,7 +178,8 @@ inicio():-
 	validacion_gramatical(),nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	conversacion(),nl,
-	respuesta_despedida().	
+	respuesta_despedida().
+	
 
 ?- write(' '),nl.
 ?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.

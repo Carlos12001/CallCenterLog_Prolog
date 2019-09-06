@@ -1,11 +1,17 @@
-/**
- * @file application_db.pl
- * @version 0.1
- * @authors angelortizv, isolis2000, jesquivel48
- * @brief
- */
+% application_db.pl -- archivo secundario, contiene hechos de Prolog.
+%
+% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicación que se comporte 
+% como un experto en la solución de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos, 
+% de ahora en adelante SE, son aplicaciones de cómputo que involucran experiencia no algorítmica, para resolver cierto 
+% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje español. El usuario que presenta 
+% el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
+% sus tareas normalmente y finalmente puede consultar.
+%
+% Version de Archivo 	: 0.1
+% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificación  	: 06/09/2019, 01:26, @angelortizv
 
-% Palabras Clave de Usuario -----------------------------------------------------------------------
+% Palabras Clave de Usuario ------------------------------------------------------------------------------------------------------
 
 % Inicio de una Conversacion
 saludo([hola|S],S).
@@ -27,7 +33,7 @@ nombrePrograma([callCenterLog|S],S).
 nombrePrograma([log|S],S).
 nombrePrograma([callCenter|S],S).
 
-% Palabras Clave para el BNF ----------------------------------------------------------------------
+% Palabras Clave para el BNF -----------------------------------------------------------------------------------------------------
 
 % Determinantes masculinos
 determinante_m([el|S],S).
@@ -89,7 +95,7 @@ verbo([remover|S],S).
 negacion([no|S],S).
 negacion([nunca|S],S).
 
-% Lista de Problemas,Causas,Soluciones, Preguntas y Referencias -----------------------------------
+% Lista de Problemas,Causas,Soluciones, Preguntas y Referencias ------------------------------------------------------------------
 
 % Lista de Problemas, los problemas son tratados como strings
 
@@ -253,6 +259,8 @@ referencia('https://www.sony.es/electronics/support/articles/00094960','el telev
 % Referencias relacionadas a celular
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular está lento').
 referencia('','el celular se sobrecalienta').
+
+% Definición de Preguntas, relacionadas a causas y problemas.
 
 raiz('la computadora está desconectada','la computadora no enciende'):-
 	hoja_izquierda('la computadora está desconectada'), !.

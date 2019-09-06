@@ -117,20 +117,8 @@ raiz('no hay solucion',computadora):-
 	hoja_izquierda('no hay solucion'), !.
 
 hoja_izquierda(B):-
-	soluciones(L),
-	buscar_solucion(B,R,L), !,
-	consulta_general(no,R).
-hoja_izquierda(B):-
     pregunta(E,B),
     consulta_no(B, E).
-
-hoja_derecha(B):-
-	soluciones(L),
-	buscar_solucion(B,R,L), !,
-	consulta_general(si,R).
-hoja_derecha(B):-
-    pregunta(E,B),
-    consulta_si(B,E).
 
 consulta_no(A, P):-
     write(P), nl,
@@ -141,15 +129,6 @@ consulta_no(A, P):-
     assert(soluciones(NL)),
     consulta_general(no, R).
 
-consulta_si(A, P):-
-    write(P), nl,
-    read(R), nl,
-    soluciones(L),
-    concatenar(L, [A, R], NL),
-    retractall(soluciones(_)),
-    assert(soluciones(NL)),
-    consulta_general(si, R).
-	
 consulta_general(R,R).
 
 buscar_solucion(P,R,[P, R|_]).

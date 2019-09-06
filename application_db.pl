@@ -143,9 +143,9 @@ causa('el televisor no tiene la actualización más reciente','el televisor tien
 causa('hay dispositivos cerca que brindan interferencia del televisor','el televisor tiene mala imagen').
 
 % Causas relacionados a celular
-/*causa('','el celular no enciende').
-causa('','el celular no enciende').
-causa('','el celular no enciende').
+/*causa('su celular no esta actualizado','El celular está lento').
+causa('el celular no tiene suficiente espacio de almacenamiento','El celular está lento').
+causa('','El celular está lento').
 causa('','el celular se sobrecalienta').
 causa('','el celular se sobrecalienta').
 causa('','el celular se sobrecalienta').*/
@@ -163,35 +163,34 @@ solucion('conecte bien la unidad de almacenamiento','la unidad de almacenamiento
 solucion('instale los controladores necesarios','los controladores necesarios no estan instalados').
 
 % Soluciones relacionadas a impresora
-/*solucion('','la impresora no imprime').
-solucion('','la impresora no imprime').
-solucion('','la impresora no imprime').
-solucion('','la impresora se le atasca el papel').
-solucion('','la impresora se le atasca el papel').
-solucion('','la impresora se le atasca el papel').*/
+/*solucion('ponga papel en la impresora','la impresora no imprime').
+solucion('inserte tinta el la impresora','la impresora no imprime').
+solucion('configure correctamente la impresora','la impresora no imprime').
+solucion('el tamano de papel no es el correcto','la impresora se le atasca el papel').
+solucion('alinee el papel','la impresora se le atasca el papel').
+solucion('disminuya la cantidad de hojas','la impresora se le atasca el papel').*/
 
 % Soluciones relacionadas a internet
-/*solucion('','el internet no tiene conexión').
-solucion('','el internet no tiene conexión').
-solucion('','el internet no tiene conexión').
-solucion('','el internet no tiene conexión').
-solucion('','el internet esta lento').
-solucion('','el internet esta lento').
-solucion('','el internet esta lento').*/
+/*solucion('conecte el modem','el internet no tiene conexión').
+solucion('habilite la tarjeta WI-FI o conecte la computadora con un cable de red','el internet no tiene conexión').
+solucion('conecte el router al modem','el internet no tiene conexión').
+solucion('acerque el router al dispositivo','el internet esta lento').
+solucion('cierre unas cuentas aplicaciones','el internet esta lento').
+solucion('aumente su bando','el internet esta lento').*/
 
 % Soluciones relacionadas a televisor
-/*solucion('','el televisor no funciona').
-solucion('','el televisor no funciona').
-solucion('','el televisor no funciona').
-solucion('','el televisor no funciona').
-solucion('','el televisor tiene mala imagen').
-solucion('','el televisor tiene mala imagen').
-solucion('','el televisor tiene mala imagen').*/
+/*solucion('conecte el televisor','el televisor no funciona').
+solucion('cambie las baterias del control','el televisor no funciona').
+solucion('encienda el interruptor','el televisor no funciona').
+solucion('cambie el toma que esta usando','el televisor no funciona').
+solucion('conecte correctamente el televisor al cable o la antena','el televisor tiene mala imagen').
+solucion('instale la actualizacion mas reciente del televisor','el televisor tiene mala imagen').
+solucion('aleje los dispositivos del televisor','el televisor tiene mala imagen').*/
 
 % Soluciones relacionadas a celular
-/*solucion('','el celular no enciende').
-solucion('','el celular no enciende').
-solucion('','el celular no enciende').
+/*solucion('reinicie el celular','el celular esta lento').
+solucion('borre algunas aplicaciones, fotos, videos o archivos','el celular esta lento').
+solucion('busque la ultima version, revise si es compatible ','el celular esta lento').
 solucion('','el celular se sobrecalienta').
 solucion('','el celular se sobrecalienta').
 solucion('','el celular se sobrecalienta').*/
@@ -211,35 +210,34 @@ pregunta('¿ya se aseguró de que la unidad de almacenamiento esta bien conectad
 pregunta('¿ya instaló los controladores necesarios?','los controladores necesarios no estan instalados').
 
 % Preguntas relacionadas a impresora
-/*pregunta('','la impresora no imprime').
-pregunta('','la impresora no imprime').
-pregunta('','la impresora no imprime').
-pregunta('','la impresora se le atasca el papel').
-pregunta('','la impresora se le atasca el papel').
-pregunta('','la impresora se le atasca el papel').*/
+/*pregunta('¿Ya revisó que tenga papel?','la impresora no imprime').
+pregunta('¿Ya revisó que tenga tinta?','la impresora no imprime').
+pregunta('¿Ya se aseguró de que esté bien configurada?','la impresora no imprime').
+pregunta('¿El tamaño de papel es el correcto?','la impresora se le atasca el papel').
+pregunta('¿El papel está bien alineado?','la impresora se le atasca el papel').
+pregunta('¿El número de hojas cargada en la impresora es menor a la capacidad?','la impresora se le atasca el papel').*/
 
 % Preguntas relacionadas a internet
-/*pregunta('','el internet no tiene conexión').
-pregunta('','el internet no tiene conexión').
-pregunta('','el internet no tiene conexión').
-pregunta('','el internet no tiene conexión').
-pregunta('','el internet esta lento').
-pregunta('','el internet esta lento').
-pregunta('','el internet esta lento').*/
+/*pregunta('¿El módem está conectado?','el internet no tiene conexión').
+pregunta('¿La computadora tiene habilitada la tarjeta WI-FI o está conectada por cable?','el internet no tiene conexión').
+pregunta('¿El router está conectada al modem?','el internet no tiene conexión').
+pregunta('¿El router está cerca del dispositivo que está usando?','el internet esta lento').
+pregunta('¿El dispositivo no tiene muchas aplicaciones que están utilizando internet simultáneamente?','el internet esta lento').
+pregunta('¿El internet es mayor a 5 MB?','el internet esta lento').*/
 
 % Preguntas relacionadas a televisor
-/*pregunta('','el televisor no funciona').
-pregunta('','el televisor no funciona').
-pregunta('','el televisor no funciona').
-pregunta('','el televisor no funciona').
-pregunta('','el televisor tiene mala imagen').
-pregunta('','el televisor tiene mala imagen').
-pregunta('','el televisor tiene mala imagen').*/
+/*pregunta('¿El televisor está conectado?','el televisor no funciona').
+pregunta('¿El control remoto tiene batería?','el televisor no funciona').
+pregunta('¿El interruptor de ahorro de energía del televisor está encendido?','el televisor no funciona').
+pregunta('¿Ha intentado cambiar el toma al que está conectado el televisor?','el televisor no funciona').
+pregunta('¿El televisor está bien conectado ya sea a cable o a antenna?','el televisor tiene mala imagen').
+pregunta('¿Su televisor tiene la actualización más reciente?','el televisor tiene mala imagen').
+pregunta('¿Hay dispositivos cerca del televisor?','el televisor tiene mala imagen').*/
 
 % Preguntas relacionadas a celular
-/*pregunta('','el celular no enciende').
-pregunta('','el celular no enciende').
-pregunta('','el celular no enciende').
+/*pregunta('¿Ya probó apagándolo y volviéndolo a encender?','el celular está leno.').
+pregunta('¿Verificó que aún tenga suficiente espacio de almacenamiento?','el celular está lento').
+pregunta('¿Su celular tiene la actualización más reciente?','el celular está lento').
 pregunta('','el celular se sobrecalienta').
 pregunta('','el celular se sobrecalienta').
 pregunta('','el celular se sobrecalienta').*/
@@ -248,21 +246,21 @@ pregunta('','el celular se sobrecalienta').*/
 % referencia, el segundo string indica a cual problema pertenece dicha solución.
 
 % Referencias relacionadas a computadora
-/*referencias('','la computadora no enciende').
-referencia('','la computadora no muestra mis archivos').*/
+/*referencias('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','la computadora no enciende').
+referencia('https://es.easeus.com/data-recovery-solution/pen-drive-not-showing-data-files.html','la computadora no muestra mis archivos').*/
 
 % Referencias relacionadas a impresora
-/*referencia('','la impresora no imprime').
-referencia('','la impresora se le atasca el papel').*/
+/*referencia('https://www.pcworld.es/tutoriales/otros-dispositivos/impresora-no-funciona-problemas-impresion-3675127/','la impresora no imprime').
+referencia('https://support.hp.com/py-es/document/c00007100','la impresora se le atasca el papel').*/
 
 % Referencias relacionadas a internet
-/*referencia('','el internet no tiene conexión').
-referencia('','el internet esta lento').*/
+/*referencia('https://www.adslzone.net/2015/06/17/que-hacer-cuando-no-funciona-tu-conexion-a-internet/','el internet no tiene conexión').
+referencia('https://computerhoy.com/noticias/internet/que-me-va-lento-internet-problemas-habituales-internet-como-solucionarlos-73007','el internet esta lento').*/
 
 % Referencias relacionadas a televisor
-/*referencia('','el televisor no funciona').
-referencia('','el televisor tiene mala imagen').*/
+/*referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor no funciona').
+referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor tiene mala imagen').*/
 
 % Referencias relacionadas a celular
-/*referencia('','el celular no enciende').
+/*referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular está lento').
 referencia('','el celular se sobrecalienta').*/

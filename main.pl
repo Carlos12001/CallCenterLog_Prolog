@@ -65,7 +65,6 @@ respuesta_saludo(Nombre):-
 
 respuesta_despedida():-
 	write('¿Algo más en que pueda servirle?'),
-	input_to_string(Respuesta),
 	fail.
 
 input_to_list(L):-
@@ -82,6 +81,11 @@ concatenar([X|L1],L2,[X|L3]):-
 
 eliminar_primeros(L,Y,B):- length(X, B), append(X,Y,L).
 
+obtener_elemento([Y|_], 1, Y).
+obtener_elemento([_|Xs], N, Y):-
+          N2 is N - 1,
+          obtener_elemento(Xs, N2, Y).
+
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,7),
@@ -90,7 +94,7 @@ obtener_causas(X,A):-
 
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
-	eliminarPrimeros(L,Y,6),
+	eliminar_primeros(L,Y,6),
 	atomic_list_concat(Y, ' ', X),
 	referencias(X).
 
@@ -103,18 +107,9 @@ causas(A):-
 
 referencias(A):-
 	write('Algunas referencias para su problema son: '),nl,
-	causa(B,A),
+	referencia(B,A),
 	write(B),nl,
 	fail.
-
-raiz('esta desconectada la computadora',computadora):-
-	hoja_izquierda('esta desconectada la computadora'), !.
-raiz('el tomacorriente no funciona',computadora):-
-	hoja_izquierda('el tomacorriente no funciona'), !.
-raiz('los cables no estan bien conectados',computadora):-
-	hoja_izquierda('los cables no estan bien conectados'), !.
-raiz('no hay solucion',computadora):-
-	hoja_izquierda('no hay solucion'), !.
 
 hoja_izquierda(B):-
     pregunta(E,B),
@@ -129,6 +124,9 @@ consulta_no(A, P):-
     assert(soluciones(NL)),
     consulta_general(no, R).
 
+consulta_caso_base(A):-
+	solucion(B,A).
+
 consulta_general(R,R).
 
 buscar_solucion(P,R,[P, R|_]).
@@ -139,7 +137,7 @@ conversacion():-
 	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
 	retractall(soluciones(_)),
 	assert(soluciones([])),
-	raiz(A,computadora),
+	raiz(A,'la computadora no enciende'),
 	solucion(B,A),
 	write(B),nl.
 
@@ -163,7 +161,7 @@ inicio():-
 	respuesta_saludo(Nombre),
 	validacion_gramatical(),nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
-	conversacion(),
+	conversacion(),nl,
 	respuesta_despedida().	
 
 ?- write(' '),nl.

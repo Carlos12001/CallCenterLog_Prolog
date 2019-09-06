@@ -44,25 +44,25 @@ sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
-sintagma_saludo(A,B):-
-	saludo(A,C),
-	nombrePrograma(C,B).
+sintagma_saludo(B):-
+ 	input_to_list(L),
+	saludo(L,C),
+	nombrePrograma(C,B),
+	!.
+sintagma_saludo(B):-
+	sintagma_saludo([]).
 
 % ValidaciÓn Gramatical, Saludo, Despedida ---------------------------------------------------------------------------------------
 
-validacion_gramatical():-
+validacion_gramatical(Oracion):-
 	input_to_list(Oracion),
 	oracion(Oracion,[]),
-	% respuesta_validacion_gramatical(), 
 	!.
 
-validacion_gramatical():-
+validacion_gramatical(Oracion):-
 	writeln('Oración gramaticalmente incorrecta'),nl,
 	writeln('Escriba de nuevo su oración').
-	validacion_gramatical().
-
-respuesta_validacion_gramatical():-
-	writeln('Oración gramaticalmente correcta').
+	validacion_gramatical([]).
 
 respuesta_saludo(Nombre):-
 	write('Hola '),
@@ -122,7 +122,6 @@ referencias(A):-
 	write(B),nl,
 	fail.
 
-
 % Consultas, Solución de Problemas, Conversación usuario-se ----------------------------------------------------------------------
 
 hoja_izquierda(B):-
@@ -147,11 +146,11 @@ buscar_solucion(P,R,[P, R|_]).
 buscar_solucion(P,R,[_|C]):-
     buscar_solucion(P,R,C).
 
-conversacion():-
+conversacion(Oracion):-
 	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
 	retractall(soluciones(_)),
 	assert(soluciones([])),
-	raiz(A,'la computadora no enciende'),
+	raiz(A,Oracion),
 	solucion(B,A),
 	write(B),nl.
 
@@ -169,15 +168,14 @@ inicio():-
 		sleep(0.02),
 		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 
-	input_to_list(L),
-	sintagma_saludo(L, []),
+	sintagma_saludo([]),
     writeln('Hola usuario'),
 	writeln('¿Cuál es su nombre?'),
 	input_to_string(Nombre),
 	respuesta_saludo(Nombre),
-	validacion_gramatical(),nl,
+	validacion_gramatical(Oracion),nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
-	conversacion(),nl,
+	conversacion(Oracion),nl,
 	respuesta_despedida().
 	
 

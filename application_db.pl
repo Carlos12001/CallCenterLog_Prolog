@@ -59,6 +59,7 @@ determinante_f([nuestra|S],S).
 determinante_f([otra|S],S).
 determinante_f([alguna|S],S).
 determinante_f([algunas|S],S).
+determinante_f([mala|S],S).
 
 % Determinantes neutros
 determinante_n([mi|S],S).
@@ -68,10 +69,13 @@ determinante_n([mis|S],S).
 sustantivo_m([internet|S],S).
 sustantivo_m([celular|S],S).
 sustantivo_m([televisor|S],S).
+sustantivo_m([archivos|S],S).
+sustantivo_m([papel|S],S).
 
 % sustantivos femeninos
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
+sustantivo_f([imagen|S],S).
 
 % Verbos
 verbo([sirve|S],S).
@@ -90,6 +94,13 @@ verbo([ocupo|S],S).
 verbo([cambiar|S],S).
 verbo([editar|S],S).
 verbo([remover|S],S).
+verbo([se,sobrecalienta|S],S).
+verbo([se,le,atasca|S],S).
+verbo([muestra|S],S).
+verbo([esta,lento|S],S).
+verbo([tiene|S],S).
+verbo([tiene,conexion|S],S).
+verbo([imprime|S],S).
 
 % Negaciones
 negacion([no|S],S).
@@ -107,8 +118,7 @@ problema('el internet no tiene conexión').
 problema('el internet esta lento').
 problema('el televisor no funciona').
 problema('el televisor tiene mala imagen').
-problema('el celular no enciende').
-problema('el celular se sobrecalienta').
+problema('el celular esta lento').
 
 % Lista de Causas para cada problema, el primer string del hecho es la 
 % causa (la cual es propia y unica para cada problema), el segundo
@@ -258,7 +268,6 @@ referencia('https://www.sony.es/electronics/support/articles/00094960','el telev
 
 % Referencias relacionadas a celular
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular está lento').
-referencia('','el celular se sobrecalienta').
 
 % Definición de Preguntas, relacionadas a causas y problemas.
 

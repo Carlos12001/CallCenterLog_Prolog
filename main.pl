@@ -7,16 +7,20 @@
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo	: 0.1
-% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificación		: 07/09/2019, 18:26, @angelortizv
+% Version de Archivo		: 0.1
+% Autores					: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificacion		: 07/09/2019, 16:00, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
 :-dynamic(soluciones/1).
 
-% BNF ----------------------------------------------------------------------------------------------------------------------------
+% BNF -------------------------------------------------------------------------------------------------------------------------------------
 
+% Descripción		:	
+% Nombre de Regla	:	oracion([A],[B])
+% Parámetro			: 	 	
+% Uso				:	
 oracion(A,B):-
 	sintagma_nominal(A,C),
 	sintagma_verbal(C,B).
@@ -29,6 +33,10 @@ oracion(A,B):-
 	sintagma_nominal(C,D),
 	sintagma_verbal(D,B).
 
+% Descripción		:	
+% Nombre de Regla	:	sintagma_nominal([A],[B])
+% Parámetro			: 	 	
+% Uso				:	
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
 	sustantivo_m(C,B).
@@ -42,22 +50,33 @@ sintagma_nominal(A,B):-
 	determinante_n(A,C),
 	sustantivo_m(C,B).
 
+% Descripción		:	
+% Nombre de Regla	:	sintagma_verbal([A],[B])
+% Parámetro			: 	 	
+% Uso				:	
 sintagma_verbal(A,B):-
 	verbo(A,B).
 sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
+% Descripción		:	
+% Nombre de Regla	:	sintagma_saludo([B])
+% Parámetro			: 	 	
+% Uso				:	
 sintagma_saludo(B):-
 	input_to_list(L),
 	saludo(L,C),
-	nombre_programa(C,B),
-	!.
+	nombre_programa(C,B),!.
 sintagma_saludo(B):-
 	sintagma_saludo([]).
 
-% ValidaciÓn Gramatical, Saludo, Despedida ---------------------------------------------------------------------------------------
+% ValidaciÓn Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
 
+% Descripción		:	
+% Nombre de Regla	:	validacion_gramatical()
+% Parámetro			: 	 	
+% Uso				:	
 validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
@@ -73,16 +92,23 @@ validacion_gramatical(Oracion):-
 	inicio_aux(),
 	!.
 
+% Descripción		:	
+% Nombre de Regla	:	respuesta_saludo(Nombre)
+% Parámetro			: 	 	
+% Uso				:	
 respuesta_saludo(Nombre):-
 	write('Hola '),
 	writeln(Nombre),
 	writeln('En que lo puedo ayudar?').
 
+% Descripción		:	
+% Nombre de Regla	:	
+% Parámetro			: 	 	
+% Uso				:	
 respuesta_despedida():-
 	writeln('Algo mas en que pueda servirle?'),nl,
 	read(R),
 	opcion_despedida(R).
-
 opcion_despedida(R):-
 	consulta_general(no,R),nl,writeln('Gracias por preferirnos'),nl,!;
 	inicio_aux().
@@ -117,19 +143,17 @@ obtener_elemento([_|Xs], N, Y):-
           obtener_elemento(Xs, N2, Y).
 
 
-% Causas y referencias -----------------------------------------------------------------------------------------------------------
+% Causas y referencias --------------------------------------------------------------------------------------------------------------------
 
+% Descripción		:	Obtiene las causas a un determinado problema
+% Nombre de Regla	:	obtener_causas(X,A)
+% Parámetro			: 	problema definido en application_db
+% Uso				:	
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,7),
 	atomic_list_concat(Y, ' ', X),
 	causas(X).
-
-obtener_referencias(X,A):-
-	split_string(A, "', ,?" ,"', ,?", L),
-	eliminar_primeros(L,Y,6),
-	atomic_list_concat(Y, ' ', X),
-	referencias(X).
 
 causas(A):-
 	write('Las principales causas que pueden estar asociadas a: '),
@@ -138,20 +162,38 @@ causas(A):-
 	write(B),nl,
 	fail.
 
+% Descripción		:	Obtiene las referencias a un determinado problema
+% Nombre de Regla	:	obtener_referencias(X,A)
+% Parámetro			: 	probolema definido en application_db
+% Uso				:	
+obtener_referencias(X,A):-
+	split_string(A, "', ,?" ,"', ,?", L),
+	eliminar_primeros(L,Y,6),
+	atomic_list_concat(Y, ' ', X),
+	referencias(X).
+
 referencias(A):-
 	write('Algunas referencias para su problema son: '),nl,
-	referencia(B,A),
-	write(B),nl,
+	referencia(E,A),
+	write(E),nl,
 	fail.
 
-% Consultas, Solución de Problemas, Conversación usuario-se ----------------------------------------------------------------------
+% Consultas, Solución de Problemas, Conversación usuario-se -------------------------------------------------------------------------------
 
+% Descripción		:	Envía a consulta_no(A,D) pregunta al usuario sobre determinado problema 
+% Nombre de Regla	:	hoja_izquierda(B)
+% Parámetro			: 	causa de un problema	
+% Uso				:	raiz(B,A)
 hoja_izquierda(B):-
-    pregunta(E,B),
-    consulta_no(B, E).
+    pregunta(D,B),
+    consulta_no(B, D).
 
-consulta_no(A, P):-
-    write(P), nl,
+% Descripción		:	concatena las soluciones a un determinado problema
+% Nombre de Regla	:	consulta_no(A,P)
+% Parámetro			: 	(causa de un problema, pregunta asociada) 	
+% Uso				:	hoja_izquierda(B)
+consulta_no(A, D):-
+    write(D), nl,
     read(R), nl,
     soluciones(L),
     concatenar(L, [A, R], NL),
@@ -159,11 +201,14 @@ consulta_no(A, P):-
     assert(soluciones(NL)),
     consulta_general(no, R).
 
-consulta_caso_base(A):-
-	solucion(B,A).
-
+consulta_caso_base(B):-
+	solucion(C,B).
 consulta_general(R,R).
 
+% Descripción		:	Realiza el ciclo de conversación entre preguntas y respuestas, y despedida
+% Nombre de Regla	:	conversascion(Oracion)
+% Parámetro			: 	String de una oración
+% Uso				:	inicio_aux()
 conversacion(Oracion):-
 	repeat,
 		write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
@@ -175,7 +220,7 @@ conversacion(Oracion):-
 		write(B),nl,
 		respuesta_despedida().
 
-% Ejecutor SE --------------------------------------------------------------------------------------------------------------------
+% Ejecutor SE -----------------------------------------------------------------------------------------------------------------------------
 
 encabezado():-
 	sleep(0.02),
@@ -204,7 +249,6 @@ inicio_aux():-
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	list_to_string(Oracion,Y),
 	conversacion(Y),nl.
-	% respuesta_despedida().
 
 
 ?- write(' '),nl.

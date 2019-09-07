@@ -7,9 +7,9 @@
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo	: 0.1
-% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificación		: 06/09/2019, 01:26, @angelortizv
+% Version de Archivo 	: 0.1
+% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificación  	: 07/09/2019, 18:26, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
@@ -47,7 +47,7 @@ sintagma_verbal(A,B):-
 sintagma_saludo(B):-
 	input_to_list(L),
 	saludo(L,C),
-	nombrePrograma(C,B),
+	nombre_programa(C,B),
 	!.
 sintagma_saludo(B):-
 	sintagma_saludo([]).
@@ -56,6 +56,7 @@ sintagma_saludo(B):-
 
 validacion_gramatical(Oracion):-
 	input_to_list(Oracion),
+	% write(Oracion),
 	oracion(Oracion,[]),
 	!.
 validacion_gramatical(Oracion):-
@@ -69,10 +70,16 @@ respuesta_saludo(Nombre):-
 	writeln('¿En qué lo puedo ayudar?').
 
 respuesta_despedida():-
-	write('¿Algo más en que pueda servirle?'),
-	fail.
+	writeln('¿Algo mas en que pueda servirle?'),nl,
+	read(R),
+	opcion_despedida(R).
 
-% Operaciones Básicas ------------------------------------------------------------------------------------------------------------
+opcion_despedida(R):-
+	consulta_general(no,R).
+opcion_despedida(R):-
+	inicio_aux().
+	
+% Operaciones Basicas ------------------------------------------------------------------------------------------------------------
 
 input_to_list(L):-
 	read_line_to_codes(user_input,Cs),
@@ -81,8 +88,9 @@ input_to_list(L):-
 input_to_string(A):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs).
-list_to_string(List,String):-
-	atomic_list_concat(List, ' ', Atom).
+list_to_string(List, String):-
+	atomic_list_concat(List, ' ', String).
+	% atom_string(A,String).
 
 concatenar([],L,L).
 concatenar([X|L1],L2,[X|L3]):-
@@ -151,6 +159,7 @@ conversacion(Oracion):-
 	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
 	retractall(soluciones(_)),
 	assert(soluciones([])),
+	% write(Oracion),
 	raiz(A,Oracion),
 	solucion(B,A),
 	write(B),nl.
@@ -171,12 +180,17 @@ inicio():-
 
 	sintagma_saludo([]),
     writeln('Hola usuario'),
-	writeln('¿Cuál es su nombre?'),
+	writeln('¿Cual es su nombre?'),
 	input_to_string(Nombre),
 	respuesta_saludo(Nombre),
-	validacion_gramatical(Oracion),nl,
+	inicio_aux().
+
+inicio_aux():-
+	validacion_gramatical(Oracion),nl,nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
-	conversacion(Oracion),nl,
+	list_to_string(Oracion,Y),
+	% write(Y),
+	conversacion(Y),nl,
 	respuesta_despedida().
 
 

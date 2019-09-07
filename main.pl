@@ -1,15 +1,15 @@
 % main.pl -- archivo principal para correr CallCenterLog, contiene reglas de Prolog.
 %
-% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicación que se comporte 
-% como un experto en la solución de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos, 
-% de ahora en adelante SE, son aplicaciones de cómputo que involucran experiencia no algorítmica, para resolver cierto 
-% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje español. El usuario que presenta 
+% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicación que se comporte
+% como un experto en la solución de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos,
+% de ahora en adelante SE, son aplicaciones de cómputo que involucran experiencia no algorítmica, para resolver cierto
+% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje español. El usuario que presenta
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo 	: 0.1
-% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificación  	: 06/09/2019, 01:26, @angelortizv
+% Version de Archivo	: 0.1
+% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificación		: 06/09/2019, 01:26, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
@@ -45,7 +45,7 @@ sintagma_verbal(A,B):-
 	sintagma_nominal(C,B).
 
 sintagma_saludo(B):-
- 	input_to_list(L),
+	input_to_list(L),
 	saludo(L,C),
 	nombrePrograma(C,B),
 	!.
@@ -58,11 +58,10 @@ validacion_gramatical(Oracion):-
 	input_to_list(Oracion),
 	oracion(Oracion,[]),
 	!.
-
 validacion_gramatical(Oracion):-
 	writeln('Oración gramaticalmente incorrecta'),nl,
-	writeln('Escriba de nuevo su oración').
-	validacion_gramatical([]).
+	writeln('Escriba de nuevo su oración'),
+	validacion_gramatical(Oracion).
 
 respuesta_saludo(Nombre):-
 	write('Hola '),
@@ -82,9 +81,11 @@ input_to_list(L):-
 input_to_string(A):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs).
+list_to_string(List,String):-
+	atomic_list_concat(List, ' ', Atom).
 
 concatenar([],L,L).
-concatenar([X|L1],L2,[X|L3]):- 
+concatenar([X|L1],L2,[X|L3]):-
 	concatenar(L1,L2,L3).
 
 eliminar_primeros(L,Y,B):- length(X, B), append(X,Y,L).
@@ -177,7 +178,7 @@ inicio():-
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	conversacion(Oracion),nl,
 	respuesta_despedida().
-	
+
 
 ?- write(' '),nl.
 ?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.

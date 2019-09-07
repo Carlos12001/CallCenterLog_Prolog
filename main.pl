@@ -9,7 +9,7 @@
 %
 % Version de Archivo 	: 0.1
 % Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificación  	: 06/09/2019, 01:26, @angelortizv
+% Úlitma Modificación  	: 07/09/2019, 18:26, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
@@ -47,7 +47,7 @@ sintagma_verbal(A,B):-
 sintagma_saludo(B):-
  	input_to_list(L),
 	saludo(L,C),
-	nombrePrograma(C,B),
+	nombre_programa(C,B),
 	!.
 sintagma_saludo(B):-
 	sintagma_saludo([]).
@@ -56,6 +56,7 @@ sintagma_saludo(B):-
 
 validacion_gramatical(Oracion):-
 	input_to_list(Oracion),
+	% write(Oracion),
 	oracion(Oracion,[]),
 	!.
 
@@ -70,9 +71,15 @@ respuesta_saludo(Nombre):-
 	writeln('¿En qué lo puedo ayudar?').
 
 respuesta_despedida():-
-	write('¿Algo mas en que pueda servirle?'),
-	fail.
+	writeln('¿Algo mas en que pueda servirle?'),nl,
+	read(R),
+	opcion_despedida(R).
 
+opcion_despedida(R):-
+	consulta_general(no,R).
+opcion_despedida(R):-
+	inicio_aux().
+	
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
 
 input_to_list(L):-
@@ -177,13 +184,15 @@ inicio():-
 	writeln('¿Cual es su nombre?'),
 	input_to_string(Nombre),
 	respuesta_saludo(Nombre),
-	validacion_gramatical(Oracion),nl,
+	inicio_aux().
+
+inicio_aux():-
+	validacion_gramatical(Oracion),nl,nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	list_to_string(Oracion,Y),
 	% write(Y),
 	conversacion(Y),nl,
 	respuesta_despedida().
-	
 
 ?- write(' '),nl.
 ?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.

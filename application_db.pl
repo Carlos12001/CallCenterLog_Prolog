@@ -9,7 +9,7 @@
 %
 % Version de Archivo 	: 0.1
 % Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificacion  	: 06/09/2019, 01:26, @angelortizv
+% Úlitma Modificacion  	: 07/09/2019, 15:26, @angelortizv
 
 % Palabras Clave de Usuario ------------------------------------------------------------------------------------------------------
 
@@ -29,9 +29,9 @@ despedida([hasta_luego|S],S).
 despedida([chao|S],S).
 
 % nombre del Programa
-nombrePrograma([callCenterLog|S],S).
-nombrePrograma([log|S],S).
-nombrePrograma([callCenter|S],S).
+nombre_programa([callCenterLog|S],S).
+nombre_programa([log|S],S).
+nombre_programa([callCenter|S],S).
 
 % Palabras Clave para el BNF -----------------------------------------------------------------------------------------------------
 

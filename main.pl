@@ -114,6 +114,7 @@ opcion_despedida(R):-
 	inicio_aux().
 
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
+
 lista_vacia(List, Empty) :-
     length(List, Len),
     (   Len =< 1
@@ -210,15 +211,14 @@ consulta_general(R,R).
 % Parámetro			: 	String de una oración
 % Uso				:	inicio_aux()
 conversacion(Oracion):-
-	repeat,
-		write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
-		retractall(soluciones(_)),
-		assert(soluciones([])),
-		% write(Oracion),
-		raiz(A,Oracion),
-		solucion(B,A),
-		write(B),nl,
-		respuesta_despedida().
+	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
+	retractall(soluciones(_)),
+	assert(soluciones([])),
+	% write(Oracion),
+	raiz(A,Oracion),
+	solucion(B,A),
+	write(B),nl,
+	respuesta_despedida().
 
 % Ejecutor SE -----------------------------------------------------------------------------------------------------------------------------
 
@@ -246,10 +246,9 @@ inicio():-
 inicio_aux():-
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
-	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
+	writeln('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	list_to_string(Oracion,Y),
 	conversacion(Y),nl.
-
 
 ?- write(' '),nl.
 ?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.

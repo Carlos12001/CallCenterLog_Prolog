@@ -165,7 +165,7 @@ consulta_caso_base(A):-
 consulta_general(R,R).
 
 conversacion(Oracion):-
-	repeat, 
+	repeat,
 		write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
 		retractall(soluciones(_)),
 		assert(soluciones([])),
@@ -192,13 +192,13 @@ encabezado():-
 inicio():-
 	encabezado(),
 	sintagma_saludo([]),
-    writeln('Hola usuario'),
+	writeln('Hola usuario'),
 	writeln('¿Cual es su nombre?'),
+	input_to_string(Nombre),
+	respuesta_saludo(Nombre),
 	inicio_aux().
 
 inicio_aux():-
-	input_to_string(Nombre),
-	respuesta_saludo(Nombre),
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,

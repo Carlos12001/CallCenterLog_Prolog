@@ -59,26 +59,27 @@ sintagma_saludo(B):-
 % ValidaciÓn Gramatical, Saludo, Despedida ---------------------------------------------------------------------------------------
 
 validacion_gramatical(Oracion):-
-	input_to_list(Oracion),
-	% write(Oracion),
 	oracion(Oracion,[]),
 	!.
 validacion_gramatical(Oracion):-
+	is_list(Oracion),
 	lista_vacia(Oracion,true),
-	write("entro"),
-	validacion_gramatical(Oracion).
+	writeln('En que lo puedo ayudar?'),nl,
+	inicio_aux(),
+	!.
 validacion_gramatical(Oracion):-
-	writeln('Oración gramaticalmente incorrecta'),nl,
-	writeln('Escriba de nuevo su oración'),
-	validacion_gramatical(Oracion).
+	writeln('Oracion gramaticalmente incorrecta'),nl,
+	writeln('Escriba de nuevo su oracion'),
+	inicio_aux(),
+	!.
 
 respuesta_saludo(Nombre):-
 	write('Hola '),
 	writeln(Nombre),
-	writeln('¿En qué lo puedo ayudar?').
+	writeln('En que lo puedo ayudar?').
 
 respuesta_despedida():-
-	writeln('¿Algo mas en que pueda servirle?'),nl,
+	writeln('Algo mas en que pueda servirle?'),nl,
 	read(R),
 	opcion_despedida(R).
 
@@ -88,9 +89,13 @@ opcion_despedida(R):-
 	inicio_aux().
 
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
+lista_vacia(List, Empty) :-
+    length(List, Len),
+    (   Len =< 1
+    ->  Empty = true
+    ;   Empty = false
+    ).
 
-lista_vacia([],true).
-lsita_vacia([_|_],false).
 input_to_list(L):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs),
@@ -100,7 +105,6 @@ input_to_string(A):-
 	atom_codes(A,Cs).
 list_to_string(List, String):-
 	atomic_list_concat(List, ' ', String).
-	% atom_string(A,String).
 
 concatenar([],L,L).
 concatenar([X|L1],L2,[X|L3]):-
@@ -196,6 +200,7 @@ inicio():-
 	inicio_aux().
 
 inicio_aux():-
+	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	list_to_string(Oracion,Y),

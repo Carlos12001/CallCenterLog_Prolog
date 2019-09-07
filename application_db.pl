@@ -82,6 +82,10 @@ sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
 
+% inicio causa_ref
+inicio_cr([posibles,causas,del,problema|S],S).
+inicio_cr([algunas,referencias,para,el,problema|S],S).
+
 % Verbos
 verbo([sirve|S],S).
 verbo([me,sirve|S],S).

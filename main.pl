@@ -25,10 +25,9 @@ oracion(A,B):-
 	negacion(C,D),
 	sintagma_verbal(D,B).
 oracion(A,B):-
-	sintagma_nominal(A,C),
+	inicio_cr(A,C),
 	sintagma_nominal(C,D),
-	sintagma_nominal(D,E),
-	sintagma_verbal(E,B).
+	sintagma_verbal(D,B).
 
 sintagma_nominal(A,B):-
 	determinante_m(A,C),

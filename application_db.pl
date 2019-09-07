@@ -1,15 +1,15 @@
 % application_db.pl -- archivo secundario, contiene hechos de Prolog.
 %
-% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicacion que se comporte 
-% como un experto en la solucion de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos, 
-% de ahora en adelante SE, son aplicaciones de computo que involucran experiencia no algoritmica, para resolver cierto 
-% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje espanol. El usuario que presenta 
+% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicacion que se comporte
+% como un experto en la solucion de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos,
+% de ahora en adelante SE, son aplicaciones de computo que involucran experiencia no algoritmica, para resolver cierto
+% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje espanol. El usuario que presenta
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo 	: 0.1
-% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificacion  	: 07/09/2019, 15:26, @angelortizv
+% Version de Archivo	: 0.1
+% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificacion		: 07/09/2019, 15:26, @angelortizv
 
 % Palabras Clave de Usuario ------------------------------------------------------------------------------------------------------
 
@@ -47,6 +47,7 @@ determinante_m([nuestro|S],S).
 determinante_m([otro|S],S).
 determinante_m([alguno|S],S).
 determinante_m([algunos|S],S).
+determinante_m([del|S],S).
 
 % Determinantes femeninos
 determinante_f([la|S],S).
@@ -64,6 +65,7 @@ determinante_f([mala|S],S).
 % Determinantes neutros
 determinante_n([mi|S],S).
 determinante_n([mis|S],S).
+determinante_n([posibles|S],S).
 
 % sustantivos masculinos
 sustantivo_m([internet|S],S).
@@ -71,11 +73,14 @@ sustantivo_m([celular|S],S).
 sustantivo_m([televisor|S],S).
 sustantivo_m([archivos|S],S).
 sustantivo_m([papel|S],S).
+sustantivo_m([problema|S],S).
 
 % sustantivos femeninos
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
+sustantivo_f([referencia,para|S],S).
+sustantivo_f([causas|S],S).
 
 % Verbos
 verbo([sirve|S],S).
@@ -120,7 +125,7 @@ problema('el televisor no funciona').
 problema('el televisor tiene mala imagen').
 problema('el celular esta lento').
 
-% Lista de Causas para cada problema, el primer string del hecho es la 
+% Lista de Causas para cada problema, el primer string del hecho es la
 % causa (la cual es propia y unica para cada problema), el segundo
 % string indica a cual problema pertenece dicha causa.
 
@@ -162,7 +167,7 @@ causa('el celular ocupa un reinicio', 'el celular esta lento').
 causa('el celular no tiene suficiente espacio de almacenamiento','el celular esta lento').
 causa('su celular no esta actualizado','el celular esta lento').
 
-% Lista de soluciones para cada subproblema, el primer string del hecho es la 
+% Lista de soluciones para cada subproblema, el primer string del hecho es la
 % solucion el segundo string indica a cual subproblema pertenece dicha solucion.
 
 % Soluciones relacionadas a computadora

@@ -7,9 +7,9 @@
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo 	: 0.1
-% Autores            	: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificación  	: 07/09/2019, 18:26, @angelortizv
+% Version de Archivo	: 0.1
+% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificación		: 07/09/2019, 18:26, @angelortizv
 
 :-consult('application_db').
 :-style_check(-singleton).
@@ -24,6 +24,11 @@ oracion(A,B):-
 	sintagma_nominal(A,C),
 	negacion(C,D),
 	sintagma_verbal(D,B).
+oracion(A,B):-
+	sintagma_nominal(A,C),
+	sintagma_nominal(C,D),
+	sintagma_nominal(D,E),
+	sintagma_verbal(E,B).
 
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
@@ -60,6 +65,10 @@ validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
 validacion_gramatical(Oracion):-
+	lista_vacia(Oracion,true),
+	write("entro"),
+	validacion_gramatical(Oracion).
+validacion_gramatical(Oracion):-
 	writeln('Oración gramaticalmente incorrecta'),nl,
 	writeln('Escriba de nuevo su oración'),
 	validacion_gramatical(Oracion).
@@ -78,9 +87,11 @@ opcion_despedida(R):-
 	consulta_general(no,R).
 opcion_despedida(R):-
 	inicio_aux().
-	
+
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
 
+lista_vacia([],true).
+lsita_vacia([_|_],false).
 input_to_list(L):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs),

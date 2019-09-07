@@ -14,9 +14,9 @@
 % Palabras Clave de Usuario ---------------------------------------------------------------------------------------------------------------
 
 % Descripción		:	Inicio de una Conversacion
-% Nombre de Hecho	:	saludo()
+% Nombre de Hecho	:	saludo([X])
 % Parámetro			: 	palabra clave de saludo 	
-% Uso				:	sintagma_saludo
+% Uso				:	sintagma_saludo([B])
 saludo([hola|S],S).
 saludo([saludos|S],S).
 saludo([disculpe|S],S).
@@ -25,9 +25,9 @@ saludo([buenas,tardes|S],S).
 saludo([buenas,noches|S],S).
 
 % Descripción		:	Fin de una Conversacion
-% Nombre de Hecho	:	despedida()
+% Nombre de Hecho	:	despedida([X])
 % Parámetro			:	palabra clave de despedida
-% Uso				:	sintagma_saludo
+% Uso				:	sintagma_saludo([B])
 despedida([gracias|S],S).
 despedida([muchas,gracias|S],S).
 despedida([adios|S],S).
@@ -35,9 +35,9 @@ despedida([hasta_luego|S],S).
 despedida([chao|S],S).
 
 % Descripción		:	Nombre del Programa
-% Nombre de Hecho	:	nombre_programa()
+% Nombre de Hecho	:	nombre_programa([X])
 % Parámetro			:	nombre del Sistema Experto
-% Uso				:	sintagma_saludo
+% Uso				:	sintagma_saludo([B])
 nombre_programa([callCenterLog|S],S).
 nombre_programa([log|S],S).
 nombre_programa([callCenter|S],S).
@@ -45,9 +45,9 @@ nombre_programa([callCenter|S],S).
 % Palabras Clave para el BNF --------------------------------------------------------------------------------------------------------------
 
 %  Descripción		:	Determinantes masculinos
-% Nombre de Hecho	:	determinante_m()
+% Nombre de Hecho	:	determinante_m(X)
 % Parámetro			:	determinantes masculinos
-% Uso				:	sintagma_nominal		
+% Uso				:	sintagma_nominal([A],[B])		
 determinante_m([el|S],S).
 determinante_m([lo|S],S).
 determinante_m([los|S],S).
@@ -62,9 +62,9 @@ determinante_m([algunos|S],S).
 determinante_m([del|S],S).
 
 % Descripción		:	Determinantes femeninos
-% Nombre de Hecho	:	determinante_f()
+% Nombre de Hecho	:	determinante_f([X])
 % Parámetro			:	determinantes femeninos
-% Uso				:	sintagma_nominal
+% Uso				:	sintagma_nominal([A],[B])
 determinante_f([la|S],S).
 determinante_f([las|S],S).
 determinante_f([una|S],S).
@@ -78,24 +78,24 @@ determinante_f([algunas|S],S).
 determinante_f([mala|S],S).
 
 % Descripción		:	Determinantes neutros
-% Nombre de Hecho	:	determinante_n()
+% Nombre de Hecho	:	determinante_n([X])
 % Parámetro			:	determinantes neutros
-% Uso				:	sintagma_nominal
+% Uso				:	sintagma_nominal([A],[B])
 determinante_n([mi|S],S).
 determinante_n([mis|S],S).
 determinante_n([posibles|S],S).
 
 % Descripción		:	Negaciones
-% Nombre de Hecho	:	negacion()
+% Nombre de Hecho	:	negacion([X])
 % Parámetro			:	adverbios de negacion
-% Uso				:	oracion
+% Uso				:	oracion([A],[B])
 negacion([no|S],S).
 negacion([nunca|S],S).
 
 % Descripción		:	sustantivos masculinos
-% Nombre de Hecho	:	sustantivo_m()
+% Nombre de Hecho	:	sustantivo_m([X])
 % Parámetro			:	sustantivos masculinos
-% Uso				:	sintagma_nominal
+% Uso				:	sintagma_nominal([A],[B])
 sustantivo_m([internet|S],S).
 sustantivo_m([celular|S],S).
 sustantivo_m([televisor|S],S).
@@ -104,26 +104,26 @@ sustantivo_m([papel|S],S).
 sustantivo_m([problema|S],S).
 
 % Descripción		:	sustantivos femeninos
-% Nombre de Hecho	:	sustantivo_f()
+% Nombre de Hecho	:	sustantivo_f([X])
 % Parámetro			:	sustantivos femeninos
-% Uso				:	sintagma_nominal
+% Uso				:	sintagma_nominal([A],[B])
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
 
-% Descripción		:	inicio causa_ref
-% Nombre de Hecho	:	
+% Descripción		:	
+% Nombre de Hecho	:	inicio causa_ref([X])
 % Parámetro			:	
 % Uso				:	
 inicio_cr([posibles,causas,del,problema|S],S).
 inicio_cr([algunas,referencias,para,el,problema|S],S).
 
 % Descripción		:	Verbos
-% Nombre de Hecho	:	verbo()
+% Nombre de Hecho	:	verbo([X])
 % Parámetro			:	verbos utilizables
-% Uso				:	sintagma_verbal
+% Uso				:	sintagma_verbal([A],[B])
 verbo([sirve|S],S).
 verbo([me,sirve|S],S).
 verbo([funciona|S],S).
@@ -152,9 +152,9 @@ verbo([imprime|S],S).
 % Lista de Problemas,Causas,Soluciones,Preguntas y Referencias ----------------------------------------------------------------------------
 
 % Descripción		:	Lista de Problemas, los problemas son tratados como strings
-% Nombre de Hecho	:	problema()
+% Nombre de Hecho	:	problema(A)
 % Parámetro			:	problema reconocido por el SE
-% Uso				:	causa(), referencia(), raiz()
+% Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
 problema('la computadora no enciende').
 problema('la computadora no muestra mis archivos').
 problema('la impresora no imprime').
@@ -166,9 +166,9 @@ problema('el televisor tiene mala imagen').
 problema('el celular esta lento').
 
 % Descripción		:	Lista de Causas para cada problema
-% Nombre de Hecho	:	causa()
+% Nombre de Hecho	:	causa(B,A)
 % Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
-% Uso				:	solucion(), pregunta(), raiz(), causas()
+% Uso				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 
 % Causas relacionados a computadora
 causa('la computadora esta desconectada','la computadora no enciende').
@@ -209,9 +209,9 @@ causa('el celular no tiene suficiente espacio de almacenamiento','el celular est
 causa('su celular no esta actualizado','el celular esta lento').
 
 % Descripción		:	Lista de soluciones para cada subproblema
-% Nombre de Hecho	:	solucion()
+% Nombre de Hecho	:	solucion(C,B)
 % Parámetro			:	(solucion asociada a una causa, causa a la que pertenece)
-% Uso				:	consulta_caso_base(), conversacion()
+% Uso				:	consulta_caso_base(B), conversacion(Oracion)
 
 % Soluciones relacionadas a computadora
 solucion('conecte la computadora','la computadora esta desconectada').
@@ -255,9 +255,9 @@ solucion('busque la ultima version, revise si es compatible ','el celular no est
 solucion('Este Sistema Experto no puede responder su problema, se recomienda consultar a un tecnico.','no hay solucion').
 
 % Descripción		:	Lista de Preguntas para cada subproblema
-% Nombre de Hecho	:	pregunta()
+% Nombre de Hecho	:	pregunta(D,B)
 % Parámetro			:	(pregunta asociada a una causa, causa a la que pertenece)
-% Uso				:	hoja_izquierda()
+% Uso				:	hoja_izquierda(B)
 
 % Preguntas relacionados a computadora
 pregunta('¿Reviso que este conectada la computadora?','la computadora esta desconectada').
@@ -298,9 +298,9 @@ pregunta('¿Verifico que aun tenga suficiente espacio de almacenamiento?','el ce
 pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta actualizado').
 
 % Descripción		:	Lista de referencias para cada subproblema
-% Nombre de Hecho	:	referencia()
+% Nombre de Hecho	:	referencia(E,A)
 % Parámetro			:	(link de internet para un determinado problema, problema al que pertenece)
-% Uso				:	referencias()
+% Uso				:	referencias(A)
 
 % Referencias relacionadas a computadora
 referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','la computadora no enciende').
@@ -322,7 +322,7 @@ referencia('https://www.sony.es/electronics/support/articles/00094960','el telev
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular esta lento').
 
 % Descripción		:	Árbol de decisión, lectura de respuestas por parte del usuario.
-% Nombre de Hecho	:	raiz()
+% Nombre de Hecho	:	raiz(B,A)
 % Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
 % Uso				:	conversacion()
 

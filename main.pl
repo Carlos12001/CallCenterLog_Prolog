@@ -84,8 +84,7 @@ respuesta_despedida():-
 	opcion_despedida(R).
 
 opcion_despedida(R):-
-	consulta_general(no,R).
-opcion_despedida(R):-
+	consulta_general(no,R),nl,writeln('Gracias por preferirnos'),nl,!;
 	inicio_aux().
 
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
@@ -165,22 +164,20 @@ consulta_caso_base(A):-
 
 consulta_general(R,R).
 
-buscar_solucion(P,R,[P, R|_]).
-buscar_solucion(P,R,[_|C]):-
-    buscar_solucion(P,R,C).
-
 conversacion(Oracion):-
-	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
-	retractall(soluciones(_)),
-	assert(soluciones([])),
-	% write(Oracion),
-	raiz(A,Oracion),
-	solucion(B,A),
-	write(B),nl.
+	repeat, 
+		write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
+		retractall(soluciones(_)),
+		assert(soluciones([])),
+		% write(Oracion),
+		raiz(A,Oracion),
+		solucion(B,A),
+		write(B),nl,
+		respuesta_despedida().
 
 % Ejecutor SE --------------------------------------------------------------------------------------------------------------------
 
-inicio():-
+encabezado():-
 	sleep(0.02),
 		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
@@ -190,23 +187,24 @@ inicio():-
 		sleep(0.02),
 		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
 		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
+		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl.
 
+inicio():-
+	encabezado(),
 	sintagma_saludo([]),
     writeln('Hola usuario'),
 	writeln('¿Cual es su nombre?'),
-	input_to_string(Nombre),
-	respuesta_saludo(Nombre),
 	inicio_aux().
 
 inicio_aux():-
+	input_to_string(Nombre),
+	respuesta_saludo(Nombre),
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
 	write('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
 	list_to_string(Oracion,Y),
-	% write(Y),
-	conversacion(Y),nl,
-	respuesta_despedida().
+	conversacion(Y),nl.
+	% respuesta_despedida().
 
 
 ?- write(' '),nl.

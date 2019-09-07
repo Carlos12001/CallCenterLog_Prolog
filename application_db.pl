@@ -7,13 +7,16 @@
 % el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
 % sus tareas normalmente y finalmente puede consultar.
 %
-% Version de Archivo	: 0.1
-% Autores		: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificacion		: 07/09/2019, 15:26, @angelortizv
+% Version de Archivo		: 0.1
+% Autores					: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
+% Úlitma Modificacion		: 07/09/2019, 16:00, @angelortizv
 
-% Palabras Clave de Usuario ------------------------------------------------------------------------------------------------------
+% Palabras Clave de Usuario ---------------------------------------------------------------------------------------------------------------
 
-% Inicio de una Conversacion
+% Descripción		:	Inicio de una Conversacion
+% Nombre de Hecho	:	saludo()
+% Parámetro			: 	palabra clave de saludo 	
+% Uso				:	sintagma_saludo
 saludo([hola|S],S).
 saludo([saludos|S],S).
 saludo([disculpe|S],S).
@@ -21,21 +24,30 @@ saludo([buenos,dias|S],S).
 saludo([buenas,tardes|S],S).
 saludo([buenas,noches|S],S).
 
-% Fin de una Conversacion
+% Descripción		:	Fin de una Conversacion
+% Nombre de Hecho	:	despedida()
+% Parámetro			:	palabra clave de despedida
+% Uso				:	sintagma_saludo
 despedida([gracias|S],S).
 despedida([muchas,gracias|S],S).
 despedida([adios|S],S).
 despedida([hasta_luego|S],S).
 despedida([chao|S],S).
 
-% nombre del Programa
+% Descripción		:	Nombre del Programa
+% Nombre de Hecho	:	nombre_programa()
+% Parámetro			:	nombre del Sistema Experto
+% Uso				:	sintagma_saludo
 nombre_programa([callCenterLog|S],S).
 nombre_programa([log|S],S).
 nombre_programa([callCenter|S],S).
 
-% Palabras Clave para el BNF -----------------------------------------------------------------------------------------------------
+% Palabras Clave para el BNF --------------------------------------------------------------------------------------------------------------
 
-% Determinantes masculinos
+%  Descripción		:	Determinantes masculinos
+% Nombre de Hecho	:	determinante_m()
+% Parámetro			:	determinantes masculinos
+% Uso				:	sintagma_nominal		
 determinante_m([el|S],S).
 determinante_m([lo|S],S).
 determinante_m([los|S],S).
@@ -49,7 +61,10 @@ determinante_m([alguno|S],S).
 determinante_m([algunos|S],S).
 determinante_m([del|S],S).
 
-% Determinantes femeninos
+% Descripción		:	Determinantes femeninos
+% Nombre de Hecho	:	determinante_f()
+% Parámetro			:	determinantes femeninos
+% Uso				:	sintagma_nominal
 determinante_f([la|S],S).
 determinante_f([las|S],S).
 determinante_f([una|S],S).
@@ -62,12 +77,25 @@ determinante_f([alguna|S],S).
 determinante_f([algunas|S],S).
 determinante_f([mala|S],S).
 
-% Determinantes neutros
+% Descripción		:	Determinantes neutros
+% Nombre de Hecho	:	determinante_n()
+% Parámetro			:	determinantes neutros
+% Uso				:	sintagma_nominal
 determinante_n([mi|S],S).
 determinante_n([mis|S],S).
 determinante_n([posibles|S],S).
 
-% sustantivos masculinos
+% Descripción		:	Negaciones
+% Nombre de Hecho	:	negacion()
+% Parámetro			:	adverbios de negacion
+% Uso				:	oracion
+negacion([no|S],S).
+negacion([nunca|S],S).
+
+% Descripción		:	sustantivos masculinos
+% Nombre de Hecho	:	sustantivo_m()
+% Parámetro			:	sustantivos masculinos
+% Uso				:	sintagma_nominal
 sustantivo_m([internet|S],S).
 sustantivo_m([celular|S],S).
 sustantivo_m([televisor|S],S).
@@ -75,18 +103,27 @@ sustantivo_m([archivos|S],S).
 sustantivo_m([papel|S],S).
 sustantivo_m([problema|S],S).
 
-% sustantivos femeninos
+% Descripción		:	sustantivos femeninos
+% Nombre de Hecho	:	sustantivo_f()
+% Parámetro			:	sustantivos femeninos
+% Uso				:	sintagma_nominal
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
 
-% inicio causa_ref
+% Descripción		:	inicio causa_ref
+% Nombre de Hecho	:	
+% Parámetro			:	
+% Uso				:	
 inicio_cr([posibles,causas,del,problema|S],S).
 inicio_cr([algunas,referencias,para,el,problema|S],S).
 
-% Verbos
+% Descripción		:	Verbos
+% Nombre de Hecho	:	verbo()
+% Parámetro			:	verbos utilizables
+% Uso				:	sintagma_verbal
 verbo([sirve|S],S).
 verbo([me,sirve|S],S).
 verbo([funciona|S],S).
@@ -111,14 +148,13 @@ verbo([tiene|S],S).
 verbo([tiene,conexion|S],S).
 verbo([imprime|S],S).
 
-% Negaciones
-negacion([no|S],S).
-negacion([nunca|S],S).
 
-% Lista de Problemas,Causas,Soluciones, Preguntas y Referencias ------------------------------------------------------------------
+% Lista de Problemas,Causas,Soluciones,Preguntas y Referencias ----------------------------------------------------------------------------
 
-% Lista de Problemas, los problemas son tratados como strings
-
+% Descripción		:	Lista de Problemas, los problemas son tratados como strings
+% Nombre de Hecho	:	problema()
+% Parámetro			:	problema reconocido por el SE
+% Uso				:	causa(), referencia(), raiz()
 problema('la computadora no enciende').
 problema('la computadora no muestra mis archivos').
 problema('la impresora no imprime').
@@ -129,9 +165,10 @@ problema('el televisor no funciona').
 problema('el televisor tiene mala imagen').
 problema('el celular esta lento').
 
-% Lista de Causas para cada problema, el primer string del hecho es la
-% causa (la cual es propia y unica para cada problema), el segundo
-% string indica a cual problema pertenece dicha causa.
+% Descripción		:	Lista de Causas para cada problema
+% Nombre de Hecho	:	causa()
+% Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
+% Uso				:	solucion(), pregunta(), raiz(), causas()
 
 % Causas relacionados a computadora
 causa('la computadora esta desconectada','la computadora no enciende').
@@ -171,8 +208,10 @@ causa('el celular ocupa un reinicio', 'el celular esta lento').
 causa('el celular no tiene suficiente espacio de almacenamiento','el celular esta lento').
 causa('su celular no esta actualizado','el celular esta lento').
 
-% Lista de soluciones para cada subproblema, el primer string del hecho es la
-% solucion el segundo string indica a cual subproblema pertenece dicha solucion.
+% Descripción		:	Lista de soluciones para cada subproblema
+% Nombre de Hecho	:	solucion()
+% Parámetro			:	(solucion asociada a una causa, causa a la que pertenece)
+% Uso				:	consulta_caso_base(), conversacion()
 
 % Soluciones relacionadas a computadora
 solucion('conecte la computadora','la computadora esta desconectada').
@@ -215,8 +254,10 @@ solucion('busque la ultima version, revise si es compatible ','el celular no est
 % Solucion para caso base
 solucion('Este Sistema Experto no puede responder su problema, se recomienda consultar a un tecnico.','no hay solucion').
 
-% Lista de Preguntas para cada subproblema, el primer string del hecho es la
-% pregunta que el SE realiza, el segundo string indica a cual problema pertenece.
+% Descripción		:	Lista de Preguntas para cada subproblema
+% Nombre de Hecho	:	pregunta()
+% Parámetro			:	(pregunta asociada a una causa, causa a la que pertenece)
+% Uso				:	hoja_izquierda()
 
 % Preguntas relacionados a computadora
 pregunta('¿Reviso que este conectada la computadora?','la computadora esta desconectada').
@@ -256,8 +297,10 @@ pregunta('¿Ya probo apagandolo y volviendolo a encender?','el celular ocupa un 
 pregunta('¿Verifico que aun tenga suficiente espacio de almacenamiento?','el celular no tiene suficiente espacio de almacenamiento').
 pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta actualizado').
 
-% Lista de referencias para cada subproblema, el primer string del hecho es la
-% referencia, el segundo string indica a cual problema pertenece dicha solucion.
+% Descripción		:	Lista de referencias para cada subproblema
+% Nombre de Hecho	:	referencia()
+% Parámetro			:	(link de internet para un determinado problema, problema al que pertenece)
+% Uso				:	referencias()
 
 % Referencias relacionadas a computadora
 referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','la computadora no enciende').
@@ -278,7 +321,10 @@ referencia('https://www.sony.es/electronics/support/articles/00094960','el telev
 % Referencias relacionadas a celular
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular esta lento').
 
-% Definicion de Preguntas, relacionadas a causas y problemas.
+% Descripción		:	Árbol de decisión, lectura de respuestas por parte del usuario.
+% Nombre de Hecho	:	raiz()
+% Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
+% Uso				:	conversacion()
 
 % Árbol de decision referente a causas y problemas asociadas a computadora
 raiz('la computadora esta desconectada','la computadora no enciende'):-
@@ -342,7 +388,7 @@ raiz('lel control remoto no tiene bateria','el televisor no funciona'):-
 raiz('el interruptor de ahorro de energia del televisor no esta encedido','el televisor no funciona'):-
 	hoja_izquierda('el interruptor de ahorro de energia del televisor no esta encedido'), !.
 raiz('el tomacorriente asociado al televisor  no funciona','el televisor no funciona'):-
-	consulta_caso_base('l tomacorriente no funciona','el televisor no funciona'), !.
+	hoja_izquierda('el tomacorriente asociado al televisor  no funciona'), !.
 raiz('no hay solucion','el televisor no funciona'):-
 	consulta_caso_base('no hay solucion'), !.
 raiz('el televisor no esta bien conectado al cable o antena','el televisor tiene mala imagen'):-
@@ -353,7 +399,6 @@ raiz('hay dispositivos cerca que brindan interferencia del televisor','el televi
 	hoja_izquierda('hay dispositivos cerca que brindan interferencia del televisor'), !.
 raiz('no hay solucion','el televisor tiene mala imagen'):-
 	consulta_caso_base('no hay solucion'), !.
-
 
 % Árbol de decision referente a causas y problemas asociadas a celular
 raiz('el celular ocupa un reinicio','El celular esta lento'):-

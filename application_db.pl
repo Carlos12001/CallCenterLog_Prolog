@@ -342,7 +342,7 @@ raiz('lel control remoto no tiene bateria','el televisor no funciona'):-
 raiz('el interruptor de ahorro de energia del televisor no esta encedido','el televisor no funciona'):-
 	hoja_izquierda('el interruptor de ahorro de energia del televisor no esta encedido'), !.
 raiz('el tomacorriente asociado al televisor  no funciona','el televisor no funciona'):-
-	consulta_caso_base('l tomacorriente no funciona','el televisor no funciona'), !.
+	hoja_izquierda('el tomacorriente asociado al televisor  no funciona'), !.
 raiz('no hay solucion','el televisor no funciona'):-
 	consulta_caso_base('no hay solucion'), !.
 raiz('el televisor no esta bien conectado al cable o antena','el televisor tiene mala imagen'):-
@@ -353,7 +353,6 @@ raiz('hay dispositivos cerca que brindan interferencia del televisor','el televi
 	hoja_izquierda('hay dispositivos cerca que brindan interferencia del televisor'), !.
 raiz('no hay solucion','el televisor tiene mala imagen'):-
 	consulta_caso_base('no hay solucion'), !.
-
 
 % Árbol de decision referente a causas y problemas asociadas a celular
 raiz('el celular ocupa un reinicio','El celular esta lento'):-

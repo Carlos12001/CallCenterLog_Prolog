@@ -13,23 +13,7 @@ no algorítmica, para resolver cierto tipo de problema. La interfaz debe ser com
 El usuario que presenta el problema, ingresa e informa al SE de todos los inconvenientes que tiene _(hardware y software)_ que le impiden
 realizar sus tareas normalmente y  finalmente puede consultar.
 
-
-
-
-## Vista Previa.
-
-```
-```
-
-## Pre Requisitos.
-
-```
-```
-
-## Instalación.
-
-```
-```
+Para mayor información acerca del proyecto, y ejecución de funciones lea el [Manual de Usuario](https://github.com/ce-itcr/CallCenterLog/blob/develop/docs/CallCenterLog%20-%20Manual%20de%20Usuario.pdf)
 
 ## Autores.
 

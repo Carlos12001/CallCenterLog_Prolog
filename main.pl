@@ -149,7 +149,7 @@ obtener_elemento([_|Xs], N, Y):-
 % Uso				:
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
-	eliminar_primeros(L,Y,7),
+	eliminar_primeros(L,Y,4),
 	atomic_list_concat(Y, ' ', X),
 	causas(X).
 
@@ -157,8 +157,7 @@ causas(A):-
 	write('Las principales causas que pueden estar asociadas a: '),
 	write(A), write(' son:'), nl,nl,
 	causa(B,A),
-	write(B),nl,
-	fail.
+	write(B),nl.
 
 % Descripción		:	Obtiene las referencias a un determinado problema
 % Nombre de Regla	:	obtener_referencias(X,A)
@@ -166,15 +165,14 @@ causas(A):-
 % Uso				:
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
-	eliminar_primeros(L,Y,6),
+	eliminar_primeros(L,Y,5),
 	atomic_list_concat(Y, ' ', X),
 	referencias(X).
 
 referencias(A):-
 	write('Algunas referencias para su problema son: '),nl,
 	referencia(E,A),
-	write(E),nl,
-	fail.
+	write(E),nl.
 
 % Consultas, Solución de Problemas, Conversación usuario-se -------------------------------------------------------------------------------
 
@@ -207,7 +205,18 @@ consulta_general(R,R).
 % Nombre de Regla	:	conversascion(Oracion)
 % Parámetro			:	String de una oración
 % Uso				:	inicio_aux()
-conversacion(Oracion):-
+
+conversacion(Oracion,'referencias'):-
+	!,
+	obtener_referencias(_,Oracion),
+	respuesta_despedida().
+
+conversacion(Oracion,'causas'):-
+	!,
+	obtener_causas(_,Oracion),
+	respuesta_despedida().
+
+conversacion(Oracion,_):-
 	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
 	retractall(soluciones(_)),
 	assert(soluciones([])),
@@ -244,8 +253,12 @@ inicio_aux():-
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
 	writeln('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
-	list_to_string(Oracion,Y),
-	conversacion(Y),nl.
+	obtener_elemento(Oracion,2,A),
+	removehead(Oracion,B),
+	list_to_string(B,Y),
+	conversacion(Y,A),nl.	
+
+removehead([_|Tail], Tail).
 
 ?- write(' '),nl.
 ?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.

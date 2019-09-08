@@ -155,15 +155,15 @@ verbo([imprime|S],S).
 % Nombre de Hecho	:	problema(A)
 % Parámetro			:	problema reconocido por el SE
 % Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
-problema('la computadora no enciende').
-problema('la computadora no muestra mis archivos').
-problema('la impresora no imprime').
-problema('la impresora se le atasca el papel').
-problema('el internet no tiene conexion').
-problema('el internet esta lento').
-problema('el televisor no funciona').
-problema('el televisor tiene mala imagen').
-problema('el celular esta lento').
+problema('computadora no enciende').
+problema('computadora no muestra mis archivos').
+problema('impresora no imprime').
+problema('impresora se le atasca el papel').
+problema('internet no tiene conexion').
+problema('internet esta lento').
+problema('televisor no funciona').
+problema('televisor tiene mala imagen').
+problema('celular esta lento').
 
 % Descripción		:	Lista de Causas para cada problema
 % Nombre de Hecho	:	causa(B,A)
@@ -171,42 +171,42 @@ problema('el celular esta lento').
 % Uso				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 
 % Causas relacionados a computadora
-causa('la computadora esta desconectada','la computadora no enciende').
-causa('el tomacorriente asociado a la computadora no funciona','la computadora no enciende').
-causa('los cables no estan bien conectados','la computadora no enciende').
-causa('los archivos no existen','la computadora no muestra mis archivos').
-causa('la unidad de almacenamiento no esta bien conectada','la computadora no muestra mis archivos').
-causa('los controladores necesarios no estan instalados','la computadora no muestra mis archivos').
+causa('la computadora esta desconectada','computadora no enciende').
+causa('el tomacorriente asociado a la computadora no funciona','computadora no enciende').
+causa('los cables no estan bien conectados','computadora no enciende').
+causa('los archivos no existen','computadora no muestra mis archivos').
+causa('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos').
+causa('los controladores necesarios no estan instalados','computadora no muestra mis archivos').
 
 % Causas relacionados a impresora
-causa('la impresora no tiene papel','la impresora no imprime').
-causa('la impresora no tiene tinta','la impresora no imprime').
-causa('la impresora no esta bien configurada','la impresora no imprime').
-causa('el tamano de papel no es el correcto','la impresora se le atasca el papel').
-causa('el papel no esta bien alineado','la impresora se le atasca el papel').
-causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','la impresora se le atasca el papel').
+causa('la impresora no tiene papel','impresora no imprime').
+causa('la impresora no tiene tinta','impresora no imprime').
+causa('la impresora no esta bien configurada','impresora no imprime').
+causa('el tamano de papel no es el correcto','impresora se le atasca el papel').
+causa('el papel no esta bien alineado','impresora se le atasca el papel').
+causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel').
 
 % Causas relacionados a internet
-causa('el modem esta desconectado','el internet no tiene conexion').
-causa('la computadora no tiene habilitada la tarjeta WIFI','el internet no tiene conexion').
-causa('el router no esta conectado al modem','el internet no tiene conexion').
-causa('su dispositivo no esta cerca del router','el internet esta lento').
-causa('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','el internet esta lento').
-causa('la capacidad de internet es inferior a 5MB','el internet esta lento').
+causa('el modem esta desconectado','internet no tiene conexion').
+causa('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion').
+causa('el router no esta conectado al modem','internet no tiene conexion').
+causa('su dispositivo no esta cerca del router','internet esta lento').
+causa('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento').
+causa('la capacidad de internet es inferior a 5MB','internet esta lento').
 
 % Causas relacionados a televisor
-causa('el televisor no esta conectado','el televisor no funciona').
-causa('el control remoto no tiene bateria','el televisor no funciona').
-causa('el interruptor de ahorro de energia del televisor no esta encedido','el televisor no funciona').
-causa('el tomacorriente asociado al televisor  no funciona','el televisor no funciona').
-causa('el televisor no esta bien conectado al cable o antena','el televisor tiene mala imagen').
-causa('el televisor no tiene la actualizacion mas reciente','el televisor tiene mala imagen').
-causa('hay dispositivos cerca que brindan interferencia del televisor','el televisor tiene mala imagen').
+causa('el televisor no esta conectado','televisor no funciona').
+causa('el control remoto no tiene bateria','televisor no funciona').
+causa('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona').
+causa('el tomacorriente asociado al televisor  no funciona','televisor no funciona').
+causa('el televisor no esta bien conectado al cable o antena','televisor tiene mala imagen').
+causa('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen').
+causa('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen').
 
 % Causas relacionados a celular
-causa('el celular ocupa un reinicio', 'el celular esta lento').
-causa('el celular no tiene suficiente espacio de almacenamiento','el celular esta lento').
-causa('su celular no esta actualizado','el celular esta lento').
+causa('el celular ocupa un reinicio', 'celular esta lento').
+causa('el celular no tiene suficiente espacio de almacenamiento','celular esta lento').
+causa('su celular no esta actualizado','celular esta lento').
 
 % Descripción		:	Lista de soluciones para cada subproblema
 % Nombre de Hecho	:	solucion(C,B)
@@ -303,36 +303,36 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 % Uso				:	referencias(A)
 
 % Referencias relacionadas a computadora
-referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','la computadora no enciende').
-referencia('https://www.pcworld.es/tutoriales/ordenadores/ordenador-no-arranca-arreglar-3680944/','la computadora no enciende').
-referencia('https://www.diarioinformacion.com/vida-y-estilo/tecnologia/2016/04/15/pc-arranca-debo/1750203.html','la computadora no enciende').
-referencia('https://es.easeus.com/data-recovery-solution/pen-drive-not-showing-data-files.html','la computadora no muestra mis archivos').
-referencia('https://www.adslzone.net/windows-10/como-recuperar-archivos-pendrive-usb-aparece-vacio/','la computadora no muestra mis archivos').
-referencia('http://es.rescuedigitalmedia.com/resuelto-pen-drive-se-muestra-vacio-incluso-cuando-existen-datos','la computadora no muestra mis archivos').
+referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','computadora no enciende').
+referencia('https://www.pcworld.es/tutoriales/ordenadores/ordenador-no-arranca-arreglar-3680944/','computadora no enciende').
+referencia('https://www.diarioinformacion.com/vida-y-estilo/tecnologia/2016/04/15/pc-arranca-debo/1750203.html','computadora no enciende').
+referencia('https://es.easeus.com/data-recovery-solution/pen-drive-not-showing-data-files.html','computadora no muestra mis archivos').
+referencia('https://www.adslzone.net/windows-10/como-recuperar-archivos-pendrive-usb-aparece-vacio/','computadora no muestra mis archivos').
+referencia('http://es.rescuedigitalmedia.com/resuelto-pen-drive-se-muestra-vacio-incluso-cuando-existen-datos','computadora no muestra mis archivos').
 
 % Referencias relacionadas a impresora
-referencia('https://www.pcworld.es/tutoriales/otros-dispositivos/impresora-no-funciona-problemas-impresion-3675127/','la impresora no imprime').
-referencia('http://support.epson-europe.com/onlineguides/es/sc86/ref_g/trble_5.htm','la impresora no imprime').
-referencia('https://support.hp.com/py-es/document/c00007100','la impresora se le atasca el papel').
-referencia('http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001054/0001054646/view/manual/int/0143.htm','la impresora se le atasca el papel').
-referencia('https://support.brother.com/g/b/faqend.aspx?c=es&lang=es&prod=dcp340cw2_eu&faqid=faq00000495_003','la impresora se le atasca el papel').
+referencia('https://www.pcworld.es/tutoriales/otros-dispositivos/impresora-no-funciona-problemas-impresion-3675127/','impresora no imprime').
+referencia('http://support.epson-europe.com/onlineguides/es/sc86/ref_g/trble_5.htm','impresora no imprime').
+referencia('https://support.hp.com/py-es/document/c00007100','impresora se le atasca el papel').
+referencia('http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001054/0001054646/view/manual/int/0143.htm','impresora se le atasca el papel').
+referencia('https://support.brother.com/g/b/faqend.aspx?c=es&lang=es&prod=dcp340cw2_eu&faqid=faq00000495_003','impresora se le atasca el papel').
 
 % Referencias relacionadas a internet
-referencia('https://www.adslzone.net/2015/06/17/que-hacer-cuando-no-funciona-tu-conexion-a-internet/','el internet no tiene conexion').
-referencia('https://tecnologia-informatica.com/tipos-conexion-internet/','el internet no tiene conexion').
-referencia('https://computerhoy.com/noticias/internet/que-me-va-lento-internet-problemas-habituales-internet-como-solucionarlos-73007','el internet esta lento').
-referencia('http://www.gadae.com/blog/5-motivos-por-los-que-puede-que-internet-va-lento/','el internet esta lento').
-referencia('https://www.testdevelocidad.es/causas-conexion-internet-mas-lenta/','el internet esta lento').
+referencia('https://www.adslzone.net/2015/06/17/que-hacer-cuando-no-funciona-tu-conexion-a-internet/','internet no tiene conexion').
+referencia('https://tecnologia-informatica.com/tipos-conexion-internet/','internet no tiene conexion').
+referencia('https://computerhoy.com/noticias/internet/que-me-va-lento-internet-problemas-habituales-internet-como-solucionarlos-73007','internet esta lento').
+referencia('http://www.gadae.com/blog/5-motivos-por-los-que-puede-que-internet-va-lento/','internet esta lento').
+referencia('https://www.testdevelocidad.es/causas-conexion-internet-mas-lenta/','internet esta lento').
 
 % Referencias relacionadas a televisor
-referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor no funciona').
-referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','el televisor no funciona').
-referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor tiene mala imagen').
-referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','el televisor tiene mala imagen').
+referencia('https://www.sony.es/electronics/support/articles/00094960','televisor no funciona').
+referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','televisor no funciona').
+referencia('https://www.sony.es/electronics/support/articles/00094960','televisor tiene mala imagen').
+referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','televisor tiene mala imagen').
 
 % Referencias relacionadas a celular
-referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular esta lento').
-referencia('http://www.androidjefe.com/celular-lento/','el celular esta lento').
+referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','celular esta lento').
+referencia('http://www.androidjefe.com/celular-lento/','celular esta lento').
 
 % Descripción		:	Árbol de decisión, lectura de respuestas por parte del usuario.
 % Nombre de Hecho	:	raiz(B,A)
@@ -340,85 +340,85 @@ referencia('http://www.androidjefe.com/celular-lento/','el celular esta lento').
 % Uso				:	conversacion()
 
 % Árbol de decision referente a causas y problemas asociadas a computadora
-raiz('la computadora esta desconectada','la computadora no enciende'):-
+raiz('la computadora esta desconectada','computadora no enciende'):-
 	hoja_izquierda('la computadora esta desconectada'), !.
-raiz('el tomacorriente asociado a la computadora no funciona','la computadora no enciende'):-
+raiz('el tomacorriente asociado a la computadora no funciona','computadora no enciende'):-
 	hoja_izquierda('el tomacorriente asociado a la computadora no funciona'), !.
-raiz('los cables no estan bien conectados','la computadora no enciende'):-
+raiz('los cables no estan bien conectados','computadora no enciende'):-
 	hoja_izquierda('los cables no estan bien conectados'), !.
-raiz('no hay solucion','la computadora no enciende'):-
+raiz('no hay solucion','computadora no enciende'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('los archivos no existen','la computadora no muestra mis archivos'):-
+raiz('los archivos no existen','computadora no muestra mis archivos'):-
 	hoja_izquierda('los archivos no existen'), !.
-raiz('la unidad de almacenamiento no esta bien conectada','la computadora no muestra mis archivos'):-
+raiz('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos'):-
 	hoja_izquierda('la unidad de almacenamiento no esta bien conectada'), !.
-raiz('los controladores necesarios no estan instalados','la computadora no muestra mis archivos'):-
+raiz('los controladores necesarios no estan instalados','computadora no muestra mis archivos'):-
 	hoja_izquierda('los controladores necesarios no estan instalados'), !.
-raiz('no hay solucion','la computadora no muestra mis archivos'):-
+raiz('no hay solucion','computadora no muestra mis archivos'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % Árbol de decision referente a causas y problemas asociadas a impresora
-raiz('la impresora no tiene papel','la impresora no imprime'):-
+raiz('la impresora no tiene papel','impresora no imprime'):-
 	hoja_izquierda('la impresora no tiene papel'), !.
-raiz('la impresora no tiene tinta','la impresora no imprime'):-
+raiz('la impresora no tiene tinta','impresora no imprime'):-
 	hoja_izquierda('la impresora no tiene tinta'), !.
-raiz('la impresora no esta bien configurada','la impresora no imprime'):-
+raiz('la impresora no esta bien configurada','impresora no imprime'):-
 	hoja_izquierda('la impresora no esta bien configurada'), !.
-raiz('no hay solucion','la impresora no imprime'):-
+raiz('no hay solucion','impresora no imprime'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('el tamano de papel no es el correcto','la impresora se le atasca el papel'):-
+raiz('el tamano de papel no es el correcto','impresora se le atasca el papel'):-
 	hoja_izquierda('el tamano de papel no es el correcto'), !.
-raiz('el papel no esta bien alineado','la impresora se le atasca el papel'):-
+raiz('el papel no esta bien alineado','impresora se le atasca el papel'):-
 	hoja_izquierda('el papel no esta bien alineado'), !.
-raiz('el numero de hojas cargadas en la impresora es mayor a la capacidad','la impresora se le atasca el papel'):-
+raiz('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel'):-
 	hoja_izquierda('el numero de hojas cargadas en la impresora es mayor a la capacidad'), !.
-raiz('no hay solucion','la impresora se le atasca el papel'):-
+raiz('no hay solucion','impresora se le atasca el papel'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % Árbol de decision referente a causas y problemas asociadas a internet
-raiz('el modem esta desconectado','el internet no tiene conexion'):-
+raiz('el modem esta desconectado','internet no tiene conexion'):-
 	hoja_izquierda('el modem esta desconectado'), !.
-raiz('la computadora no tiene habilitada la tarjeta WIFI','el internet no tiene conexion'):-
+raiz('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion'):-
 	hoja_izquierda('la computadora no tiene habilitada la tarjeta WIFI'), !.
-raiz('el router no esta conectado al modem','el internet no tiene conexion'):-
+raiz('el router no esta conectado al modem','internet no tiene conexion'):-
 	hoja_izquierda('el router no esta conectado al modem'), !.
-raiz('no hay solucion','el internet no tiene conexion'):-
+raiz('no hay solucion','internet no tiene conexion'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('su dispositivo no esta cerca del router','el internet esta lento'):-
+raiz('su dispositivo no esta cerca del router','internet esta lento'):-
 	hoja_izquierda('su dispositivo no esta cerca del router'), !.
-raiz('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','el internet esta lento'):-
+raiz('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento'):-
 	hoja_izquierda('el dispositivo tiene muchas aplicaciones corriendo simultaneamente'), !.
-raiz('la capacidad de internet es inferior a 5MB','el internet esta lento'):-
+raiz('la capacidad de internet es inferior a 5MB','internet esta lento'):-
 	hoja_izquierda('la capacidad de internet es inferior a 5MB'), !.
-raiz('no hay solucion','el internet esta lento'):-
+raiz('no hay solucion','internet esta lento'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % Árbol de decision referente a causas y problemas asociadas a televisor
-raiz('el televisor no esta conectado','el televisor no funciona'):-
+raiz('el televisor no esta conectado','televisor no funciona'):-
 	hoja_izquierda('el televisor no esta conectado'), !.
-raiz('lel control remoto no tiene bateria','el televisor no funciona'):-
+raiz('lel control remoto no tiene bateria','televisor no funciona'):-
 	hoja_izquierda('el control remoto no tiene bateria'), !.
-raiz('el interruptor de ahorro de energia del televisor no esta encedido','el televisor no funciona'):-
+raiz('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona'):-
 	hoja_izquierda('el interruptor de ahorro de energia del televisor no esta encedido'), !.
-raiz('el tomacorriente asociado al televisor  no funciona','el televisor no funciona'):-
+raiz('el tomacorriente asociado al televisor  no funciona','televisor no funciona'):-
 	hoja_izquierda('el tomacorriente asociado al televisor  no funciona'), !.
-raiz('no hay solucion','el televisor no funciona'):-
+raiz('no hay solucion','televisor no funciona'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('el televisor no esta bien conectado al cable o antena','el televisor tiene mala imagen'):-
+raiz('el televisor no esta bien conectado al cable o antena','televisor tiene mala imagen'):-
 	hoja_izquierda('el televisor no esta bien conectado al cable o antena'), !.
-raiz('el televisor no tiene la actualizacion mas reciente','el televisor tiene mala imagen'):-
+raiz('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen'):-
 	hoja_izquierda('el televisor no tiene la actualizacion mas recientee'), !.
-raiz('hay dispositivos cerca que brindan interferencia del televisor','el televisor tiene mala imagen'):-
+raiz('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen'):-
 	hoja_izquierda('hay dispositivos cerca que brindan interferencia del televisor'), !.
-raiz('no hay solucion','el televisor tiene mala imagen'):-
+raiz('no hay solucion','televisor tiene mala imagen'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % Árbol de decision referente a causas y problemas asociadas a celular
-raiz('el celular ocupa un reinicio','El celular esta lento'):-
+raiz('el celular ocupa un reinicio','celular esta lento'):-
 	hoja_izquierda('el celular ocupa un reinicio'), !.
-raiz('el celular no tiene suficiente espacio de almacenamiento','El celular esta lento'):-
+raiz('el celular no tiene suficiente espacio de almacenamiento','celular esta lento'):-
 	hoja_izquierda('el celular no tiene suficiente espacio de almacenamiento'), !.
-raiz('su celular no esta actualizado','El celular esta lento'):-
+raiz('su celular no esta actualizado','celular esta lento'):-
 	hoja_izquierda('su celular no esta actualizado'), !.
-raiz('no hay solucion','El celular esta lento'):-
+raiz('no hay solucion','celular esta lento'):-
 	consulta_caso_base('no hay solucion'), !.

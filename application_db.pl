@@ -304,22 +304,35 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 
 % Referencias relacionadas a computadora
 referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','la computadora no enciende').
+referencia('https://www.pcworld.es/tutoriales/ordenadores/ordenador-no-arranca-arreglar-3680944/','la computadora no enciende').
+referencia('https://www.diarioinformacion.com/vida-y-estilo/tecnologia/2016/04/15/pc-arranca-debo/1750203.html','la computadora no enciende').
 referencia('https://es.easeus.com/data-recovery-solution/pen-drive-not-showing-data-files.html','la computadora no muestra mis archivos').
+referencia('https://www.adslzone.net/windows-10/como-recuperar-archivos-pendrive-usb-aparece-vacio/','la computadora no muestra mis archivos').
+referencia('http://es.rescuedigitalmedia.com/resuelto-pen-drive-se-muestra-vacio-incluso-cuando-existen-datos','la computadora no muestra mis archivos').
 
 % Referencias relacionadas a impresora
 referencia('https://www.pcworld.es/tutoriales/otros-dispositivos/impresora-no-funciona-problemas-impresion-3675127/','la impresora no imprime').
+referencia('http://support.epson-europe.com/onlineguides/es/sc86/ref_g/trble_5.htm','la impresora no imprime').
 referencia('https://support.hp.com/py-es/document/c00007100','la impresora se le atasca el papel').
+referencia('http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001054/0001054646/view/manual/int/0143.htm','la impresora se le atasca el papel').
+referencia('https://support.brother.com/g/b/faqend.aspx?c=es&lang=es&prod=dcp340cw2_eu&faqid=faq00000495_003','la impresora se le atasca el papel').
 
 % Referencias relacionadas a internet
 referencia('https://www.adslzone.net/2015/06/17/que-hacer-cuando-no-funciona-tu-conexion-a-internet/','el internet no tiene conexion').
+referencia('https://tecnologia-informatica.com/tipos-conexion-internet/','el internet no tiene conexion').
 referencia('https://computerhoy.com/noticias/internet/que-me-va-lento-internet-problemas-habituales-internet-como-solucionarlos-73007','el internet esta lento').
+referencia('http://www.gadae.com/blog/5-motivos-por-los-que-puede-que-internet-va-lento/','el internet esta lento').
+referencia('https://www.testdevelocidad.es/causas-conexion-internet-mas-lenta/','el internet esta lento').
 
 % Referencias relacionadas a televisor
 referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor no funciona').
+referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','el televisor no funciona').
 referencia('https://www.sony.es/electronics/support/articles/00094960','el televisor tiene mala imagen').
+referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','el televisor tiene mala imagen').
 
 % Referencias relacionadas a celular
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','el celular esta lento').
+referencia('http://www.androidjefe.com/celular-lento/','el celular esta lento').
 
 % Descripción		:	Árbol de decisión, lectura de respuestas por parte del usuario.
 % Nombre de Hecho	:	raiz(B,A)

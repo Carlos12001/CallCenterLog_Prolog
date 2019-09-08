@@ -17,10 +17,10 @@
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	oracion([A],[B])
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 oracion(A,B):-
 	sintagma_nominal(A,C),
 	sintagma_verbal(C,B).
@@ -32,11 +32,16 @@ oracion(A,B):-
 	inicio_cr(A,C),
 	sintagma_nominal(C,D),
 	sintagma_verbal(D,B).
+oracion(A,B):-
+	inicio_cr(A,C),
+	sintagma_nominal(C,D),
+	negacion(D,E),
+	sintagma_verbal(E,B).
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	sintagma_nominal([A],[B])
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
 	sustantivo_m(C,B).
@@ -50,20 +55,20 @@ sintagma_nominal(A,B):-
 	determinante_n(A,C),
 	sustantivo_m(C,B).
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	sintagma_verbal([A],[B])
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 sintagma_verbal(A,B):-
 	verbo(A,B).
 sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	sintagma_saludo([B])
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 sintagma_saludo(B):-
 	input_to_list(L),
 	saludo(L,C),
@@ -73,10 +78,10 @@ sintagma_saludo(B):-
 
 % ValidaciÓn Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	validacion_gramatical()
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
@@ -92,19 +97,19 @@ validacion_gramatical(Oracion):-
 	inicio_aux(),
 	!.
 
-% Descripción		:	
+% Descripción		:
 % Nombre de Regla	:	respuesta_saludo(Nombre)
-% Parámetro			: 	 	
-% Uso				:	
+% Parámetro			:
+% Uso				:
 respuesta_saludo(Nombre):-
 	write('Hola '),
 	writeln(Nombre),
 	writeln('En que lo puedo ayudar?').
 
-% Descripción		:	
-% Nombre de Regla	:	
-% Parámetro			: 	 	
-% Uso				:	
+% Descripción		:
+% Nombre de Regla	:
+% Parámetro			:
+% Uso				:
 respuesta_despedida():-
 	writeln('Algo mas en que pueda servirle?'),nl,
 	read(R),
@@ -147,8 +152,8 @@ obtener_elemento([_|Xs], N, Y):-
 
 % Descripción		:	Obtiene las causas a un determinado problema
 % Nombre de Regla	:	obtener_causas(X,A)
-% Parámetro			: 	problema definido en application_db
-% Uso				:	
+% Parámetro			:	problema definido en application_db
+% Uso				:
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,7),
@@ -164,8 +169,8 @@ causas(A):-
 
 % Descripción		:	Obtiene las referencias a un determinado problema
 % Nombre de Regla	:	obtener_referencias(X,A)
-% Parámetro			: 	probolema definido en application_db
-% Uso				:	
+% Parámetro			:	probolema definido en application_db
+% Uso				:
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,6),
@@ -180,9 +185,9 @@ referencias(A):-
 
 % Consultas, Solución de Problemas, Conversación usuario-se -------------------------------------------------------------------------------
 
-% Descripción		:	Envía a consulta_no(A,D) pregunta al usuario sobre determinado problema 
+% Descripción		:	Envía a consulta_no(A,D) pregunta al usuario sobre determinado problema
 % Nombre de Regla	:	hoja_izquierda(B)
-% Parámetro			: 	causa de un problema	
+% Parámetro			:	causa de un problema
 % Uso				:	raiz(B,A)
 hoja_izquierda(B):-
     pregunta(D,B),
@@ -190,7 +195,7 @@ hoja_izquierda(B):-
 
 % Descripción		:	concatena las soluciones a un determinado problema
 % Nombre de Regla	:	consulta_no(A,P)
-% Parámetro			: 	(causa de un problema, pregunta asociada) 	
+% Parámetro			:	(causa de un problema, pregunta asociada)
 % Uso				:	hoja_izquierda(B)
 consulta_no(A, D):-
     write(D), nl,
@@ -207,7 +212,7 @@ consulta_general(R,R).
 
 % Descripción		:	Realiza el ciclo de conversación entre preguntas y respuestas, y despedida
 % Nombre de Regla	:	conversascion(Oracion)
-% Parámetro			: 	String de una oración
+% Parámetro			:	String de una oración
 % Uso				:	inicio_aux()
 conversacion(Oracion):-
 	repeat,

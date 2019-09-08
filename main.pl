@@ -174,7 +174,6 @@ causas(A):-
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,5),
-	write(Y),nl,
 	atomic_list_concat(Y, ' ', X),
 	referencias(X).
 

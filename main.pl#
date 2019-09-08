@@ -17,10 +17,10 @@
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	recibe una lista de palabras y una lista vacía y verifica si es una oración gramaticalmente correcta según la estructura establecida
+% Descripción		:entra una lista de palabras y devuelve s
 % Nombre de Regla	:	oracion([A],[B])
-% Parámetro			:	lista para revisar y lista vacía
-% Uso				:	se utiliza para validar oraciones
+% Parámetro		:
+% Uso			:
 oracion(A,B):-
 	sintagma_nominal(A,C),
 	sintagma_verbal(C,B).
@@ -38,10 +38,10 @@ oracion(A,B):-
 	negacion(D,E),
 	sintagma_verbal(E,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía; elimina el primer sintagma nominal encontrado y devuelve el resto de las palabras
+% Descripción		:
 % Nombre de Regla	:	sintagma_nominal([A],[B])
-% Parámetro			:	lista a revisar y lista vacía
-% Uso				:	se utiliza para encontrar el primer sintagma nominal en una lista de palabras
+% Parámetro			:
+% Uso				:
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
 	sustantivo_m(C,B).
@@ -55,20 +55,20 @@ sintagma_nominal(A,B):-
 	determinante_n(A,C),
 	sustantivo_m(C,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía; elimina el primer sintagma verbal encontrado y devuelve el resto de las palabras
+% Descripción		:
 % Nombre de Regla	:	sintagma_verbal([A],[B])
-% Parámetro			:	lista a revisar y lista vacía
-% Uso				:	se utiliza para encontrar el primer sintagma verbal en una lista de palabras
+% Parámetro			:
+% Uso				:
 sintagma_verbal(A,B):-
 	verbo(A,B).
 sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía y verifica si estas palabras componen un saludo al programa (Ej. “hola log”)
+% Descripción		:
 % Nombre de Regla	:	sintagma_saludo([B])
-% Parámetro			:	lista a revisar y lista vacía
-% Uso				:	se utiliza para encontrar el primer sintagma saludo en una lista de palabras
+% Parámetro			:
+% Uso				:
 sintagma_saludo(B):-
 	input_to_list(L),
 	saludo(L,C),
@@ -78,10 +78,10 @@ sintagma_saludo(B):-
 
 % ValidaciÓn Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
 
-% Descripción		:	valida si la oración digitada por el usuario está gramaticalmente correcta según el BNF establecido
+% Descripción		:
 % Nombre de Regla	:	validacion_gramatical()
-% Parámetro			:	lista a revisar
-% Uso				:	Se utiliza para verificar gramaticalmente una oración, de lo contrario, devolver un mensaje al usuario
+% Parámetro			:
+% Uso				:
 validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
@@ -97,11 +97,19 @@ validacion_gramatical(Oracion):-
 	inicio_aux(),
 	!.
 
+% Descripción		:
+% Nombre de Regla	:	respuesta_saludo(Nombre)
+% Parámetro			:
+% Uso				:
 respuesta_saludo(Nombre):-
 	write('Hola '),
 	writeln(Nombre),
 	writeln('En que lo puedo ayudar?').
 
+% Descripción		:
+% Nombre de Regla	:
+% Parámetro			:
+% Uso				:
 respuesta_despedida():-
 	writeln('Algo mas en que pueda servirle?'),nl,
 	read(R),

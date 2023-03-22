@@ -6,9 +6,9 @@
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	recibe una lista de palabras y una lista vacía y verifica si es una oración gramaticalmente correcta según la estructura establecida
+% Descripcion		:	recibe una lista de palabras y una lista vacia y verifica si es una oracion gramaticalmente correcta segun la estructura establecida
 % Nombre de Regla	:	oracion([A],[B])
-% Parámetro			:	lista para revisar y lista vacía
+% Parametro			:	lista para revisar y lista vacia
 % Uso				:	se utiliza para validar oraciones
 oracion(A,B):-
 	sintagma_nominal(A,C),
@@ -27,9 +27,9 @@ oracion(A,B):-
 	negacion(D,E),
 	sintagma_verbal(E,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía; elimina el primer sintagma nominal encontrado y devuelve el resto de las palabras
+% Descripcion		:	recibe una lista de palabras y una lista vacia; elimina el primer sintagma nominal encontrado y devuelve el resto de las palabras
 % Nombre de Regla	:	sintagma_nominal([A],[B])
-% Parámetro			:	lista a revisar y lista vacía
+% Parametro			:	lista a revisar y lista vacia
 % Uso				:	se utiliza para encontrar el primer sintagma nominal en una lista de palabras
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
@@ -44,9 +44,9 @@ sintagma_nominal(A,B):-
 	determinante_n(A,C),
 	sustantivo_m(C,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía; elimina el primer sintagma verbal encontrado y devuelve el resto de las palabras
+% Descripcion		:	recibe una lista de palabras y una lista vacia; elimina el primer sintagma verbal encontrado y devuelve el resto de las palabras
 % Nombre de Regla	:	sintagma_verbal([A],[B])
-% Parámetro			:	lista a revisar y lista vacía
+% Parametro			:	lista a revisar y lista vacia
 % Uso				:	se utiliza para encontrar el primer sintagma verbal en una lista de palabras
 sintagma_verbal(A,B):-
 	verbo(A,B).
@@ -54,9 +54,9 @@ sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
-% Descripción		:	recibe una lista de palabras y una lista vacía y verifica si estas palabras componen un saludo al programa (Ej. “hola log”)
+% Descripcion		:	recibe una lista de palabras y una lista vacia y verifica si estas palabras componen un saludo al programa (Ej. “hola log”)
 % Nombre de Regla	:	sintagma_saludo([B])
-% Parámetro			:	lista a revisar y lista vacía
+% Parametro			:	lista a revisar y lista vacia
 % Uso				:	se utiliza para encontrar el primer sintagma saludo en una lista de palabras
 sintagma_saludo(B):-
 	input_to_list(L),
@@ -65,12 +65,12 @@ sintagma_saludo(B):-
 sintagma_saludo(B):-
 	sintagma_saludo([]).
 
-% ValidaciÓn Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
+% Validacion Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
 
-% Descripción		:	valida si la oración digitada por el usuario está gramaticalmente correcta según el BNF establecido
+% Descripcion		:	valida si la oracion digitada por el usuario esta gramaticalmente correcta segun el BNF establecido
 % Nombre de Regla	:	validacion_gramatical()
-% Parámetro			:	lista a revisar
-% Uso				:	Se utiliza para verificar gramaticalmente una oración, de lo contrario, devolver un mensaje al usuario
+% Parametro			:	lista a revisar
+% Uso				:	Se utiliza para verificar gramaticalmente una oracion, de lo contrario, devolver un mensaje al usuario
 validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
@@ -133,9 +133,9 @@ obtener_elemento([_|Xs], N, Y):-
 
 % Causas y referencias --------------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	Obtiene las causas a un determinado problema
+% Descripcion		:	Obtiene las causas a un determinado problema
 % Nombre de Regla	:	obtener_causas(X,A)
-% Parámetro			:	problema definido en application_db
+% Parametro			:	problema definido en application_db
 % Uso				:
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
@@ -149,9 +149,9 @@ causas(A):-
 	causa(B,A),
 	write(B),nl.
 
-% Descripción		:	Obtiene las referencias a un determinado problema
+% Descripcion		:	Obtiene las referencias a un determinado problema
 % Nombre de Regla	:	obtener_referencias(X,A)
-% Parámetro			:	probolema definido en application_db
+% Parametro			:	probolema definido en application_db
 % Uso				:
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
@@ -164,19 +164,19 @@ referencias(A):-
 	referencia(E,A),
 	write(E),nl.
 
-% Consultas, Solución de Problemas, Conversación usuario-se -------------------------------------------------------------------------------
+% Consultas, Solucion de Problemas, Conversacion usuario-se -------------------------------------------------------------------------------
 
-% Descripción		:	Envía a consulta_no(A,D) pregunta al usuario sobre determinado problema
+% Descripcion		:	Envia a consulta_no(A,D) pregunta al usuario sobre determinado problema
 % Nombre de Regla	:	hoja_izquierda(B)
-% Parámetro			:	causa de un problema
+% Parametro			:	causa de un problema
 % Uso				:	raiz(B,A)
 hoja_izquierda(B):-
     pregunta(D,B),
     consulta_no(B, D).
 
-% Descripción		:	concatena las soluciones a un determinado problema
+% Descripcion		:	concatena las soluciones a un determinado problema
 % Nombre de Regla	:	consulta_no(A,P)
-% Parámetro			:	(causa de un problema, pregunta asociada)
+% Parametro			:	(causa de un problema, pregunta asociada)
 % Uso				:	hoja_izquierda(B)
 consulta_no(A, D):-
     write(D), nl,
@@ -191,9 +191,9 @@ consulta_caso_base(B):-
 	solucion(C,B).
 consulta_general(R,R).
 
-% Descripción		:	Realiza el ciclo de conversación entre preguntas y respuestas, y despedida
+% Descripcion		:	Realiza el ciclo de conversacion entre preguntas y respuestas, y despedida
 % Nombre de Regla	:	conversascion(Oracion)
-% Parámetro			:	String de una oración
+% Parametro			:	String de una oracion
 % Uso				:	inicio_aux()
 
 conversacion(Oracion,'referencias'):-

@@ -283,36 +283,36 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 % Uso				:	referencias(A)
 
 % Referencias relacionadas a computadora
-referencia('https://www.aboutespanol.com/soluciones-si-tu-pc-no-arranca-no-prende-o-no-enciende-3507940','computadora no enciende').
-referencia('https://www.pcworld.es/tutoriales/ordenadores/ordenador-no-arranca-arreglar-3680944/','computadora no enciende').
-referencia('https://www.diarioinformacion.com/vida-y-estilo/tecnologia/2016/04/15/pc-arranca-debo/1750203.html','computadora no enciende').
-referencia('https://es.easeus.com/data-recovery-solution/pen-drive-not-showing-data-files.html','computadora no muestra mis archivos').
-referencia('https://www.adslzone.net/windows-10/como-recuperar-archivos-pendrive-usb-aparece-vacio/','computadora no muestra mis archivos').
-referencia('http://es.rescuedigitalmedia.com/resuelto-pen-drive-se-muestra-vacio-incluso-cuando-existen-datos','computadora no muestra mis archivos').
+referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no enciende').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no enciende').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no enciende').
+referencia('https://es.easeus.com/computer-instruction/no-se-ven-archivos-guardados-en-escritorio-windows-10.html','computadora no muestra mis archivos').
+referencia('https://eu.community.samsung.com/t5/mobile-apps-services/samsung-quot-my-files-quot-no-longer-display-all-folders/td-p/3683141','computadora no muestra mis archivos').
+referencia('https://answers.microsoft.com/en-us/windows/forum/all/file-explorer-not-showing-the-list-of-folders-in/5d377f73-f08a-4584-82f7-c511d23a8688','computadora no muestra mis archivos').
 
 % Referencias relacionadas a impresora
-referencia('https://www.pcworld.es/tutoriales/otros-dispositivos/impresora-no-funciona-problemas-impresion-3675127/','impresora no imprime').
-referencia('http://support.epson-europe.com/onlineguides/es/sc86/ref_g/trble_5.htm','impresora no imprime').
-referencia('https://support.hp.com/py-es/document/c00007100','impresora se le atasca el papel').
-referencia('http://support.ricoh.com/bb_v1oi/pub_e/oi_view/0001054/0001054646/view/manual/int/0143.htm','impresora se le atasca el papel').
-referencia('https://support.brother.com/g/b/faqend.aspx?c=es&lang=es&prod=dcp340cw2_eu&faqid=faq00000495_003','impresora se le atasca el papel').
+referencia('https://www.manua.ls/samsung/xpress-sl-m2070w/manual','impresora no imprime').
+referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora no imprime').
+referencia('https://www.imageoneway.com/blog/the-4-most-common-reasons-that-your-printer-might-be-jamming','impresora se le atasca el papel').
+referencia('https://www.hp.com/us-en/shop/tech-takes/hp-samsung-printers-review','impresora se le atasca el papel').
+referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora se le atasca el papel').
 
 % Referencias relacionadas a internet
-referencia('https://www.adslzone.net/2015/06/17/que-hacer-cuando-no-funciona-tu-conexion-a-internet/','internet no tiene conexion').
-referencia('https://tecnologia-informatica.com/tipos-conexion-internet/','internet no tiene conexion').
-referencia('https://computerhoy.com/noticias/internet/que-me-va-lento-internet-problemas-habituales-internet-como-solucionarlos-73007','internet esta lento').
-referencia('http://www.gadae.com/blog/5-motivos-por-los-que-puede-que-internet-va-lento/','internet esta lento').
-referencia('https://www.testdevelocidad.es/causas-conexion-internet-mas-lenta/','internet esta lento').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109777/','internet no tiene conexion').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109716/','internet no tiene conexion').
+referencia('hhttps://www.highspeedinternet.com/es/recursos/por-que-mi-internet-esta-lento','internet esta lento').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01110584/','internet esta lento').
+referencia('https://www.xataka.com/basics/internet-va-lento-principales-causas-sus-posibles-soluciones','internet esta lento').
 
 % Referencias relacionadas a televisor
-referencia('https://www.sony.es/electronics/support/articles/00094960','televisor no funciona').
-referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','televisor no funciona').
-referencia('https://www.sony.es/electronics/support/articles/00094960','televisor tiene mala imagen').
-referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantalla-negro-no-enciende-no-senal','televisor tiene mala imagen').
+referencia('https://www.samsung.com/pe/support/tv-audio-video/how-to-troubleshoot-the-samsung-tv-that-will-not-turn-on/','televisor no funciona').
+referencia('https://howtl.com/es/como-resetear-samsung-tv-si-no-enciende/','televisor no funciona').
+referencia('https://eu.community.samsung.com/t5/tvs/mala-imagen-en-movimiento/m-p/751816','televisor tiene mala imagen').
+referencia('https://aprende.com/blog/oficios/reparacion-electronica/fallas-comunes-televisor/','televisor tiene mala imagen').
 
 % Referencias relacionadas a celular
-referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','celular esta lento').
-referencia('http://www.androidjefe.com/celular-lento/','celular esta lento').
+referencia('https://www.samsung.com/es/support/mobile-devices/why-is-my-phone-slowing-down-and-how-can-i-speed-it-up/','celular esta lento').
+referencia('https://www.giztab.com/mi-samsung-va-muy-lento-causas-y-soluciones/','celular esta lento').
 
 % Descripcion		:	arbol de decision, lectura de respuestas por parte del usuario.
 % Nombre de Hecho	:	raiz(B,A)

@@ -251,5 +251,4 @@ inicio_aux():-
 removehead([_|Tail], Tail).
 
 ?- write(' '),nl.
-?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.
 ?- write('Inserte inicio(). para iniciar con el sistema experto.'),nl,nl.

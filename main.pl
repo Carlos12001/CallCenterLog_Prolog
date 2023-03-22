@@ -91,6 +91,7 @@ respuesta_saludo(Nombre):-
 	writeln(Nombre),
 	writeln('En que lo puedo ayudar?').
 
+% creo que aqui se puede quitar el resto si o no
 respuesta_despedida():-
 	writeln('Algo mas en que pueda servirle?'),nl,
 	read(R),

@@ -1,42 +1,22 @@
-% application_db.pl -- archivo secundario, contiene hechos de Prolog.
-%
-% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicacion que se comporte
-% como un experto en la solucion de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos,
-% de ahora en adelante SE, son aplicaciones de computo que involucran experiencia no algoritmica, para resolver cierto
-% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje espanol. El usuario que presenta
-% el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
-% sus tareas normalmente y finalmente puede consultar.
-%
-% Version de Archivo		: 0.1
-% Autores					: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificacion		: 07/09/2019, 16:00, @angelortizv
+% Este archivo es la base datos del programa.
 
 % Palabras Clave de Usuario ---------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	Inicio de una Conversacion
+% Descripcion		:	Inicio de una Conversacion
 % Nombre de Hecho	:	saludo([X])
-% Parámetro			: 	palabra clave de saludo 	
+% Parametro			: 	palabra clave de saludo 	
 % Uso				:	sintagma_saludo([B])
 saludo([hola|S],S).
-saludo([saludos|S],S).
-saludo([disculpe|S],S).
+saludo([tuanis|S],S).
+saludo([pura, vida|S],S).
+saludo([eso, todo, bien|S], S).
 saludo([buenos,dias|S],S).
 saludo([buenas,tardes|S],S).
 saludo([buenas,noches|S],S).
 
-% Descripción		:	Fin de una Conversacion
-% Nombre de Hecho	:	despedida([X])
-% Parámetro			:	palabra clave de despedida
-% Uso				:	sintagma_saludo([B])
-despedida([gracias|S],S).
-despedida([muchas,gracias|S],S).
-despedida([adios|S],S).
-despedida([hasta_luego|S],S).
-despedida([chao|S],S).
-
-% Descripción		:	Nombre del Programa
+% Descripcion		:	Nombre del Programa
 % Nombre de Hecho	:	nombre_programa([X])
-% Parámetro			:	nombre del Sistema Experto
+% Parametro			:	nombre del Sistema Experto
 % Uso				:	sintagma_saludo([B])
 nombre_programa([callCenterLog|S],S).
 nombre_programa([log|S],S).
@@ -44,9 +24,9 @@ nombre_programa([callCenter|S],S).
 
 % Palabras Clave para el BNF --------------------------------------------------------------------------------------------------------------
 
-%  Descripción		:	Determinantes masculinos
+%  Descripcion		:	Determinantes masculinos
 % Nombre de Hecho	:	determinante_m(X)
-% Parámetro			:	determinantes masculinos
+% Parametro			:	determinantes masculinos
 % Uso				:	sintagma_nominal([A],[B])		
 determinante_m([el|S],S).
 determinante_m([lo|S],S).
@@ -61,9 +41,9 @@ determinante_m([alguno|S],S).
 determinante_m([algunos|S],S).
 determinante_m([del|S],S).
 
-% Descripción		:	Determinantes femeninos
+% Descripcion		:	Determinantes femeninos
 % Nombre de Hecho	:	determinante_f([X])
-% Parámetro			:	determinantes femeninos
+% Parametro			:	determinantes femeninos
 % Uso				:	sintagma_nominal([A],[B])
 determinante_f([la|S],S).
 determinante_f([las|S],S).
@@ -77,24 +57,24 @@ determinante_f([alguna|S],S).
 determinante_f([algunas|S],S).
 determinante_f([mala|S],S).
 
-% Descripción		:	Determinantes neutros
+% Descripcion		:	Determinantes neutros
 % Nombre de Hecho	:	determinante_n([X])
-% Parámetro			:	determinantes neutros
+% Parametro			:	determinantes neutros
 % Uso				:	sintagma_nominal([A],[B])
 determinante_n([mi|S],S).
 determinante_n([mis|S],S).
 determinante_n([posibles|S],S).
 
-% Descripción		:	Negaciones
+% Descripcion		:	Negaciones
 % Nombre de Hecho	:	negacion([X])
-% Parámetro			:	adverbios de negacion
+% Parametro			:	adverbios de negacion
 % Uso				:	oracion([A],[B])
 negacion([no|S],S).
 negacion([nunca|S],S).
 
-% Descripción		:	sustantivos masculinos
+% Descripcion		:	sustantivos masculinos
 % Nombre de Hecho	:	sustantivo_m([X])
-% Parámetro			:	sustantivos masculinos
+% Parametro			:	sustantivos masculinos
 % Uso				:	sintagma_nominal([A],[B])
 sustantivo_m([internet|S],S).
 sustantivo_m([celular|S],S).
@@ -103,9 +83,9 @@ sustantivo_m([archivos|S],S).
 sustantivo_m([papel|S],S).
 sustantivo_m([problema|S],S).
 
-% Descripción		:	sustantivos femeninos
+% Descripcion		:	sustantivos femeninos
 % Nombre de Hecho	:	sustantivo_f([X])
-% Parámetro			:	sustantivos femeninos
+% Parametro			:	sustantivos femeninos
 % Uso				:	sintagma_nominal([A],[B])
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
@@ -113,16 +93,16 @@ sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
 
-% Descripción		:	
+% Descripcion		:	
 % Nombre de Hecho	:	inicio causa_ref([X])
-% Parámetro			:	
+% Parametro			:	
 % Uso				:	
 inicio_cr([posibles,causas,del,problema|S],S).
 inicio_cr([algunas,referencias,para,el,problema|S],S).
 
-% Descripción		:	Verbos
+% Descripcion		:	Verbos
 % Nombre de Hecho	:	verbo([X])
-% Parámetro			:	verbos utilizables
+% Parametro			:	verbos utilizables
 % Uso				:	sintagma_verbal([A],[B])
 verbo([sirve|S],S).
 verbo([me,sirve|S],S).
@@ -151,9 +131,9 @@ verbo([imprime|S],S).
 
 % Lista de Problemas,Causas,Soluciones,Preguntas y Referencias ----------------------------------------------------------------------------
 
-% Descripción		:	Lista de Problemas, los problemas son tratados como strings
+% Descripcion		:	Lista de Problemas, los problemas son tratados como strings
 % Nombre de Hecho	:	problema(A)
-% Parámetro			:	problema reconocido por el SE
+% Parametro			:	problema reconocido por el SE
 % Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
 problema('computadora no enciende').
 problema('computadora no muestra mis archivos').
@@ -165,9 +145,9 @@ problema('televisor no funciona').
 problema('televisor tiene mala imagen').
 problema('celular esta lento').
 
-% Descripción		:	Lista de Causas para cada problema
+% Descripcion		:	Lista de Causas para cada problema
 % Nombre de Hecho	:	causa(B,A)
-% Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
+% Parametro			:	(causa asociado a un determinado problema, problema al que pertenece)
 % Uso				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 
 % Causas relacionados a computadora
@@ -208,9 +188,9 @@ causa('el celular ocupa un reinicio', 'celular esta lento').
 causa('el celular no tiene suficiente espacio de almacenamiento','celular esta lento').
 causa('su celular no esta actualizado','celular esta lento').
 
-% Descripción		:	Lista de soluciones para cada subproblema
+% Descripcion		:	Lista de soluciones para cada subproblema
 % Nombre de Hecho	:	solucion(C,B)
-% Parámetro			:	(solucion asociada a una causa, causa a la que pertenece)
+% Parametro			:	(solucion asociada a una causa, causa a la que pertenece)
 % Uso				:	consulta_caso_base(B), conversacion(Oracion)
 
 % Soluciones relacionadas a computadora
@@ -254,9 +234,9 @@ solucion('busque la ultima version, revise si es compatible ','el celular no est
 % Solucion para caso base
 solucion('Este Sistema Experto no puede responder su problema, se recomienda consultar a un tecnico.','no hay solucion').
 
-% Descripción		:	Lista de Preguntas para cada subproblema
+% Descripcion		:	Lista de Preguntas para cada subproblema
 % Nombre de Hecho	:	pregunta(D,B)
-% Parámetro			:	(pregunta asociada a una causa, causa a la que pertenece)
+% Parametro			:	(pregunta asociada a una causa, causa a la que pertenece)
 % Uso				:	hoja_izquierda(B)
 
 % Preguntas relacionados a computadora
@@ -297,9 +277,9 @@ pregunta('¿Ya probo apagandolo y volviendolo a encender?','el celular ocupa un 
 pregunta('¿Verifico que aun tenga suficiente espacio de almacenamiento?','el celular no tiene suficiente espacio de almacenamiento').
 pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta actualizado').
 
-% Descripción		:	Lista de referencias para cada subproblema
+% Descripcion		:	Lista de referencias para cada subproblema
 % Nombre de Hecho	:	referencia(E,A)
-% Parámetro			:	(link de internet para un determinado problema, problema al que pertenece)
+% Parametro			:	(link de internet para un determinado problema, problema al que pertenece)
 % Uso				:	referencias(A)
 
 % Referencias relacionadas a computadora
@@ -334,12 +314,12 @@ referencia('https://www.lg.com/es/posventa/guias-y-soluciones/television/pantall
 referencia('https://www.bbc.com/mundo/noticias/2015/03/150326_tecnologia_recomendaciones_para_un_celular_lento_kv','celular esta lento').
 referencia('http://www.androidjefe.com/celular-lento/','celular esta lento').
 
-% Descripción		:	Árbol de decisión, lectura de respuestas por parte del usuario.
+% Descripcion		:	arbol de decision, lectura de respuestas por parte del usuario.
 % Nombre de Hecho	:	raiz(B,A)
-% Parámetro			:	(causa asociado a un determinado problema, problema al que pertenece)
+% Parametro			:	(causa asociado a un determinado problema, problema al que pertenece)
 % Uso				:	conversacion()
 
-% Árbol de decision referente a causas y problemas asociadas a computadora
+% arbol de decision referente a causas y problemas asociadas a computadora
 raiz('la computadora esta desconectada','computadora no enciende'):-
 	hoja_izquierda('la computadora esta desconectada'), !.
 raiz('el tomacorriente asociado a la computadora no funciona','computadora no enciende'):-
@@ -357,7 +337,7 @@ raiz('los controladores necesarios no estan instalados','computadora no muestra 
 raiz('no hay solucion','computadora no muestra mis archivos'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% Árbol de decision referente a causas y problemas asociadas a impresora
+% arbol de decision referente a causas y problemas asociadas a impresora
 raiz('la impresora no tiene papel','impresora no imprime'):-
 	hoja_izquierda('la impresora no tiene papel'), !.
 raiz('la impresora no tiene tinta','impresora no imprime'):-
@@ -375,7 +355,7 @@ raiz('el numero de hojas cargadas en la impresora es mayor a la capacidad','impr
 raiz('no hay solucion','impresora se le atasca el papel'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% Árbol de decision referente a causas y problemas asociadas a internet
+% arbol de decision referente a causas y problemas asociadas a internet
 raiz('el modem esta desconectado','internet no tiene conexion'):-
 	hoja_izquierda('el modem esta desconectado'), !.
 raiz('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion'):-
@@ -393,7 +373,7 @@ raiz('la capacidad de internet es inferior a 5MB','internet esta lento'):-
 raiz('no hay solucion','internet esta lento'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% Árbol de decision referente a causas y problemas asociadas a televisor
+% arbol de decision referente a causas y problemas asociadas a televisor
 raiz('el televisor no esta conectado','televisor no funciona'):-
 	hoja_izquierda('el televisor no esta conectado'), !.
 raiz('lel control remoto no tiene bateria','televisor no funciona'):-
@@ -413,7 +393,7 @@ raiz('hay dispositivos cerca que brindan interferencia del televisor','televisor
 raiz('no hay solucion','televisor tiene mala imagen'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% Árbol de decision referente a causas y problemas asociadas a celular
+% arbol de decision referente a causas y problemas asociadas a celular
 raiz('el celular ocupa un reinicio','celular esta lento'):-
 	hoja_izquierda('el celular ocupa un reinicio'), !.
 raiz('el celular no tiene suficiente espacio de almacenamiento','celular esta lento'):-

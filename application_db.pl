@@ -56,6 +56,7 @@ determinante_f([otra|S],S).
 determinante_f([alguna|S],S).
 determinante_f([algunas|S],S).
 determinante_f([mala|S],S).
+determinante_f([ala|S],S).
 
 % Descripcion		:	Determinantes neutros
 % Nombre de Hecho	:	determinante_n([X])
@@ -92,6 +93,7 @@ sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
+sustantivo_f([corriente|S],S).
 
 % Descripcion		:	
 % Nombre de Hecho	:	inicio causa_ref([X])
@@ -127,6 +129,8 @@ verbo([esta,lento|S],S).
 verbo([tiene|S],S).
 verbo([tiene,conexion|S],S).
 verbo([imprime|S],S).
+verbo([prende|S],S).
+
 
 
 % Lista de Problemas,Causas,Soluciones,Preguntas y Referencias ----------------------------------------------------------------------------
@@ -137,13 +141,19 @@ verbo([imprime|S],S).
 % Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
 problema('computadora no enciende').
 problema('computadora no muestra mis archivos').
+problema('computadora no prende').
+
 problema('impresora no imprime').
 problema('impresora se le atasca el papel').
+
 problema('internet no tiene conexion').
 problema('internet esta lento').
+
 problema('televisor no funciona').
 problema('televisor tiene mala imagen').
+
 problema('celular esta lento').
+
 
 % Descripcion		:	Lista de Causas para cada problema
 % Nombre de Hecho	:	causa(B,A)
@@ -157,6 +167,7 @@ causa('los cables no estan bien conectados','computadora no enciende').
 causa('los archivos no existen','computadora no muestra mis archivos').
 causa('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos').
 causa('los controladores necesarios no estan instalados','computadora no muestra mis archivos').
+causa('la computadora esta desconectada','computadora no prende').
 
 % Causas relacionados a impresora
 causa('la impresora no tiene papel','impresora no imprime').
@@ -197,9 +208,11 @@ causa('su celular no esta actualizado','celular esta lento').
 solucion('conecte la computadora','la computadora esta desconectada').
 solucion('intente con otro tomacorriente','el tomacorriente asociado a la computadora no funciona').
 solucion('conecte bien los cables','los cables no estan bien conectados').
+
 solucion('los archivos no existen','los archivos no existen').
 solucion('conecte bien la unidad de almacenamiento','la unidad de almacenamiento no esta bien conectada').
 solucion('instale los controladores necesarios','los controladores necesarios no estan instalados').
+
 
 % Soluciones relacionadas a impresora
 solucion('ponga papel en la impresora','la impresora no tiene papel').
@@ -243,9 +256,12 @@ solucion('Este Sistema Experto no puede responder su problema, se recomienda con
 pregunta('¿Reviso que este conectada la computadora?','la computadora esta desconectada').
 pregunta('¿Ha intentado probar en otro enchufe?','el tomacorriente asociado a la computadora no funciona').
 pregunta('¿Los cables estan bien conectados?','los cables no estan bien conectados').
+
 pregunta('¿Ya se aseguro de que el archivo que esta buscando existe?','los archivos no existen').
 pregunta('¿Ya se aseguro de que la unidad de almacenamiento esta bien conectada?','la unidad de almacenamiento no esta bien conectada').
 pregunta('¿ya instalo los controladores necesarios?','los controladores necesarios no estan instalados').
+
+
 
 % Preguntas relacionadas a impresora
 pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
@@ -328,6 +344,7 @@ raiz('los cables no estan bien conectados','computadora no enciende'):-
 	hoja_izquierda('los cables no estan bien conectados'), !.
 raiz('no hay solucion','computadora no enciende'):-
 	consulta_caso_base('no hay solucion'), !.
+
 raiz('los archivos no existen','computadora no muestra mis archivos'):-
 	hoja_izquierda('los archivos no existen'), !.
 raiz('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos'):-
@@ -335,6 +352,11 @@ raiz('la unidad de almacenamiento no esta bien conectada','computadora no muestr
 raiz('los controladores necesarios no estan instalados','computadora no muestra mis archivos'):-
 	hoja_izquierda('los controladores necesarios no estan instalados'), !.
 raiz('no hay solucion','computadora no muestra mis archivos'):-
+	consulta_caso_base('no hay solucion'), !.
+
+raiz('la computadora esta desconectada','computadora no prende'):-
+	hoja_izquierda('la computadora esta desconectada'), !.
+raiz('no hay solucion','computadora no prende'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % arbol de decision referente a causas y problemas asociadas a impresora

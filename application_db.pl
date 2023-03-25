@@ -139,10 +139,10 @@ problema('computadora no enciende').
 problema('computadora no muestra mis archivos').
 problema('impresora no imprime').
 problema('impresora se le atasca el papel').
-problema('internet no tiene conexion').
+problema('internet no conecta').
 problema('internet esta lento').
-problema('televisor no funciona').
-problema('televisor tiene mala imagen').
+problema('televisor no enciende').
+problema('televisor no tiene imagen').
 problema('celular esta lento').
 
 % Descripcion		:	Lista de Causas para cada problema
@@ -167,21 +167,21 @@ causa('el papel no esta bien alineado','impresora se le atasca el papel').
 causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel').
 
 % Causas relacionados a internet
-causa('el modem esta desconectado','internet no tiene conexion').
-causa('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion').
-causa('el router no esta conectado al modem','internet no tiene conexion').
-causa('su dispositivo no esta cerca del router','internet esta lento').
-causa('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento').
-causa('la capacidad de internet es inferior a 5MB','internet esta lento').
+causa('el router esta apagado','internet no conecta').
+causa('la computadora se muestra desconectada','internet no conecta').
+causa('el router esta desconectado','internet no conecta').
+causa('senal del wifi baja','internet esta lento').
+causa('otra app se encuentra utilizando el internet','internet esta lento').
+causa('la latencia registrada es muy alta (>70ms)','internet esta lento').
 
 % Causas relacionados a televisor
-causa('el televisor no esta conectado','televisor no funciona').
-causa('el control remoto no tiene bateria','televisor no funciona').
-causa('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona').
-causa('el tomacorriente asociado al televisor  no funciona','televisor no funciona').
-causa('el televisor no esta bien conectado al cable o antena','televisor tiene mala imagen').
-causa('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen').
-causa('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen').
+causa('el televisor esta desconectado','televisor no enciende').
+causa('el control remoto no funciona','televisor no enciende').
+%%%%% causa('el interruptor de ahorro de energia del televisor no esta encedido','televisor no enciende').
+causa('el tomacorriente asociado al televisor  no funciona','televisor no enciende').
+causa('el televisor no esta bien conectado al cable o antena','televisor no tiene imagen').
+causa('el televisor no tiene la actualizacion mas reciente','televisor no tiene imagen').
+causa('hay dispositivos cerca que brindan interferencia del televisor','televisor no tiene imagen').
 
 % Causas relacionados a celular
 causa('el celular ocupa un reinicio', 'celular esta lento').

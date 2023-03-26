@@ -131,7 +131,7 @@ verbo([tiene,conexion|S],S).
 verbo([imprime|S],S).
 verbo([prende|S],S).
 verbo([se,calienta|S],S).
-verbo([reproduce|S],S).
+verbo([reproduce, sonido|S],S).
 
 
 
@@ -143,7 +143,7 @@ verbo([reproduce|S],S).
 % Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
 problema('computadora no prende').
 problema ('computadora se calienta').
-%problema('la computadora no reproduce sonido').
+problema('computadora no reproduce sonido').
 
 problema('impresora no imprime').
 problema('impresora se le atasca el papel').
@@ -170,6 +170,10 @@ causa('la bateria esta agotada o no funciona','computadora no prende').
 causa('ventilador no funciona','computadora se calienta').
 causa('polvo acumulado en los ventiladores', 'computadora se calienta').
 causa('la ubicacion de la computadora no permite una buena ventilacion','computadora se calienta').
+
+causa('volumen esta silenciado','computadora no reproduce sonido').
+causa('controladores de sonido no estan instalados o actualizados','computadora no reproduce sonido').
+causa('el dispositivo sonido predeterminado no esta configurado','computadora no reproduce sonido').
 
 % Causas relacionados a impresora
 causa('la impresora no tiene papel','impresora no imprime').
@@ -215,6 +219,10 @@ solucion('remplazar la bateria de la computadora','la bateria esta agotada o no 
 solucion('reemplazar el ventilador por uno nuevo','ventilador no funciona').
 solucion('limpie los ventiladores','polvo acumulado en los ventiladores').
 solucion('cambie la ubicacion de la computadora, para mejorar la ventilacion','la ubicacion de la computadora no permite una buena ventilacion').
+
+solucion('suba o active el volumen','volumen esta silenciado').
+solucion('actualice los controladores de sonido','controladores de sonido no estan instalados o actualizados').
+solucion('configure el dispositivo sonido predeterminado','el dispositivo sonido predeterminado no esta configurado').
 
 % Soluciones relacionadas a impresora
 solucion('ponga papel en la impresora','la impresora no tiene papel').
@@ -263,6 +271,10 @@ pregunta('¿La computadora puede encender sin estar conectada a la corriente ele
 pregunta('¿El ventilador suena de forma normal?', 'ventilador no funciona').
 pregunta('¿El ventilador esta limpio?', 'polvo acumulado en los ventiladores').
 pregunta('¿La ubicacion de la computadora permite una buena ventilacion?', 'la ubicacion de la computadora no permite una buena ventilacion').
+
+pregunta('¿El volumen esta activado?', 'volumen esta silenciado').
+pregunta('¿Los controladores de sonido estan instalados y actualizados?', 'controladores de sonido no estan instalados o actualizados').
+pregunta('El dispositivo sonido predeterminado esta configurado correctamente?', 'el dispositivo sonido predeterminado no esta configurado').
 
 % Preguntas relacionadas a impresora
 pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
@@ -352,6 +364,15 @@ raiz('polvo acumulado en los ventiladores','computadora se calienta'):-
 raiz('la ubicacion de la computadora no permite una buena ventilacion','computadora se calienta'):-
 	hoja_izquierda('la ubicacion de la computadora no permite una buena ventilacion'), !.
 raiz('no hay solucion','computadora se calienta'):-
+	consulta_caso_base('no hay solucion'), !.
+
+raiz('volumen esta silenciado','computadora no reproduce sonido'):- 
+	hoja_izquierda('volumen esta silenciado'), !.
+raiz('controladores de sonido no estan instalados o actualizados','computadora no reproduce sonido'):- 
+	hoja_izquierda('controladores de sonido no estan instalados o actualizados'), !.
+raiz('el dispositivo sonido predeterminado no esta configurado','computadora no reproduce sonido'):- 
+	hoja_izquierda('el dispositivo sonido predeterminado no esta configurado'), !.
+raiz('no hay solucion','computadora no reproduce sonido'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % arbol de decision referente a causas y problemas asociadas a impresora

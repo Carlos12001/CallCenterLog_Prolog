@@ -19,6 +19,9 @@ saludo([buenas,noches|S],S).
 nombre_programa([callCenterLog|S],S).
 nombre_programa([log|S],S).
 nombre_programa([callCenter|S],S).
+nombre_programa([sam|S],S).
+nombre_programa([samsung|S],S).
+nombre_programa([servicio|S],S).
 
 %----- palabras para BNF ------ 
 
@@ -140,6 +143,7 @@ verbo([tiene|S],S).
 verbo([tiene,conexion|S],S).
 verbo([imprime|S],S).
 verbo([prende|S],S).
+verbo([calienta|S],S).
 verbo([se,calienta|S],S).
 verbo([reproduce, sonido|S],S).
 
@@ -161,7 +165,7 @@ verbo([conecta|S],S).
 % Entrada					:	(problema)
 % Aplicacion				:	causas(B,A), solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 problema('computadora no prende').
-problema ('computadora se calienta').
+problema('computadora se calienta').
 problema('computadora no reproduce sonido').
 
 problema('impresora no imprime').
@@ -343,8 +347,8 @@ referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no prende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no prende').
 
-referencia ('https://www.xataka.com/basics/que-hacer-tu-ordenador-se-calienta-normal','computadora se calienta').
-referencia ('https://www.avg.com/es/signal/computer-overheating-fix','computadora se calienta').
+referencia('https://www.xataka.com/basics/que-hacer-tu-ordenador-se-calienta-normal','computadora se calienta').
+referencia('https://www.avg.com/es/signal/computer-overheating-fix','computadora se calienta').
 
 referencia('https://www.profesionalreview.com/2020/05/31/no-suena-mi-pc-soluciones/', 'computadora no reproduce sonido').
 referencia('https://support.microsoft.com/es-es/windows/solucionar-problemas-de-sonido-o-audio-en-windows-73025246-b61c-40fb-671a-2535c7cd56c8', 'computadora no reproduce sonido').

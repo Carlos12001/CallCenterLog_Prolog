@@ -3,6 +3,7 @@
 :-consult('application_db').
 :-style_check(-singleton).
 :-dynamic(soluciones/1).
+:- set_prolog_flag(verbose, silent).
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -81,23 +82,23 @@ validacion_gramatical(Oracion):-
 	inicio_aux(),
 	!.
 validacion_gramatical(Oracion):-
-	writeln('Oracion gramaticalmente incorrecta'),nl,
-	writeln('Escriba de nuevo su oracion'),
+	writeln('Error en la gramatica de la oracion'),nl,
+	writeln('Por favor, escriba su oracion de nuevo.'),
 	inicio_aux(),
 	!.
 
 respuesta_saludo(Nombre):-
-	write('Hola '),
+	write('Bienvenido '),
 	writeln(Nombre),
-	writeln('En que lo puedo ayudar?').
+	writeln('.¿En que lo puedo ayudar?').
 
 % creo que aqui se puede quitar el resto si o no
 respuesta_despedida():-
-	writeln('Algo mas en que pueda servirle?'),nl,
+	writeln('¿Tiene algun otro problema en el que le pueda ayudar?'),nl,
 	read(R),
 	opcion_despedida(R).
 opcion_despedida(R):-
-	consulta_general(no,R),nl,writeln('Gracias por preferirnos'),nl,!;
+	consulta_general(no,R),nl,writeln('Gracias por preferir Samsung'),nl,!;
 	inicio_aux().
 
 % Operaciones Basicas ------------------------------------------------------------------------------------------------------------
@@ -127,8 +128,8 @@ eliminar_primeros(L,Y,B):- length(X, B), append(X,Y,L).
 
 obtener_elemento([Y|_], 1, Y).
 obtener_elemento([_|Xs], N, Y):-
-          N2 is N - 1,
-          obtener_elemento(Xs, N2, Y).
+		N2 is N - 1,
+		obtener_elemento(Xs, N2, Y).
 
 
 % Causas y referencias --------------------------------------------------------------------------------------------------------------------
@@ -160,6 +161,7 @@ obtener_referencias(X,A):-
 	referencias(X).
 
 referencias(A):-
+	write('Claro, cuento con referencias a las que puede consultar.'),
 	write('Algunas referencias para su problema son: '),nl,
 	referencia(E,A),
 	write(E),nl.
@@ -207,7 +209,7 @@ conversacion(Oracion,'causas'):-
 	respuesta_despedida().
 
 conversacion(Oracion,_):-
-	write('Responda con si. o no. a las siguientes preguntas'),nl,nl,
+	write('Inicie las respuesta un con si. o no. a las siguientes preguntas'),nl,nl,
 	retractall(soluciones(_)),
 	assert(soluciones([])),
 	% write(Oracion),
@@ -220,21 +222,14 @@ conversacion(Oracion,_):-
 
 encabezado():-
 	sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       |||||||||||||||||||||||| Call Center Log |||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl.
+	write('          *********************** Servicio tecnico de Samsung ***********************          '),nl.
+
 
 inicio():-
 	encabezado(),
 	sintagma_saludo([]),
-	writeln('Hola usuario'),
-	writeln('¿Cual es su nombre?'),
+	writeln('Hola, soy la asistente virtual de Samsung me llamo Sam'),
+	writeln('Como te llamas?'),
 	input_to_string(Nombre),
 	respuesta_saludo(Nombre),
 	inicio_aux().
@@ -242,7 +237,7 @@ inicio():-
 inicio_aux():-
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
-	writeln('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
+	writeln('Para el servicio tecnico de Samsung es un gusto ayudarle con su problema,'),nl,
 	obtener_elemento(Oracion,2,A),
 	removehead(Oracion,B),
 	list_to_string(B,Y),
@@ -251,4 +246,6 @@ inicio_aux():-
 removehead([_|Tail], Tail).
 
 ?- write(' '),nl.
-?- write('Inserte inicio(). para iniciar con el sistema experto.'),nl,nl.
+?- write('Escriba inicio(). para iniciar cla atencion al cliente.'),nl.
+?- write('Para iniciar una conversacion empieza por: '),nl.
+?- write('hola sam'),nl.

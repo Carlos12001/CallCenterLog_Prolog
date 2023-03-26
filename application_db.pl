@@ -1,11 +1,9 @@
 % Este archivo es la base datos del programa.
 
-% Palabras Clave de Usuario ---------------------------------------------------------------------------------------------------------------
-
-% Descripcion		:	Inicio de una Conversacion
+% Que hace		:	Inicio de una Conversacion
 % Nombre de Hecho	:	saludo([X])
-% Parametro			: 	palabra clave de saludo 	
-% Uso				:	sintagma_saludo([B])
+% Entrada		: 	saludo	
+% Apliicacion			:	sintagma_saludo([B])
 saludo([hola|S],S).
 saludo([tuanis|S],S).
 saludo([pura, vida|S],S).
@@ -16,18 +14,18 @@ saludo([buenas,noches|S],S).
 
 % Descripcion		:	Nombre del Programa
 % Nombre de Hecho	:	nombre_programa([X])
-% Parametro			:	nombre del Sistema Experto
-% Uso				:	sintagma_saludo([B])
+% Parametro			:	nombre del SE
+% Aplicccion				:	sintagma_saludo([B])
 nombre_programa([callCenterLog|S],S).
 nombre_programa([log|S],S).
 nombre_programa([callCenter|S],S).
 
-% Palabras Clave para el BNF --------------------------------------------------------------------------------------------------------------
+%----- palabras para BNF ------ 
 
-%  Descripcion		:	Determinantes masculinos
-% Nombre de Hecho	:	determinante_m(X)
-% Parametro			:	determinantes masculinos
-% Uso				:	sintagma_nominal([A],[B])		
+% Que hace		:	determinantes
+% Nombre de Hecho	:	determinadtes([X])
+% Entrada			:	deter
+% Aplicacion				: sintagma_nominal([A],[B])	
 determinante_m([el|S],S).
 determinante_m([lo|S],S).
 determinante_m([los|S],S).
@@ -41,10 +39,10 @@ determinante_m([alguno|S],S).
 determinante_m([algunos|S],S).
 determinante_m([del|S],S).
 
-% Descripcion		:	Determinantes femeninos
-% Nombre de Hecho	:	determinante_f([X])
-% Parametro			:	determinantes femeninos
-% Uso				:	sintagma_nominal([A],[B])
+% Que hace		:	determinantes
+% Nombre de Hecho	:	determinadtes([X])
+% Entrada			:	deter
+% Aplicacion				: sintagma_nominal([A],[B])
 determinante_f([la|S],S).
 determinante_f([las|S],S).
 determinante_f([una|S],S).
@@ -58,25 +56,25 @@ determinante_f([algunas|S],S).
 determinante_f([mala|S],S).
 determinante_f([ala|S],S).
 
-% Descripcion		:	Determinantes neutros
-% Nombre de Hecho	:	determinante_n([X])
-% Parametro			:	determinantes neutros
-% Uso				:	sintagma_nominal([A],[B])
+% Que hace		:	determinantes
+% Nombre de Hecho	:	determinadtes([X])
+% Entrada			:	deter
+% Aplicacion				: sintagma_nominal([A],[B])
 determinante_n([mi|S],S).
 determinante_n([mis|S],S).
 determinante_n([posibles|S],S).
 
-% Descripcion		:	Negaciones
+% Que hace		:	negar
 % Nombre de Hecho	:	negacion([X])
-% Parametro			:	adverbios de negacion
-% Uso				:	oracion([A],[B])
+% Entrada			:	negacion
+% Aplicacion				:	oracion([A],[B])
 negacion([no|S],S).
 negacion([nunca|S],S).
 
-% Descripcion		:	sustantivos masculinos
-% Nombre de Hecho	:	sustantivo_m([X])
-% Parametro			:	sustantivos masculinos
-% Uso				:	sintagma_nominal([A],[B])
+% Que hace					:	sustantivos masculinos
+% Nombre de Hecho	:	sustantivo_M([X])
+% Entrada					:	sus masc
+% Apliacion				:	sintagma_nominal([A],[B])
 sustantivo_m([internet|S],S).
 sustantivo_m([celular|S],S).
 sustantivo_m([televisor|S],S).
@@ -84,10 +82,10 @@ sustantivo_m([archivos|S],S).
 sustantivo_m([papel|S],S).
 sustantivo_m([problema|S],S).
 
-% Descripcion		:	sustantivos femeninos
+% Que hace					:	sustantivos femeninos
 % Nombre de Hecho	:	sustantivo_f([X])
-% Parametro			:	sustantivos femeninos
-% Uso				:	sintagma_nominal([A],[B])
+% Entrada					:	sus fem
+% Apliacion				:	sintagma_nominal([A],[B])
 sustantivo_f([computadora|S],S).
 sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
@@ -95,17 +93,17 @@ sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
 sustantivo_f([corriente|S],S).
 
-% Descripcion		:	
-% Nombre de Hecho	:	inicio causa_ref([X])
-% Parametro			:	
-% Uso				:	
+% Que hace					:	ejecutar aciones
+% Nombre de Hecho			:	inicio_cr([X])
+% Entrada					:	accion
+% Aplicacion				:	oracion([A],[B])
 inicio_cr([posibles,causas,del,problema|S],S).
 inicio_cr([algunas,referencias,para,el,problema|S],S).
 
-% Descripcion		:	Verbos
-% Nombre de Hecho	:	verbo([X])
-% Parametro			:	verbos utilizables
-% Uso				:	sintagma_verbal([A],[B])
+% Que hace					:	atomo verbo
+% Nombre de Hecho			:	verbos([X])
+% Entrada					:	verbo
+% Aplicacion				:	sintagma_verbal([A],[B])
 verbo([sirve|S],S).
 verbo([me,sirve|S],S).
 verbo([funciona|S],S).
@@ -133,14 +131,12 @@ verbo([prende|S],S).
 verbo([se,calienta|S],S).
 verbo([reproduce, sonido|S],S).
 
+% ----------------- Casos -----------------
 
-
-% Lista de Problemas,Causas,Soluciones,Preguntas y Referencias ----------------------------------------------------------------------------
-
-% Descripcion		:	Lista de Problemas, los problemas son tratados como strings
-% Nombre de Hecho	:	problema(A)
-% Parametro			:	problema reconocido por el SE
-% Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
+% Que hace					:	los problema para cada dispositivo
+% Nombre de Hecho			:	problema(A)
+% Entrada					:	(problema)
+% Aplicacion				:	causas(B,A), solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 problema('computadora no prende').
 problema ('computadora se calienta').
 problema('computadora no reproduce sonido').
@@ -156,13 +152,12 @@ problema('televisor tiene mala imagen').
 
 problema('celular esta lento').
 
+% Que hace					:	causas de problemas
+% Nombre de Hecho			:	causa(B,A)
+% Entrada					:	(causa, problema)
+% Aplicacion				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 
-% Descripcion		:	Lista de Causas para cada problema
-% Nombre de Hecho	:	causa(B,A)
-% Parametro			:	(causa asociado a un determinado problema, problema al que pertenece)
-% Uso				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
-
-% Causas relacionados a computadora
+%causas computadora
 causa('la computadora no esta cargada', 'computadora no prende').
 causa('el boton de encendido no funciona','computadora no prende').
 causa('la bateria esta agotada o no funciona','computadora no prende').
@@ -175,16 +170,16 @@ causa('volumen esta silenciado','computadora no reproduce sonido').
 causa('controladores de sonido no estan instalados o actualizados','computadora no reproduce sonido').
 causa('el dispositivo sonido predeterminado no esta configurado','computadora no reproduce sonido').
 
-% Causas relacionados a impresora
-causa('la impresora no tiene papel','impresora no imprime').
-causa('la impresora no tiene tinta','impresora no imprime').
-causa('la impresora no esta bien configurada','impresora no imprime').
+%causas impresora
+causa('no tiene papel','impresora no imprime').
+causa('no tiene tinta','impresora no imprime').
+causa('no esta bien configurada la impresora','impresora no imprime').
 
 causa('el tamano de papel no es el correcto','impresora se le atasca el papel').
 causa('el papel no esta bien alineado','impresora se le atasca el papel').
 causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel').
 
-% Causas relacionados a internet
+%causa internet
 causa('el modem esta desconectado','internet no tiene conexion').
 causa('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion').
 causa('el router no esta conectado al modem','internet no tiene conexion').
@@ -192,7 +187,7 @@ causa('su dispositivo no esta cerca del router','internet esta lento').
 causa('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento').
 causa('la capacidad de internet es inferior a 5MB','internet esta lento').
 
-% Causas relacionados a televisor
+%causa televisor
 causa('el televisor no esta conectado','televisor no funciona').
 causa('el control remoto no tiene bateria','televisor no funciona').
 causa('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona').
@@ -201,17 +196,17 @@ causa('el televisor no esta bien conectado al cable o antena','televisor tiene m
 causa('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen').
 causa('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen').
 
-% Causas relacionados a celular
+%causa celular
 causa('el celular ocupa un reinicio', 'celular esta lento').
 causa('el celular no tiene suficiente espacio de almacenamiento','celular esta lento').
 causa('su celular no esta actualizado','celular esta lento').
 
-% Descripcion		:	Lista de soluciones para cada subproblema
-% Nombre de Hecho	:	solucion(C,B)
-% Parametro			:	(solucion asociada a una causa, causa a la que pertenece)
-% Uso				:	consulta_caso_base(B), conversacion(Oracion)
+% Que hace					:	soluciones de causas
+% Nombre de Hecho			:	solucion(D,B)
+% Entrada					:	(solucion, causa)
+% Aplicacion				:	consulta_caso_base(), conversacion()
 
-% Soluciones relacionadas a computadora
+%sol computadora
 solucion('conecte el cargador de la computadora','la computadora no esta cargada').
 solucion('llevelo a un tecnico para cambiar el boton de encendido', 'el boton de encendido no funciona').
 solucion('remplazar la bateria de la computadora','la bateria esta agotada o no funciona').
@@ -224,15 +219,16 @@ solucion('suba o active el volumen','volumen esta silenciado').
 solucion('actualice los controladores de sonido','controladores de sonido no estan instalados o actualizados').
 solucion('configure el dispositivo sonido predeterminado','el dispositivo sonido predeterminado no esta configurado').
 
-% Soluciones relacionadas a impresora
-solucion('ponga papel en la impresora','la impresora no tiene papel').
-solucion('inserte tinta el la impresora','la impresora no tiene tinta').
-solucion('configure correctamente la impresora','la impresora no esta bien configurada').
+%sol impresora
+solucion('agregue papel en la impresora','no tiene papel').
+solucion('inserte un nuevo paquete tinta el la impresora','no tiene tinta').
+solucion('configure correctamente la impresora','no esta bien configurada la impresora').
+
 solucion('utilice tamano de papel correcto','el tamano de papel no es el correcto').
 solucion('alinee el papel','el papel no esta bien alineado').
 solucion('disminuya la cantidad de hojas','el numero de hojas cargadas en la impresora es mayor a la capacidad').
 
-% Soluciones relacionadas a internet
+%sol internet
 solucion('conecte el modem','el modem esta desconectado').
 solucion('habilite la tarjeta WI-FI o conecte la computadora con un cable de red','la computadora no tiene habilitada la tarjeta WIFI').
 solucion('conecte el router al modem','el router no esta conectado al modem').
@@ -240,7 +236,7 @@ solucion('acerque el router al dispositivo','su dispositivo no esta cerca del ro
 solucion('cierre unas cuentas aplicaciones','el dispositivo tiene muchas aplicaciones corriendo simultaneamente').
 solucion('aumente su bando','la capacidad de internet es inferior a 5MB').
 
-% Soluciones relacionadas a televisor
+%sol televisor
 solucion('conecte el televisor','el televisor no esta conectado').
 solucion('cambie las baterias del control','el control remoto no tiene bateria').
 solucion('encienda el interruptor','el interruptor de ahorro de energia del televisor no esta encendido').
@@ -249,20 +245,20 @@ solucion('conecte correctamente el televisor al cable o la antena','el televisor
 solucion('instale la actualizacion mas reciente del televisor','el televisor no tiene la actualizacion mas reciente').
 solucion('aleje los dispositivos del televisor','hay dispositivos cerca que brindan interferencia del televisor').
 
-% Soluciones relacionadas a celular
+%sol celular
 solucion('reinicie el celular','el celular ocupa un reinicio').
 solucion('borre algunas aplicaciones, fotos, videos o archivos','el celular no tiene suficiente espacio de almacenamiento').
 solucion('busque la ultima version, revise si es compatible ','el celular no esta actualizado').
 
-% Solucion para caso base
+%sin sol
 solucion('Este Sistema Experto no puede responder su problema, se recomienda consultar a un tecnico.','no hay solucion').
 
-% Descripcion		:	Lista de Preguntas para cada subproblema
-% Nombre de Hecho	:	pregunta(D,B)
-% Parametro			:	(pregunta asociada a una causa, causa a la que pertenece)
-% Uso				:	hoja_izquierda(B)
+% Que hace					:	Preguntas para causas de problemas
+% Nombre de Hecho			:	pregunta(D,B)
+% Entrada					:	(pregunta, causa)
+% Aplicacion				:	hoja_izquierda(B)
 
-% Preguntas relacionados a computadora
+% preguntas computadora
 pregunta('¿Ya se aseguro de que la computadora esta cargada?','la computadora no esta cargada').
 pregunta('¿Ya se aseguro que el boton de encendido funciona?', 'el boton de encendido no funciona').
 pregunta('¿La computadora puede encender sin estar conectada a la corriente electrica?',
@@ -276,15 +272,15 @@ pregunta('¿El volumen esta activado?', 'volumen esta silenciado').
 pregunta('¿Los controladores de sonido estan instalados y actualizados?', 'controladores de sonido no estan instalados o actualizados').
 pregunta('El dispositivo sonido predeterminado esta configurado correctamente?', 'el dispositivo sonido predeterminado no esta configurado').
 
-% Preguntas relacionadas a impresora
-pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
-pregunta('¿Ya reviso que tenga tinta?','la impresora no tiene tinta').
-pregunta('¿Ya se aseguro de que este bien configurada?','la impresora no esta bien configurada').
+%preguntas impresora
+pregunta('¿Tiene papel la impresora?','no tiene papel').
+pregunta('¿Tiene tinta la impresora?','no tiene tinta').
+pregunta('¿Reviso si su impresora esta bien configurada?','no esta bien configurada la impresora').
 pregunta('¿El tamano de papel es el correcto?','el tamano de papel no es el correcto').
 pregunta('¿El papel esta bien alineado?','el papel no esta bien alineado').
 pregunta('¿El numero de hojas cargada en la impresora es mayor a la capacidad?','el numero de hojas cargadas en la impresora es mayor a la capacidad').
 
-% Preguntas relacionadas a internet
+%preguntas internet
 pregunta('¿El modem esta conectado?','el modem esta desconectado').
 pregunta('¿La computadora tiene habilitada la tarjeta WI-FI o esta conectada por cable?','la computadora no tiene habilitada la tarjeta WIFI').
 pregunta('¿El router esta conectada al modem?','el router no esta conectado al modem').
@@ -292,7 +288,7 @@ pregunta('¿El router esta cerca del dispositivo que esta usando?','su dispositi
 pregunta('¿El dispositivo no tiene muchas aplicaciones que estan utilizando internet simultaneamente?','el dispositivo tiene muchas aplicaciones corriendo simultaneamente').
 pregunta('¿El internet es mayor a 5 MB?','la capacidad de internet es inferior a 5MB').
 
-% Preguntas relacionadas a televisor
+%preguntas televisor
 pregunta('¿El televisor esta conectado?','el televisor no esta conectado').
 pregunta('¿El control remoto tiene bateria?','el control remoto no tiene bateria').
 pregunta('¿El interruptor de ahorro de energia del televisor esta encendido?','el interruptor de ahorro de energia del televisor no esta encendido').
@@ -301,7 +297,7 @@ pregunta('¿El televisor esta bien conectado ya sea a cable o a antena?','el tel
 pregunta('¿Su televisor tiene la actualizacion mas reciente?','el televisor no tiene la actualizacion mas reciente').
 pregunta('¿Hay dispositivos cerca del televisor?','hay dispositvos cerca que brindan interferencia del televisor').
 
-% Preguntas relacionadas a celular
+%preguntas celular
 pregunta('¿Ya probo apagandolo y volviendolo a encender?','el celular ocupa un reinicio').
 pregunta('¿Verifico que aun tenga suficiente espacio de almacenamiento?','el celular no tiene suficiente espacio de almacenamiento').
 pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta actualizado').
@@ -311,42 +307,43 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 % Parametro			:	(link de internet para un determinado problema, problema al que pertenece)
 % Uso				:	referencias(A)
 
-% Referencias relacionadas a computadora
+%ref computadora
 
 referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no prende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no prende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no prende').
 
-% Referencias relacionadas a impresora
+%ref impresora
 referencia('https://www.manua.ls/samsung/xpress-sl-m2070w/manual','impresora no imprime').
 referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora no imprime').
 referencia('https://www.imageoneway.com/blog/the-4-most-common-reasons-that-your-printer-might-be-jamming','impresora se le atasca el papel').
 referencia('https://www.hp.com/us-en/shop/tech-takes/hp-samsung-printers-review','impresora se le atasca el papel').
 referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora se le atasca el papel').
 
-% Referencias relacionadas a internet
+%ref internet
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109777/','internet no tiene conexion').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109716/','internet no tiene conexion').
 referencia('hhttps://www.highspeedinternet.com/es/recursos/por-que-mi-internet-esta-lento','internet esta lento').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01110584/','internet esta lento').
 referencia('https://www.xataka.com/basics/internet-va-lento-principales-causas-sus-posibles-soluciones','internet esta lento').
 
-% Referencias relacionadas a televisor
+%ref televisor
 referencia('https://www.samsung.com/pe/support/tv-audio-video/how-to-troubleshoot-the-samsung-tv-that-will-not-turn-on/','televisor no funciona').
 referencia('https://howtl.com/es/como-resetear-samsung-tv-si-no-enciende/','televisor no funciona').
 referencia('https://eu.community.samsung.com/t5/tvs/mala-imagen-en-movimiento/m-p/751816','televisor tiene mala imagen').
 referencia('https://aprende.com/blog/oficios/reparacion-electronica/fallas-comunes-televisor/','televisor tiene mala imagen').
 
-% Referencias relacionadas a celular
+%ref celular
 referencia('https://www.samsung.com/es/support/mobile-devices/why-is-my-phone-slowing-down-and-how-can-i-speed-it-up/','celular esta lento').
 referencia('https://www.giztab.com/mi-samsung-va-muy-lento-causas-y-soluciones/','celular esta lento').
 
-% Descripcion		:	arbol de decision, lectura de respuestas por parte del usuario.
-% Nombre de Hecho	:	raiz(B,A)
-% Parametro			:	(causa asociado a un determinado problema, problema al que pertenece)
-% Uso				:	conversacion()
 
-% arbol de decision referente a causas y problemas asociadas a computadora
+% Que hace					:	chekea respuestas de entrada
+% Nombre de Hecho			:	raiz(D,B)
+% Entrada					:	(causa, problema)
+% Aplicacion				:	conversacion()
+
+%desicion computadora
 
 raiz('la computadora no esta cargada', 'computadora no prende'):-
 	hoja_izquierda('la computadora no esta cargada'), !.
@@ -375,15 +372,16 @@ raiz('el dispositivo sonido predeterminado no esta configurado','computadora no 
 raiz('no hay solucion','computadora no reproduce sonido'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% arbol de decision referente a causas y problemas asociadas a impresora
-raiz('la impresora no tiene papel','impresora no imprime'):-
-	hoja_izquierda('la impresora no tiene papel'), !.
-raiz('la impresora no tiene tinta','impresora no imprime'):-
-	hoja_izquierda('la impresora no tiene tinta'), !.
-raiz('la impresora no esta bien configurada','impresora no imprime'):-
-	hoja_izquierda('la impresora no esta bien configurada'), !.
+%desicion impresora
+raiz('no tiene papel','impresora no imprime'):-
+	hoja_izquierda('no tiene papel'), !.
+raiz('no tiene tinta','impresora no imprime'):-
+	hoja_izquierda('no tiene tinta'), !.
+raiz('no esta bien configurada la impresora','impresora no imprime'):-
+	hoja_izquierda('no esta bien configurada la impresora'), !.
 raiz('no hay solucion','impresora no imprime'):-
 	consulta_caso_base('no hay solucion'), !.
+	
 raiz('el tamano de papel no es el correcto','impresora se le atasca el papel'):-
 	hoja_izquierda('el tamano de papel no es el correcto'), !.
 raiz('el papel no esta bien alineado','impresora se le atasca el papel'):-
@@ -393,7 +391,7 @@ raiz('el numero de hojas cargadas en la impresora es mayor a la capacidad','impr
 raiz('no hay solucion','impresora se le atasca el papel'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% arbol de decision referente a causas y problemas asociadas a internet
+%desicion internet
 raiz('el modem esta desconectado','internet no tiene conexion'):-
 	hoja_izquierda('el modem esta desconectado'), !.
 raiz('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion'):-
@@ -411,7 +409,7 @@ raiz('la capacidad de internet es inferior a 5MB','internet esta lento'):-
 raiz('no hay solucion','internet esta lento'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% arbol de decision referente a causas y problemas asociadas a televisor
+%desicion televisor
 raiz('el televisor no esta conectado','televisor no funciona'):-
 	hoja_izquierda('el televisor no esta conectado'), !.
 raiz('lel control remoto no tiene bateria','televisor no funciona'):-
@@ -431,7 +429,7 @@ raiz('hay dispositivos cerca que brindan interferencia del televisor','televisor
 raiz('no hay solucion','televisor tiene mala imagen'):-
 	consulta_caso_base('no hay solucion'), !.
 
-% arbol de decision referente a causas y problemas asociadas a celular
+%desicion celular
 raiz('el celular ocupa un reinicio','celular esta lento'):-
 	hoja_izquierda('el celular ocupa un reinicio'), !.
 raiz('el celular no tiene suficiente espacio de almacenamiento','celular esta lento'):-

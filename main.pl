@@ -1,9 +1,9 @@
 % Archivo principal para correr CallCenterLog.
 
-:-consult('application_db').
+:-consult('db').
 :-style_check(-singleton).
 :-dynamic(soluciones/1).
-:- set_prolog_flag(verbose, silent).
+:-set_prolog_flag(verbose, silent).
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -246,6 +246,6 @@ inicio_aux():-
 removehead([_|Tail], Tail).
 
 ?- write(' '),nl.
-?- write('Escriba inicio(). para iniciar cla atencion al cliente.'),nl.
+?- write('Escriba inicio(). para iniciar la atencion al cliente.'),nl.
 ?- write('Para iniciar una conversacion empieza por: '),nl.
 ?- write('hola sam'),nl.

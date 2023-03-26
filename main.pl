@@ -1,15 +1,4 @@
-% main.pl -- archivo principal para correr CallCenterLog, contiene reglas de Prolog.
-%
-% Este archivo es parte de  CallCenterLog, El presente tiene como objetivo el desarrollo de una aplicación que se comporte
-% como un experto en la solución de problemas comunes de un Call Center de TI utilizando Prolog. Los Sistemas expertos,
-% de ahora en adelante SE, son aplicaciones de cómputo que involucran experiencia no algorítmica, para resolver cierto
-% tipo de problema. La interfaz debe ser completamente natural utilizando el lenguaje español. El usuario que presenta
-% el problema, ingresa e informa al SE de todos los inconvenientes que tiene (hardware y software) que le impiden realizar
-% sus tareas normalmente y finalmente puede consultar.
-%
-% Version de Archivo		: 0.1
-% Autores					: GitHub@angelortizv, GitHub@jesquivel48, GitHub@isolis2000
-% Úlitma Modificacion		: 07/09/2019, 16:00, @angelortizv
+
 
 :-consult('application_db').
 :-style_check(-singleton).
@@ -17,7 +6,7 @@
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
-% Descripción		:	recibe una lista de palabras y una lista vacía y verifica si es una oración gramaticalmente correcta según la estructura establecida
+% Descripción		:	recibe una lista de palabras y una lista vacía, verifica si es una oración gramaticalmente correcta según la estructura establecida
 % Nombre de Regla	:	oracion([A],[B])
 % Parámetro			:	lista para revisar y lista vacía
 % Uso				:	se utiliza para validar oraciones
@@ -88,22 +77,22 @@ validacion_gramatical(Oracion):-
 validacion_gramatical(Oracion):-
 	is_list(Oracion),
 	lista_vacia(Oracion,true),
-	writeln('En que lo puedo ayudar?'),nl,
+	writeln('¿En que lo puedo ayudar?'),nl,
 	inicio_aux(),
 	!.
 validacion_gramatical(Oracion):-
-	writeln('Oracion gramaticalmente incorrecta'),nl,
-	writeln('Escriba de nuevo su oracion'),
+	writeln('Error en la gramatica de la oración'),nl,
+	writeln('Por favor, escriba su oracion de nuevo.'),
 	inicio_aux(),
 	!.
 
 respuesta_saludo(Nombre):-
-	write('Hola '),
+	write('Bienvenido '),
 	writeln(Nombre),
-	writeln('En que lo puedo ayudar?').
+	writeln('.¿En que lo puedo ayudar?').
 
 respuesta_despedida():-
-	writeln('Algo mas en que pueda servirle?'),nl,
+	writeln('¿Tiene algun otro problema en el que le pueda ayudar?'),nl,
 	read(R),
 	opcion_despedida(R).
 opcion_despedida(R):-
@@ -137,8 +126,8 @@ eliminar_primeros(L,Y,B):- length(X, B), append(X,Y,L).
 
 obtener_elemento([Y|_], 1, Y).
 obtener_elemento([_|Xs], N, Y):-
-          N2 is N - 1,
-          obtener_elemento(Xs, N2, Y).
+		N2 is N - 1,
+		obtener_elemento(Xs, N2, Y).
 
 
 % Causas y referencias --------------------------------------------------------------------------------------------------------------------
@@ -170,6 +159,7 @@ obtener_referencias(X,A):-
 	referencias(X).
 
 referencias(A):-
+	write('Claro, cuento con referencias a las que puede consultar.')
 	write('Algunas referencias para su problema son: '),nl,
 	referencia(E,A),
 	write(E),nl.
@@ -230,15 +220,8 @@ conversacion(Oracion,_):-
 
 encabezado():-
 	sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       |||||||||||||||||||||||| Call Center Log |||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl,
-		sleep(0.02),
-		write('       ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||       '),nl.
+		write('          *********************** Servicio tecnico de Samsung ***********************          '),nl,
+
 
 inicio():-
 	encabezado(),
@@ -252,7 +235,7 @@ inicio():-
 inicio_aux():-
 	input_to_list(Oracion),
 	validacion_gramatical(Oracion),nl,nl,
-	writeln('Para CallCenterLog es un gusto ayudarle con su problema,'),nl,
+	writeln('Para el servicio tecnico de Samsung es un gusto ayudarle con su problema,'),nl,
 	obtener_elemento(Oracion,2,A),
 	removehead(Oracion,B),
 	list_to_string(B,Y),
@@ -261,5 +244,4 @@ inicio_aux():-
 removehead([_|Tail], Tail).
 
 ?- write(' '),nl.
-?- write('Sistema desarrollado por: angelortizv, isolis2000, jesquivel48'),nl.
-?- write('Inserte inicio(). para iniciar con el sistema experto.'),nl,nl.
+?- write('Escriba inicio(). para iniciar cla atencion al cliente.'),nl,nl.

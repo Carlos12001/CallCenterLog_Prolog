@@ -130,6 +130,8 @@ verbo([tiene|S],S).
 verbo([tiene,conexion|S],S).
 verbo([imprime|S],S).
 verbo([prende|S],S).
+verbo([se,calienta|S],S).
+verbo([reproduce|S],S).
 
 
 
@@ -139,9 +141,9 @@ verbo([prende|S],S).
 % Nombre de Hecho	:	problema(A)
 % Parametro			:	problema reconocido por el SE
 % Uso				:	causa(B,A), referencia(E,A), raiz(B,A)
-problema('computadora no enciende').
-problema('computadora no muestra mis archivos').
 problema('computadora no prende').
+problema ('computadora se calienta').
+%problema('la computadora no reproduce sonido').
 
 problema('impresora no imprime').
 problema('impresora se le atasca el papel').
@@ -161,22 +163,19 @@ problema('celular esta lento').
 % Uso				:	solucion(C,B), pregunta(D,B), raiz(B,A), causas(A)
 
 % Causas relacionados a computadora
-causa('la computadora esta desconectada','computadora no enciende').
-causa('el tomacorriente asociado a la computadora no funciona','computadora no enciende').
-causa('los cables no estan bien conectados','computadora no enciende').
-
-causa('los archivos no existen','computadora no muestra mis archivos').
-causa('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos').
-causa('los controladores necesarios no estan instalados','computadora no muestra mis archivos').
-
 causa('la computadora no esta cargada', 'computadora no prende').
 causa('el boton de encendido no funciona','computadora no prende').
 causa('la bateria esta agotada o no funciona','computadora no prende').
+
+causa('ventilador no funciona','computadora se calienta').
+causa('polvo acumulado en los ventiladores', 'computadora se calienta').
+causa('la ubicacion de la computadora no permite una buena ventilacion','computadora se calienta').
 
 % Causas relacionados a impresora
 causa('la impresora no tiene papel','impresora no imprime').
 causa('la impresora no tiene tinta','impresora no imprime').
 causa('la impresora no esta bien configurada','impresora no imprime').
+
 causa('el tamano de papel no es el correcto','impresora se le atasca el papel').
 causa('el papel no esta bien alineado','impresora se le atasca el papel').
 causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel').
@@ -209,17 +208,13 @@ causa('su celular no esta actualizado','celular esta lento').
 % Uso				:	consulta_caso_base(B), conversacion(Oracion)
 
 % Soluciones relacionadas a computadora
-solucion('conecte la computadora','la computadora esta desconectada').
-solucion('intente con otro tomacorriente','el tomacorriente asociado a la computadora no funciona').
-solucion('conecte bien los cables','los cables no estan bien conectados').
-
-solucion('los archivos no existen','los archivos no existen').
-solucion('conecte bien la unidad de almacenamiento','la unidad de almacenamiento no esta bien conectada').
-solucion('instale los controladores necesarios','los controladores necesarios no estan instalados').
-
 solucion('conecte el cargador de la computadora','la computadora no esta cargada').
 solucion('llevelo a un tecnico para cambiar el boton de encendido', 'el boton de encendido no funciona').
 solucion('remplazar la bateria de la computadora','la bateria esta agotada o no funciona').
+
+solucion('reemplazar el ventilador por uno nuevo','ventilador no funciona').
+solucion('limpie los ventiladores','polvo acumulado en los ventiladores').
+solucion('cambie la ubicacion de la computadora, para mejorar la ventilacion','la ubicacion de la computadora no permite una buena ventilacion').
 
 % Soluciones relacionadas a impresora
 solucion('ponga papel en la impresora','la impresora no tiene papel').
@@ -260,18 +255,14 @@ solucion('Este Sistema Experto no puede responder su problema, se recomienda con
 % Uso				:	hoja_izquierda(B)
 
 % Preguntas relacionados a computadora
-pregunta('¿Reviso que este conectada la computadora?','la computadora esta desconectada').
-pregunta('¿Ha intentado probar en otro enchufe?','el tomacorriente asociado a la computadora no funciona').
-pregunta('¿Los cables estan bien conectados?','los cables no estan bien conectados').
-
-pregunta('¿Ya se aseguro de que el archivo que esta buscando existe?','los archivos no existen').
-pregunta('¿Ya se aseguro de que la unidad de almacenamiento esta bien conectada?','la unidad de almacenamiento no esta bien conectada').
-pregunta('¿ya instalo los controladores necesarios?','los controladores necesarios no estan instalados').
-
 pregunta('¿Ya se aseguro de que la computadora esta cargada?','la computadora no esta cargada').
 pregunta('¿Ya se aseguro que el boton de encendido funciona?', 'el boton de encendido no funciona').
 pregunta('¿La computadora puede encender sin estar conectada a la corriente electrica?',
 		'la bateria esta agotada o no funciona').
+
+pregunta('¿El ventilador suena de forma normal?', 'ventilador no funciona').
+pregunta('¿El ventilador esta limpio?', 'polvo acumulado en los ventiladores').
+pregunta('¿La ubicacion de la computadora permite una buena ventilacion?', 'la ubicacion de la computadora no permite una buena ventilacion').
 
 % Preguntas relacionadas a impresora
 pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
@@ -309,14 +300,6 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 % Uso				:	referencias(A)
 
 % Referencias relacionadas a computadora
-referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no enciende').
-referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no enciende').
-referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no enciende').
-
-referencia('https://es.easeus.com/computer-instruction/no-se-ven-archivos-guardados-en-escritorio-windows-10.html','computadora no muestra mis archivos').
-referencia('https://eu.community.samsung.com/t5/mobile-apps-services/samsung-quot-my-files-quot-no-longer-display-all-folders/td-p/3683141','computadora no muestra mis archivos').
-referencia('https://answers.microsoft.com/en-us/windows/forum/all/file-explorer-not-showing-the-list-of-folders-in/5d377f73-f08a-4584-82f7-c511d23a8688','computadora no muestra mis archivos').
-
 
 referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no prende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no prende').
@@ -352,23 +335,6 @@ referencia('https://www.giztab.com/mi-samsung-va-muy-lento-causas-y-soluciones/'
 % Uso				:	conversacion()
 
 % arbol de decision referente a causas y problemas asociadas a computadora
-raiz('la computadora esta desconectada','computadora no enciende'):-
-	hoja_izquierda('la computadora esta desconectada'), !.
-raiz('el tomacorriente asociado a la computadora no funciona','computadora no enciende'):-
-	hoja_izquierda('el tomacorriente asociado a la computadora no funciona'), !.
-raiz('los cables no estan bien conectados','computadora no enciende'):-
-	hoja_izquierda('los cables no estan bien conectados'), !.
-raiz('no hay solucion','computadora no enciende'):-
-	consulta_caso_base('no hay solucion'), !.
-
-raiz('los archivos no existen','computadora no muestra mis archivos'):-
-	hoja_izquierda('los archivos no existen'), !.
-raiz('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos'):-
-	hoja_izquierda('la unidad de almacenamiento no esta bien conectada'), !.
-raiz('los controladores necesarios no estan instalados','computadora no muestra mis archivos'):-
-	hoja_izquierda('los controladores necesarios no estan instalados'), !.
-raiz('no hay solucion','computadora no muestra mis archivos'):-
-	consulta_caso_base('no hay solucion'), !.
 
 raiz('la computadora no esta cargada', 'computadora no prende'):-
 	hoja_izquierda('la computadora no esta cargada'), !.
@@ -377,6 +343,15 @@ raiz('el boton de encendido no funciona','computadora no prende'):-
 raiz('la bateria esta agotada o no funciona', 'computadora no prende'):-
 	hoja_izquierda('la bateria esta agotada o no funciona'), !.
 raiz('no hay solucion','computadora no prende'):-
+	consulta_caso_base('no hay solucion'), !.
+
+raiz('ventilador no funciona','computadora se calienta'):-
+	hoja_izquierda('ventilador no funciona'), !.
+raiz('polvo acumulado en los ventiladores','computadora se calienta'):-
+	hoja_izquierda('polvo acumulado en los ventiladores'), !.
+raiz('la ubicacion de la computadora no permite una buena ventilacion','computadora se calienta'):-
+	hoja_izquierda('la ubicacion de la computadora no permite una buena ventilacion'), !.
+raiz('no hay solucion','computadora se calienta'):-
 	consulta_caso_base('no hay solucion'), !.
 
 % arbol de decision referente a causas y problemas asociadas a impresora

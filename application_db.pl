@@ -82,6 +82,11 @@ sustantivo_m([archivos|S],S).
 sustantivo_m([papel|S],S).
 sustantivo_m([problema|S],S).
 
+%                                                   Revisar
+sustantivo_m([wifi|S],S).
+sustantivo_m([router|S],S).
+sustantivo_m([control|S],S).
+
 % Que hace					:	sustantivos femeninos
 % Nombre de Hecho	:	sustantivo_f([X])
 % Entrada					:	sus fem
@@ -91,6 +96,13 @@ sustantivo_f([impresora|S],S).
 sustantivo_f([imagen|S],S).
 sustantivo_f([referencia,para|S],S).
 sustantivo_f([causas|S],S).
+
+
+%                                                   Revisar
+sustantivo_f([pagina|S],S).
+sustantivo_f([credenciales|S],S).
+sustantivo_f([corriente|S],S).
+sustantivo_f([latencia|S],S).
 sustantivo_f([corriente|S],S).
 
 % Que hace					:	ejecutar aciones
@@ -131,6 +143,17 @@ verbo([prende|S],S).
 verbo([se,calienta|S],S).
 verbo([reproduce, sonido|S],S).
 
+verbo([tiene, imagen|S],S).
+verbo([es|S],S).
+verbo([es, estatica|S],S).
+verbo([esta, apagado|S],S).
+verbo([esta, desconectado|S],S).
+verbo([carga|S],S).
+verbo([llega|S],S).
+verbo([hay|S],S).
+verbo([hay, corriente|S],S).
+verbo([conecta|S],S).
+
 % ----------------- Casos -----------------
 
 % Que hace					:	los problema para cada dispositivo
@@ -144,11 +167,11 @@ problema('computadora no reproduce sonido').
 problema('impresora no imprime').
 problema('impresora se le atasca el papel').
 
-problema('internet no tiene conexion').
-problema('internet esta lento').
+problema('internet no conecta').
+problema('pagina no carga').
 
-problema('televisor no funciona').
-problema('televisor tiene mala imagen').
+problema('televisor no enciende').
+problema('televisor no tiene imagen').
 
 problema('celular esta lento').
 
@@ -180,21 +203,25 @@ causa('el papel no esta bien alineado','impresora se le atasca el papel').
 causa('el numero de hojas cargadas en la impresora es mayor a la capacidad','impresora se le atasca el papel').
 
 %causa internet
-causa('el modem esta desconectado','internet no tiene conexion').
-causa('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion').
-causa('el router no esta conectado al modem','internet no tiene conexion').
-causa('su dispositivo no esta cerca del router','internet esta lento').
-causa('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento').
-causa('la capacidad de internet es inferior a 5MB','internet esta lento').
+causa('el router esta apagado','internet no conecta').
+causa('el router esta desconectado','internet no conecta').
+causa('las credenciales no son correctas','internet no conecta').
+
+causa('el wifi no llega','pagina no carga').                                  
+causa('internet ya en uso','pagina no carga').
+causa('la latencia registrada es muy alta (>150ms)','pagina no carga').
 
 %causa televisor
-causa('el televisor no esta conectado','televisor no funciona').
-causa('el control remoto no tiene bateria','televisor no funciona').
-causa('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona').
-causa('el tomacorriente asociado al televisor  no funciona','televisor no funciona').
-causa('el televisor no esta bien conectado al cable o antena','televisor tiene mala imagen').
-causa('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen').
-causa('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen').
+causa('el televisor esta desconectado','televisor no enciende').
+causa('no hay corriente','televisor no enciende').
+causa('el control no funciona','televisor no enciende').
+
+causa('el televisor esta apagado','televisor no tiene imagen').
+causa('el cable esta desconectado','televisor no tiene imagen').
+causa('la imagen es estatica ','televisor no tiene imagen').
+
+
+
 
 %causa celular
 causa('el celular ocupa un reinicio', 'celular esta lento').
@@ -229,26 +256,27 @@ solucion('alinee el papel','el papel no esta bien alineado').
 solucion('disminuya la cantidad de hojas','el numero de hojas cargadas en la impresora es mayor a la capacidad').
 
 %sol internet
-solucion('conecte el modem','el modem esta desconectado').
-solucion('habilite la tarjeta WI-FI o conecte la computadora con un cable de red','la computadora no tiene habilitada la tarjeta WIFI').
-solucion('conecte el router al modem','el router no esta conectado al modem').
-solucion('acerque el router al dispositivo','su dispositivo no esta cerca del router').
-solucion('cierre unas cuentas aplicaciones','el dispositivo tiene muchas aplicaciones corriendo simultaneamente').
-solucion('aumente su bando','la capacidad de internet es inferior a 5MB').
+solucion('encienda el router, el router tiene que mostrar las luces encendidas','el router esta apagado').
+solucion('conecte correctamente el router, asegurese que los cables se encuentran bien conectados','el router esta desconectado').
+solucion('actualice las credenciales del WIFI (olvide la red en el dispositivo y vuelva a introducir la contrasena)','las credenciales no son correctas').
+
+solucion('acerque el router al dispositivo','el wifi no llega').
+solucion('desconecte algunos dispositivos de la red', 'internet ya en uso').
+solucion('aumente su ancho de banda a mas de 3Mbps de descarga','la latencia registrada es muy alta (>150ms)').
 
 %sol televisor
-solucion('conecte el televisor','el televisor no esta conectado').
-solucion('cambie las baterias del control','el control remoto no tiene bateria').
-solucion('encienda el interruptor','el interruptor de ahorro de energia del televisor no esta encendido').
-solucion('cambie el toma que esta usando','el tomacorriente asociado al televisor  no funciona').
-solucion('conecte correctamente el televisor al cable o la antena','el televisor no esta bien conectado al cable o antena').
-solucion('instale la actualizacion mas reciente del televisor','el televisor no tiene la actualizacion mas reciente').
-solucion('aleje los dispositivos del televisor','hay dispositivos cerca que brindan interferencia del televisor').
+solucion('conecte el televisor','el televisor esta desconectado').
+solucion('cambie el tomacorriente que esta usando','no hay corriente').
+solucion('compre un nuevo control remoto','el control no funciona').
+
+solucion('encienda el televisor','el televisor esta apagado').
+solucion('conecte correctamente el televisor al cable o la antena','el cable esta desconectado').
+solucion('apague y vuelva a encender el televisor si no funciona llevelo a un tecnico','la imagen es estatica').
 
 %sol celular
 solucion('reinicie el celular','el celular ocupa un reinicio').
-solucion('borre algunas aplicaciones, fotos, videos o archivos','el celular no tiene suficiente espacio de almacenamiento').
-solucion('busque la ultima version, revise si es compatible ','el celular no esta actualizado').
+solucion('elimine algunas aplicaciones, fotos, videos o archivos','el celular no tiene suficiente espacio de almacenamiento').
+solucion('actualize a la ultima version, revise si es compatible ','su celular no esta actualizado').
 
 %sin sol
 solucion('Este Sistema Experto no puede responder su problema, se recomienda consultar a un tecnico.','no hay solucion').
@@ -276,31 +304,33 @@ pregunta('El dispositivo sonido predeterminado esta configurado correctamente?',
 pregunta('¿Tiene papel la impresora?','no tiene papel').
 pregunta('¿Tiene tinta la impresora?','no tiene tinta').
 pregunta('¿Reviso si su impresora esta bien configurada?','no esta bien configurada la impresora').
+
 pregunta('¿El tamano de papel es el correcto?','el tamano de papel no es el correcto').
 pregunta('¿El papel esta bien alineado?','el papel no esta bien alineado').
 pregunta('¿El numero de hojas cargada en la impresora es mayor a la capacidad?','el numero de hojas cargadas en la impresora es mayor a la capacidad').
 
 %preguntas internet
-pregunta('¿El modem esta conectado?','el modem esta desconectado').
-pregunta('¿La computadora tiene habilitada la tarjeta WI-FI o esta conectada por cable?','la computadora no tiene habilitada la tarjeta WIFI').
-pregunta('¿El router esta conectada al modem?','el router no esta conectado al modem').
-pregunta('¿El router esta cerca del dispositivo que esta usando?','su dispositivo no esta cerca del router').
-pregunta('¿El dispositivo no tiene muchas aplicaciones que estan utilizando internet simultaneamente?','el dispositivo tiene muchas aplicaciones corriendo simultaneamente').
-pregunta('¿El internet es mayor a 5 MB?','la capacidad de internet es inferior a 5MB').
+pregunta('¿El router se encuentra encendido?','el router esta apagado').
+pregunta('¿Se aseguro que los cables estan bien conectados?','el router esta desconectado').
+pregunta('¿Verifico que ingreso las credenciales del WIFI son las correctas?','las credenciales no son correctas').
+
+pregunta('¿Llega el wifi con suficiente fuerza?','el wifi no llega').
+pregunta('¿Eres el unico dispositivo conectado a la red?','internet ya en uso').
+pregunta('¿Su internet tiene mas 3Mbps de descarga?','la latencia registrada es muy alta (>150ms)').
 
 %preguntas televisor
-pregunta('¿El televisor esta conectado?','el televisor no esta conectado').
-pregunta('¿El control remoto tiene bateria?','el control remoto no tiene bateria').
-pregunta('¿El interruptor de ahorro de energia del televisor esta encendido?','el interruptor de ahorro de energia del televisor no esta encendido').
-pregunta('¿Ha intentado cambiar el toma al que esta conectado el televisor?','el tomacorriente asociado al televisor  no funciona').
-pregunta('¿El televisor esta bien conectado ya sea a cable o a antena?','el televisor no esta bien conectado al cable o antena').
-pregunta('¿Su televisor tiene la actualizacion mas reciente?','el televisor no tiene la actualizacion mas reciente').
-pregunta('¿Hay dispositivos cerca del televisor?','hay dispositvos cerca que brindan interferencia del televisor').
+pregunta('¿Se encuentra el televisor conectado?','el televisor esta desconectado').
+pregunta('¿Verifico que hay corriente?','no hay corriente').
+pregunta('¿Trato de prender el televisor sin el control?','el control no funciona').
+
+pregunta('¿Verifico que el televisor este encendido?','el televisor esta apagado').
+pregunta('¿Esta el cable de video conectado?','el cable esta desconectado').
+pregunta('¿Verifico que la imagen no sea estatica?','la imagen es estatica').
 
 %preguntas celular
 pregunta('¿Ya probo apagandolo y volviendolo a encender?','el celular ocupa un reinicio').
 pregunta('¿Verifico que aun tenga suficiente espacio de almacenamiento?','el celular no tiene suficiente espacio de almacenamiento').
-pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta actualizado').
+pregunta('¿Su celular tiene la actualizacion mas reciente?','su celular no esta actualizado').
 
 % Descripcion		:	Lista de referencias para cada subproblema
 % Nombre de Hecho	:	referencia(E,A)
@@ -313,25 +343,34 @@ referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no prende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no prende').
 
+referencia ('https://www.xataka.com/basics/que-hacer-tu-ordenador-se-calienta-normal','computadora se calienta').
+referencia ('https://www.avg.com/es/signal/computer-overheating-fix','computadora se calienta').
+
+referencia('https://www.profesionalreview.com/2020/05/31/no-suena-mi-pc-soluciones/', 'computadora no reproduce sonido').
+referencia('https://support.microsoft.com/es-es/windows/solucionar-problemas-de-sonido-o-audio-en-windows-73025246-b61c-40fb-671a-2535c7cd56c8', 'computadora no reproduce sonido').
+
 %ref impresora
 referencia('https://www.manua.ls/samsung/xpress-sl-m2070w/manual','impresora no imprime').
 referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora no imprime').
+
 referencia('https://www.imageoneway.com/blog/the-4-most-common-reasons-that-your-printer-might-be-jamming','impresora se le atasca el papel').
 referencia('https://www.hp.com/us-en/shop/tech-takes/hp-samsung-printers-review','impresora se le atasca el papel').
 referencia('https://www.samsung.com/ca/support/category/computing/printer/','impresora se le atasca el papel').
 
 %ref internet
-referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109777/','internet no tiene conexion').
-referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109716/','internet no tiene conexion').
-referencia('hhttps://www.highspeedinternet.com/es/recursos/por-que-mi-internet-esta-lento','internet esta lento').
-referencia('https://www.samsung.com/us/support/troubleshooting/TSG01110584/','internet esta lento').
-referencia('https://www.xataka.com/basics/internet-va-lento-principales-causas-sus-posibles-soluciones','internet esta lento').
+referencia('https://support.google.com/googleplay/answer/2651367?hl=es-419#zippy=%2Cc%C3%B3mo-solucionar-problemas-de-wi-fi','internet no conecta').
+referencia('https://support.microsoft.com/es-es/windows/solucionar-problemas-de-conexi%C3%B3n-wi-fi-en-windows-9424a1f7-6a3b-65a6-4d78-7f07eee84d2c','internet no conecta').
+
+referencia('https://support.google.com/chrome/answer/95669?hl=es-419&co=GENIE.Platform%3DDesktop','pagina no carga').
+referencia('https://www.redeszone.net/tutoriales/redes-cable/medir-estabilidad-conexion-red-internet/','pagina no carga').
+referencia('https://www.redeszone.net/tutoriales/redes-cable/evitar-problemas-cargar-web-navegador/','pagina no carga').
 
 %ref televisor
-referencia('https://www.samsung.com/pe/support/tv-audio-video/how-to-troubleshoot-the-samsung-tv-that-will-not-turn-on/','televisor no funciona').
-referencia('https://howtl.com/es/como-resetear-samsung-tv-si-no-enciende/','televisor no funciona').
-referencia('https://eu.community.samsung.com/t5/tvs/mala-imagen-en-movimiento/m-p/751816','televisor tiene mala imagen').
-referencia('https://aprende.com/blog/oficios/reparacion-electronica/fallas-comunes-televisor/','televisor tiene mala imagen').
+referencia('https://www.samsung.com/pe/support/tv-audio-video/how-to-troubleshoot-the-samsung-tv-that-will-not-turn-on/','televisor no enciende').
+referencia('https://howtl.com/es/como-resetear-samsung-tv-si-no-enciende/','televisor no enciende').
+
+referencia('https://eu.community.samsung.com/t5/tvs/mala-imagen-en-movimiento/m-p/751816','televisor no tiene imagen').
+referencia('https://aprende.com/blog/oficios/reparacion-electronica/fallas-comunes-televisor/','televisor no tiene imagen').
 
 %ref celular
 referencia('https://www.samsung.com/es/support/mobile-devices/why-is-my-phone-slowing-down-and-how-can-i-speed-it-up/','celular esta lento').
@@ -392,41 +431,41 @@ raiz('no hay solucion','impresora se le atasca el papel'):-
 	consulta_caso_base('no hay solucion'), !.
 
 %desicion internet
-raiz('el modem esta desconectado','internet no tiene conexion'):-
-	hoja_izquierda('el modem esta desconectado'), !.
-raiz('la computadora no tiene habilitada la tarjeta WIFI','internet no tiene conexion'):-
-	hoja_izquierda('la computadora no tiene habilitada la tarjeta WIFI'), !.
-raiz('el router no esta conectado al modem','internet no tiene conexion'):-
-	hoja_izquierda('el router no esta conectado al modem'), !.
-raiz('no hay solucion','internet no tiene conexion'):-
+raiz('el router esta apagado','internet no conecta'):-
+	hoja_izquierda('el router esta apagado'), !.
+raiz('el router esta desconectado','internet no conecta'):-
+	hoja_izquierda('el router esta desconectado'), !.
+raiz('las credenciales no son correctas','internet no conecta'):-
+	hoja_izquierda('las credenciales no son correctas'), !.
+raiz('no hay solucion','internet no conecta'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('su dispositivo no esta cerca del router','internet esta lento'):-
-	hoja_izquierda('su dispositivo no esta cerca del router'), !.
-raiz('el dispositivo tiene muchas aplicaciones corriendo simultaneamente','internet esta lento'):-
-	hoja_izquierda('el dispositivo tiene muchas aplicaciones corriendo simultaneamente'), !.
-raiz('la capacidad de internet es inferior a 5MB','internet esta lento'):-
-	hoja_izquierda('la capacidad de internet es inferior a 5MB'), !.
-raiz('no hay solucion','internet esta lento'):-
+
+raiz('el wifi no llega','pagina no carga'):-
+	hoja_izquierda('el wifi no llega'), !.
+raiz('internet ya en uso','pagina no carga'):-
+	hoja_izquierda('internet ya en uso'), !.
+raiz('la latencia registrada es muy alta (>150ms)','pagina no carga'):-
+	hoja_izquierda('la latencia registrada es muy alta (>150ms)'), !.
+raiz('no hay solucion','pagina no carga'):-
 	consulta_caso_base('no hay solucion'), !.
 
 %desicion televisor
-raiz('el televisor no esta conectado','televisor no funciona'):-
-	hoja_izquierda('el televisor no esta conectado'), !.
-raiz('lel control remoto no tiene bateria','televisor no funciona'):-
-	hoja_izquierda('el control remoto no tiene bateria'), !.
-raiz('el interruptor de ahorro de energia del televisor no esta encedido','televisor no funciona'):-
-	hoja_izquierda('el interruptor de ahorro de energia del televisor no esta encedido'), !.
-raiz('el tomacorriente asociado al televisor  no funciona','televisor no funciona'):-
-	hoja_izquierda('el tomacorriente asociado al televisor  no funciona'), !.
-raiz('no hay solucion','televisor no funciona'):-
+raiz('el televisor esta desconectado','televisor no enciende'):-
+	hoja_izquierda('el televisor esta desconectado'), !.
+raiz('no hay corriente','televisor no enciende'):-
+	hoja_izquierda('no hay corriente'), !.
+raiz('el control no funciona','televisor no enciende'):-
+	hoja_izquierda('el control no funciona'), !.
+raiz('no hay solucion','televisor no enciende'):-
 	consulta_caso_base('no hay solucion'), !.
-raiz('el televisor no esta bien conectado al cable o antena','televisor tiene mala imagen'):-
-	hoja_izquierda('el televisor no esta bien conectado al cable o antena'), !.
-raiz('el televisor no tiene la actualizacion mas reciente','televisor tiene mala imagen'):-
-	hoja_izquierda('el televisor no tiene la actualizacion mas recientee'), !.
-raiz('hay dispositivos cerca que brindan interferencia del televisor','televisor tiene mala imagen'):-
-	hoja_izquierda('hay dispositivos cerca que brindan interferencia del televisor'), !.
-raiz('no hay solucion','televisor tiene mala imagen'):-
+
+raiz('el televisor esta apagado','televisor no tiene imagen'):-
+	hoja_izquierda('el televisor esta apagado'), !.
+raiz('el cable esta desconectado','televisor no tiene imagen'):-
+	hoja_izquierda('el cable esta desconectado'), !.
+raiz('la imagen es estatica','televisor no tiene imagen'):-
+	hoja_izquierda('la imagen es estatica'), !.
+raiz('no hay solucion','televisor no tiene imagen'):-
 	consulta_caso_base('no hay solucion'), !.
 
 %desicion celular

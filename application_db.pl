@@ -169,9 +169,9 @@ causa('los archivos no existen','computadora no muestra mis archivos').
 causa('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos').
 causa('los controladores necesarios no estan instalados','computadora no muestra mis archivos').
 
-causa('la computadora esta desconectada','computadora no prende').
-causa('el tomacorriente asociado a la computadora no funciona','computadora no prende').
+causa('la computadora no esta cargada', 'computadora no prende').
 causa('el boton de encendido no funciona','computadora no prende').
+causa('la bateria esta agotada o no funciona','computadora no prende').
 
 % Causas relacionados a impresora
 causa('la impresora no tiene papel','impresora no imprime').
@@ -217,7 +217,9 @@ solucion('los archivos no existen','los archivos no existen').
 solucion('conecte bien la unidad de almacenamiento','la unidad de almacenamiento no esta bien conectada').
 solucion('instale los controladores necesarios','los controladores necesarios no estan instalados').
 
+solucion('conecte el cargador de la computadora','la computadora no esta cargada').
 solucion('llevelo a un tecnico para cambiar el boton de encendido', 'el boton de encendido no funciona').
+solucion('remplazar la bateria de la computadora','la bateria esta agotada o no funciona').
 
 % Soluciones relacionadas a impresora
 solucion('ponga papel en la impresora','la impresora no tiene papel').
@@ -266,7 +268,10 @@ pregunta('¿Ya se aseguro de que el archivo que esta buscando existe?','los arch
 pregunta('¿Ya se aseguro de que la unidad de almacenamiento esta bien conectada?','la unidad de almacenamiento no esta bien conectada').
 pregunta('¿ya instalo los controladores necesarios?','los controladores necesarios no estan instalados').
 
+pregunta('¿Ya se aseguro de que la computadora esta cargada?','la computadora no esta cargada').
 pregunta('¿Ya se aseguro que el boton de encendido funciona?', 'el boton de encendido no funciona').
+pregunta('¿La computadora puede encender sin estar conectada a la corriente electrica?',
+		'la bateria esta agotada o no funciona').
 
 % Preguntas relacionadas a impresora
 pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
@@ -307,9 +312,15 @@ pregunta('¿Su celular tiene la actualizacion mas reciente?','el celular no esta
 referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no enciende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no enciende').
 referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no enciende').
+
 referencia('https://es.easeus.com/computer-instruction/no-se-ven-archivos-guardados-en-escritorio-windows-10.html','computadora no muestra mis archivos').
 referencia('https://eu.community.samsung.com/t5/mobile-apps-services/samsung-quot-my-files-quot-no-longer-display-all-folders/td-p/3683141','computadora no muestra mis archivos').
 referencia('https://answers.microsoft.com/en-us/windows/forum/all/file-explorer-not-showing-the-list-of-folders-in/5d377f73-f08a-4584-82f7-c511d23a8688','computadora no muestra mis archivos').
+
+
+referencia('https://es.ccm.net/forum/affich-1818610-mi-laptop-samsung-no-arranca','computadora no prende').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01109614/','computadora no prende').
+referencia('https://www.samsung.com/us/support/troubleshooting/TSG01209064/','computadora no prende').
 
 % Referencias relacionadas a impresora
 referencia('https://www.manua.ls/samsung/xpress-sl-m2070w/manual','impresora no imprime').
@@ -359,12 +370,12 @@ raiz('los controladores necesarios no estan instalados','computadora no muestra 
 raiz('no hay solucion','computadora no muestra mis archivos'):-
 	consulta_caso_base('no hay solucion'), !.
 
-raiz('la computadora esta desconectada','computadora no prende'):-
-	hoja_izquierda('la computadora esta desconectada'), !.
+raiz('la computadora no esta cargada', 'computadora no prende'):-
+	hoja_izquierda('la computadora no esta cargada'), !.
 raiz('el boton de encendido no funciona','computadora no prende'):-
 	hoja_izquierda('el boton de encendido no funciona'), !.
-raiz('el tomacorriente asociado a la computadora no funciona','computadora no prende'):-
-	hoja_izquierda('el tomacorriente asociado a la computadora no funciona'), !.
+raiz('la bateria esta agotada o no funciona', 'computadora no prende'):-
+	hoja_izquierda('la bateria esta agotada o no funciona'), !.
 raiz('no hay solucion','computadora no prende'):-
 	consulta_caso_base('no hay solucion'), !.
 

@@ -164,10 +164,14 @@ problema('celular esta lento').
 causa('la computadora esta desconectada','computadora no enciende').
 causa('el tomacorriente asociado a la computadora no funciona','computadora no enciende').
 causa('los cables no estan bien conectados','computadora no enciende').
+
 causa('los archivos no existen','computadora no muestra mis archivos').
 causa('la unidad de almacenamiento no esta bien conectada','computadora no muestra mis archivos').
 causa('los controladores necesarios no estan instalados','computadora no muestra mis archivos').
+
 causa('la computadora esta desconectada','computadora no prende').
+causa('el tomacorriente asociado a la computadora no funciona','computadora no prende').
+causa('el boton de encendido no funciona','computadora no prende').
 
 % Causas relacionados a impresora
 causa('la impresora no tiene papel','impresora no imprime').
@@ -213,6 +217,7 @@ solucion('los archivos no existen','los archivos no existen').
 solucion('conecte bien la unidad de almacenamiento','la unidad de almacenamiento no esta bien conectada').
 solucion('instale los controladores necesarios','los controladores necesarios no estan instalados').
 
+solucion('llevelo a un tecnico para cambiar el boton de encendido', 'el boton de encendido no funciona').
 
 % Soluciones relacionadas a impresora
 solucion('ponga papel en la impresora','la impresora no tiene papel').
@@ -261,7 +266,7 @@ pregunta('¿Ya se aseguro de que el archivo que esta buscando existe?','los arch
 pregunta('¿Ya se aseguro de que la unidad de almacenamiento esta bien conectada?','la unidad de almacenamiento no esta bien conectada').
 pregunta('¿ya instalo los controladores necesarios?','los controladores necesarios no estan instalados').
 
-
+pregunta('¿Ya se aseguro que el boton de encendido funciona?', 'el boton de encendido no funciona').
 
 % Preguntas relacionadas a impresora
 pregunta('¿Ya reviso que tenga papel?','la impresora no tiene papel').
@@ -356,6 +361,10 @@ raiz('no hay solucion','computadora no muestra mis archivos'):-
 
 raiz('la computadora esta desconectada','computadora no prende'):-
 	hoja_izquierda('la computadora esta desconectada'), !.
+raiz('el boton de encendido no funciona','computadora no prende'):-
+	hoja_izquierda('el boton de encendido no funciona'), !.
+raiz('el tomacorriente asociado a la computadora no funciona','computadora no prende'):-
+	hoja_izquierda('el tomacorriente asociado a la computadora no funciona'), !.
 raiz('no hay solucion','computadora no prende'):-
 	consulta_caso_base('no hay solucion'), !.
 

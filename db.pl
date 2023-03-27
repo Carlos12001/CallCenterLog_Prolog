@@ -16,9 +16,10 @@ saludo([buenas,noches|S],S).
 % Nombre de Hecho	:	nombre_programa([X])
 % Parametro			:	nombre del SE
 % Aplicccion				:	sintagma_saludo([B])
-nombre_programa([callCenterLog|S],S).
+nombre_programa([callcenterlog|S],S).
+nombre_programa([callcenterlogprolog|S],S).
 nombre_programa([log|S],S).
-nombre_programa([callCenter|S],S).
+nombre_programa([callcenter|S],S).
 nombre_programa([sam|S],S).
 nombre_programa([samsung|S],S).
 nombre_programa([servicio|S],S).

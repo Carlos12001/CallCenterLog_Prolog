@@ -7,10 +7,10 @@
 
 % BNF -------------------------------------------------------------------------------------------------------------------------------------
 
-% Descripcion		:	recibe una lista de palabras y una lista vacia y verifica si es una oracion gramaticalmente correcta segun la estructura establecida
-% Nombre de Regla	:	oracion([A],[B])
-% Parametro			:	lista para revisar y lista vacia
-% Uso				:	se utiliza para validar oraciones
+% Que hace : Esta funcion recibe una lista de palabras y una lista vacia como parametros, y verifica si la lista es una oracion gramaticalmente correcta segun la estructura establecida.
+% Nombre de Regla : oracion(A,B)
+% Parametros : A (lista de palabras para revisar), B (lista vacia)
+% Uso : Se utiliza para validar la estructura de una oracion en un programa de procesamiento de lenguaje natural. La funcion utiliza reglas sintacticas para determinar si la lista de palabras se ajusta a la estructura de una oracion en la gramatica especificada.
 oracion(A,B):-
 	sintagma_nominal(A,C),
 	sintagma_verbal(C,B).
@@ -28,10 +28,10 @@ oracion(A,B):-
 	negacion(D,E),
 	sintagma_verbal(E,B).
 
-% Descripcion		:	recibe una lista de palabras y una lista vacia; elimina el primer sintagma nominal encontrado y devuelve el resto de las palabras
-% Nombre de Regla	:	sintagma_nominal([A],[B])
-% Parametro			:	lista a revisar y lista vacia
-% Uso				:	se utiliza para encontrar el primer sintagma nominal en una lista de palabras
+% Que hace : Esta funcion recibe una lista de palabras como parametro y utiliza reglas sintacticas para identificar y validar la estructura de un sintagma nominal gramaticalmente correcto.
+% Nombre de Regla : sintagma_nominal(A,B)
+% Parametros : A (lista de palabras para revisar), B (lista vacia)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para validar la estructura sintactica de un sintagma nominal en una oracion. La funcion verifica si la lista de palabras cumple con la estructura de un sintagma nominal en la gramatica especificada. La funcion utiliza reglas sintacticas para validar si la lista de palabras contiene un determinante y un sustantivo en el genero gramatical correspondiente.
 sintagma_nominal(A,B):-
 	determinante_m(A,C),
 	sustantivo_m(C,B).
@@ -45,20 +45,20 @@ sintagma_nominal(A,B):-
 	determinante_n(A,C),
 	sustantivo_m(C,B).
 
-% Descripcion		:	recibe una lista de palabras y una lista vacia; elimina el primer sintagma verbal encontrado y devuelve el resto de las palabras
-% Nombre de Regla	:	sintagma_verbal([A],[B])
-% Parametro			:	lista a revisar y lista vacia
-% Uso				:	se utiliza para encontrar el primer sintagma verbal en una lista de palabras
+% Que hace : Esta funcion recibe una lista de palabras como parametro y utiliza reglas sintacticas para identificar y validar la estructura de un sintagma verbal gramaticalmente correcto.
+% Nombre de Regla : sintagma_verbal(A,B)
+% Parametros : A (lista de palabras para revisar), B (lista vacia)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para validar la estructura sintactica de un sintagma verbal en una oracion. La funcion verifica si la lista de palabras cumple con la estructura de un sintagma verbal en la gramatica especificada. La funcion utiliza reglas sintacticas para validar si la lista de palabras contiene un verbo y, opcionalmente, un sintagma nominal.
 sintagma_verbal(A,B):-
 	verbo(A,B).
 sintagma_verbal(A,B):-
 	verbo(A,C),
 	sintagma_nominal(C,B).
 
-% Descripcion		:	recibe una lista de palabras y una lista vacia y verifica si estas palabras componen un saludo al programa (Ej. “hola log”)
-% Nombre de Regla	:	sintagma_saludo([B])
-% Parametro			:	lista a revisar y lista vacia
-% Uso				:	se utiliza para encontrar el primer sintagma saludo en una lista de palabras
+% Que hace : Esta funcion recibe una lista de palabras como entrada y utiliza reglas sintacticas para validar si la entrada contiene un saludo y el nombre del programa.
+% Nombre de Regla : sintagma_saludo(B)
+% Parametros : B (lista de palabras vacia para almacenar la salida)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para validar si la entrada de usuario contiene un saludo y el nombre del programa. La funcion utiliza reglas sintacticas para verificar si la entrada es un saludo y si contiene el nombre del programa especificado. Si la entrada es un saludo y contiene el nombre del programa, se almacena en la lista de palabras vacia "B".
 sintagma_saludo(B):-
 	input_to_list(L),
 	saludo(L,C),
@@ -66,12 +66,10 @@ sintagma_saludo(B):-
 sintagma_saludo(B):-
 	sintagma_saludo([]).
 
-% Validacion Gramatical, Saludo, Despedida ------------------------------------------------------------------------------------------------
-
-% Descripcion		:	valida si la oracion digitada por el usuario esta gramaticalmente correcta segun el BNF establecido
-% Nombre de Regla	:	validacion_gramatical()
-% Parametro			:	lista a revisar
-% Uso				:	Se utiliza para verificar gramaticalmente una oracion, de lo contrario, devolver un mensaje al usuario
+% Que hace : La funcion "validacion_gramatical(Oracion)" recibe una oracion como entrada y utiliza la regla "oracion(Oracion,[])" para validar si la oracion cumple con la gramatica especificada. Si la oracion es valida, se devuelve verdadero. Si no, se imprime un mensaje de error y se solicita al usuario que vuelva a ingresar la oracion.
+% Nombre de Regla : validacion_gramatical(Oracion)
+% Parametros : Oracion (la oracion ingresada por el usuario)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para validar si una oracion cumple con la gramatica especificada. Si la oracion es valida, se puede continuar con el procesamiento. Si no, se solicita al usuario que vuelva a ingresar la oracion en un formato valido.
 validacion_gramatical(Oracion):-
 	oracion(Oracion,[]),
 	!.
@@ -87,12 +85,19 @@ validacion_gramatical(Oracion):-
 	inicio_aux(),
 	!.
 
+% Que hace : La funcion "respuesta_saludo(Nombre)" recibe el nombre del usuario como entrada y devuelve un mensaje de bienvenida personalizado con el nombre del usuario.
+% Nombre de Regla : respuesta_saludo(Nombre)
+% Parametros : Nombre (el nombre del usuario)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para dar la bienvenida al usuario y proporcionar una respuesta personalizada.
 respuesta_saludo(Nombre):-
 	write('Bienvenido '),
 	writeln(Nombre),
 	writeln('.¿En que lo puedo ayudar?').
 
-% creo que aqui se puede quitar el resto si o no
+% Que hace : La funcion "respuesta_despedida()" se utiliza para manejar la respuesta del usuario cuando se le pregunta si tiene algun otro problema en el que podamos ayudar. Si el usuario responde "no", se muestra un mensaje de agradecimiento y se finaliza el programa. Si el usuario responde "si", se reinicia el programa.
+% Nombre de Regla : respuesta_despedida()
+% Parametros : Ninguno
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para manejar la respuesta del usuario cuando se le pregunta si tiene algun otro problema en el que podamos ayudar.
 respuesta_despedida():-
 	writeln('¿Tiene algun otro problema en el que le pueda ayudar?'),nl,
 	read(R),
@@ -101,8 +106,10 @@ opcion_despedida(R):-
 	consulta_general(no,R),nl,writeln('Gracias por preferir Samsung'),nl,!;
 	inicio_aux().
 
-% Operaciones Basicas ------------------------------------------------------------------------------------------------------------
-
+% Que hace : La funcion "lista_vacia(List, Empty)" recibe una lista y devuelve un valor logico que indica si la lista esta vacia o no.
+% Nombre de Regla : lista_vacia(List, Empty)
+% Parametros : List (la lista a verificar), Empty (valor logico que indica si la lista esta vacia o no)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para verificar si una lista esta vacia. Devuelve verdadero si la lista esta vacia y falso en caso contrario.
 lista_vacia(List, Empty) :-
     length(List, Len),
     (   Len =< 1
@@ -110,76 +117,106 @@ lista_vacia(List, Empty) :-
     ;   Empty = false
     ).
 
+% Que hace : La funcion "input_to_list(L)" lee una linea de entrada desde la entrada estandar, la convierte en una cadena y la divide en una lista de palabras.
+% Nombre de Regla : input_to_list(L)
+% Parametros : L (la lista de palabras resultante)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para convertir una entrada del usuario en una lista de palabras.
 input_to_list(L):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs),
 	atomic_list_concat(L,' ',A).
+
+% Que hace : La funcion "input_to_string(A)" lee una linea de entrada desde la entrada estandar y la convierte en una cadena.
+% Nombre de Regla : input_to_string(A)
+% Parametros : A (la cadena resultante)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para convertir una entrada del usuario en una cadena.
 input_to_string(A):-
 	read_line_to_codes(user_input,Cs),
 	atom_codes(A,Cs).
+
+% Que hace : La funcion "list_to_string(List, String)" convierte una lista de palabras en una cadena.
+% Nombre de Regla : list_to_string(List, String)
+% Parametros : List (la lista de palabras a convertir), String (la cadena resultante)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para convertir una lista de palabras en una cadena.	
 list_to_string(List, String):-
 	atomic_list_concat(List, ' ', String).
 
+% Que hace : La funcion "concatenar([],L,L)" concatena dos listas.
+% Nombre de Regla : concatenar([],L,L)
+% Parametros : Ninguno
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para concatenar dos listas.
 concatenar([],L,L).
 concatenar([X|L1],L2,[X|L3]):-
 	concatenar(L1,L2,L3).
 
+% Que hace : La funcion "eliminar_primeros(L,Y,B)" elimina los primeros B elementos de la lista L y devuelve el resto de la lista en la variable Y.
+% Nombre de Regla : eliminar_primeros(L,Y,B)
+% Parametros : L (la lista de entrada), Y (la lista resultante), B (el numero de elementos a eliminar)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para eliminar los primeros B elementos de una lista y obtener la lista resultante.
 eliminar_primeros(L,Y,B):- length(X, B), append(X,Y,L).
 
+% Que hace : La funcion "obtener_elemento([Y|], 1, Y)" devuelve el primer elemento de una lista.
+% Nombre de Regla : obtener_elemento([Y|_], 1, Y)
+% Parametros : La lista de entrada, la posicion del elemento a obtener y la variable donde se almacenara el resultado
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para obtener el primer elemento de una lista.
 obtener_elemento([Y|_], 1, Y).
 obtener_elemento([_|Xs], N, Y):-
 		N2 is N - 1,
 		obtener_elemento(Xs, N2, Y).
-
-
-% Causas y referencias --------------------------------------------------------------------------------------------------------------------
-
-% Descripcion		:	Obtiene las causas a un determinado problema
-% Nombre de Regla	:	obtener_causas(X,A)
-% Parametro			:	problema definido en application_db
-% Uso				:
+		
+% Que hace : La funcion "obtener_causas(X,A)" extrae el tema de la oracion de entrada y llama a la funcion "causas(X)" para mostrar las causas asociadas.
+% Nombre de Regla : obtener_causas(X,A)
+% Parametros : X (el tema extraido), A (la oracion de entrada)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para extraer el tema de la oracion de entrada y mostrar las causas asociadas.
 obtener_causas(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,4),
 	atomic_list_concat(Y, ' ', X),
 	causas(X).
 
+% Que hace : La funcion "causas(A)" muestra las causas asociadas al tema especificado.
+% Nombre de Regla : causas(A)
+% Parametros : A (el tema)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para mostrar las causas asociadas a un tema especifico.
 causas(A):-
 	write('Las principales causas que pueden estar asociadas a: '),
 	write(A), write(' son:'), nl,nl,
 	causa(B,A),
 	write(B),nl.
 
-% Descripcion		:	Obtiene las referencias a un determinado problema
-% Nombre de Regla	:	obtener_referencias(X,A)
-% Parametro			:	probolema definido en application_db
-% Uso				:
+
+% Que hace : La funcion "obtener_referencias(X,A)" extrae el tema de la oracion de entrada y llama a la funcion "referencias(X)" para mostrar las referencias asociadas.
+% Nombre de Regla : obtener_referencias(X,A)
+% Parametros : X (el tema extraido), A (la oracion de entrada)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para extraer el tema de la oracion de entrada y mostrar las referencias asociadas.
 obtener_referencias(X,A):-
 	split_string(A, "', ,?" ,"', ,?", L),
 	eliminar_primeros(L,Y,5),
 	atomic_list_concat(Y, ' ', X),
 	referencias(X).
 
+% Que hace : La funcion "referencias(A)" muestra las referencias asociadas al tema especificado.
+% Nombre de Regla : referencias(A)
+% Parametros : A (el tema)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para mostrar las referencias asociadas a un tema especifico.
 referencias(A):-
 	write('Claro, cuento con referencias a las que puede consultar.'),
 	write('Algunas referencias para su problema son: '),nl,
 	referencia(E,A),
 	write(E),nl.
 
-% Consultas, Solucion de Problemas, Conversacion usuario-se -------------------------------------------------------------------------------
-
-% Descripcion		:	Envia a consulta_no(A,D) pregunta al usuario sobre determinado problema
-% Nombre de Regla	:	hoja_izquierda(B)
-% Parametro			:	causa de un problema
-% Uso				:	raiz(B,A)
+% Que hace : La funcion "hoja_izquierda(B)" solicita una pregunta relacionada y llama a la funcion "consulta_no(B, D)".
+% Nombre de Regla : hoja_izquierda(B)
+% Parametros : B (la respuesta a la pregunta anterior)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para solicitar una pregunta relacionada y llamar a la funcion "consulta_no(B, D)".
 hoja_izquierda(B):-
     pregunta(D,B),
     consulta_no(B, D).
 
-% Descripcion		:	concatena las soluciones a un determinado problema
-% Nombre de Regla	:	consulta_no(A,P)
-% Parametro			:	(causa de un problema, pregunta asociada)
-% Uso				:	hoja_izquierda(B)
+% Que hace : La funcion "consulta_no(A, D)" solicita una respuesta "no" a una pregunta relacionada y actualiza la lista de soluciones.
+% Nombre de Regla : consulta_no(A, D)
+% Parametros : A (la respuesta a la pregunta anterior), D (la pregunta relacionada)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para solicitar una respuesta "no" a una pregunta relacionada y actualizar la lista de soluciones.
 consulta_no(A, D):-
     write(D), nl,
     read(R), nl,
@@ -193,11 +230,10 @@ consulta_caso_base(B):-
 	solucion(C,B).
 consulta_general(R,R).
 
-% Descripcion		:	Realiza el ciclo de conversacion entre preguntas y respuestas, y despedida
-% Nombre de Regla	:	conversascion(Oracion)
-% Parametro			:	String de una oracion
-% Uso				:	inicio_aux()
-
+% Que hace : La funcion "conversacion(Oracion,'causas')" extrae el tema de la oracion de entrada, llama a la funcion "obtener_causas(_,Oracion)" y muestra la respuesta de despedida.
+% Nombre de Regla : conversacion(Oracion,'causas')
+% Parametros : Oracion (la oracion de entrada), 'causas' (el tipo de consulta)
+% Uso : Esta funcion se utiliza en procesamiento de lenguaje natural para extraer el tema de la oracion de entrada, obtener las causas asociadas y mostrar la respuesta de despedida.
 conversacion(Oracion,'referencias'):-
 	!,
 	obtener_referencias(_,Oracion),
@@ -218,8 +254,7 @@ conversacion(Oracion,_):-
 	write(B),nl,
 	respuesta_despedida().
 
-% Ejecutor SE -----------------------------------------------------------------------------------------------------------------------------
-
+% Ejecuta el SE (Sistema Experto) 
 encabezado():-
 	sleep(0.02),
 	write('          *********************** Servicio tecnico de Samsung ***********************          '),nl.
